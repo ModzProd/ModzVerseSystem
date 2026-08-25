@@ -1,0 +1,46 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# The intranet is a single self-contained HTML file.
+# Do not commit working copies or backup versions.
+ModzVerse_Wikia.html
+ModzVerse_Wikia_v*.html
+index_v*.html
+*-backup.html
+*-draft.html
+
+# Source database files — these are large and should be hosted as release assets
+# rather than committed directly. They are documented in the wiki but not bundled.
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Source code archives from the PWS codebase — proprietary, do not commit.
+*.zip
+PWSFilesJS/
+main.html
+
+# Python scripts (analysis tooling, not part of the wiki deliverable)
+*.py
+__pycache__/
+*.pyc
+
+# Agent work logs and skill files (internal tooling, not for the public repo)
+worklog.md
+skills/
+scripts/
+upload/
+tool-results/
