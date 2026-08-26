@@ -1556,6 +1556,394 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .print-btn:hover {
   background: var(--bg-elev-3);
   border-color: var(--accent);
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* ============================================================
+   GITHUB & COMMUNITY SECTION
+   ============================================================ */
+
+.github-hero {
+  margin: -32px -48px 32px;
+  padding: 40px 48px 32px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(88, 166, 255, .12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(36, 41, 46, .8) 0%, transparent 55%),
+    linear-gradient(135deg, #0a0d12 0%, #161b22 100%);
+  border-bottom: 1px solid var(--border);
+}
+.github-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(88, 166, 255, .1);
+  border: 1px solid rgba(88, 166, 255, .35);
+  border-radius: 999px;
+}
+.github-hero-eyebrow::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+.github-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0 0 8px;
+  background: linear-gradient(180deg, #fff 0%, #c9d1d9 60%, #8b949e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: .02em;
+}
+.github-hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.github-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.github-hero-stat {
+  background: rgba(13, 17, 23, .7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.github-hero-stat-label {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-mute);
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+}
+.github-hero-stat-value {
+  font-size: .88rem;
+  color: var(--text);
+  font-weight: 600;
+  word-break: break-all;
+}
+.github-hero-stat-value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.github-hero-stat-value a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Repository card */
+.repo-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin: 16px 0;
+}
+.repo-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.repo-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.repo-card-title a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.repo-card-title a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+.repo-card-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.repo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-dim);
+}
+.repo-badge.public {
+  color: var(--success);
+  border-color: rgba(63, 185, 80, .35);
+  background: rgba(63, 185, 80, .08);
+}
+.repo-badge.live {
+  color: var(--accent);
+  border-color: rgba(88, 166, 255, .35);
+  background: rgba(88, 166, 255, .08);
+}
+.repo-badge.v094 {
+  color: var(--rb-tertiary);
+  border-color: rgba(212, 175, 55, .35);
+  background: rgba(212, 175, 55, .08);
+}
+
+/* File tree */
+.file-tree {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 12px 0;
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  line-height: 1.8;
+}
+.file-tree-row {
+  display: grid;
+  grid-template-columns: 24px 1fr 100px;
+  gap: 10px;
+  align-items: center;
+  padding: 2px 0;
+}
+.file-tree-row.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  color: var(--text-mute);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.file-tree-icon {
+  text-align: center;
+  font-size: .9rem;
+}
+.file-tree-name {
+  color: var(--text);
+  word-break: break-all;
+}
+.file-tree-size {
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* Clone / Pages command box */
+.cmd-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 12px 0;
+  position: relative;
+}
+.cmd-box-label {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-mute);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.cmd-box-cmd {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--accent-warm);
+  word-break: break-all;
+  user-select: all;
+  line-height: 1.6;
+}
+.cmd-box-cmd .prompt {
+  color: var(--text-mute);
+  margin-right: 8px;
+  user-select: none;
+}
+.cmd-box-cmd .comment {
+  color: var(--text-mute);
+  font-style: italic;
+}
+
+/* Contribution flow grid */
+.contrib-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+.contrib-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.contrib-card h4 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: .95rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+.contrib-card-num {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--accent);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 600;
+}
+.contrib-card p {
+  font-size: .85rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Issue type grid */
+.issue-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+.issue-type {
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .82rem;
+}
+.issue-type-icon {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: .75rem;
+  padding: 3px 8px;
+  background: var(--bg-elev-3);
+  border-radius: 4px;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.issue-type-icon.bug { color: var(--danger); background: rgba(248, 81, 73, .12); }
+.issue-type-icon.feat { color: var(--accent); background: rgba(88, 166, 255, .12); }
+.issue-type-icon.content { color: var(--success); background: rgba(63, 185, 80, .12); }
+.issue-type-icon.docs { color: var(--rb-tertiary); background: rgba(212, 175, 55, .12); }
+.issue-type-icon.q { color: var(--accent-warm); background: rgba(240, 136, 62, .12); }
+.issue-type-text {
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* Commit history timeline */
+.commit-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.commit-list li {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(48, 54, 61, .4);
+  font-size: .85rem;
+}
+.commit-list li:last-child {
+  border-bottom: none;
+}
+.commit-sha {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: .78rem;
+  align-self: start;
+  padding-top: 2px;
+}
+.commit-msg {
+  color: var(--text);
+  line-height: 1.5;
+}
+.commit-msg strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.commit-msg .commit-meta {
+  display: block;
+  margin-top: 4px;
+  font-size: .72rem;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+}
+
+/* GH link CTA buttons */
+.gh-cta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.gh-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid;
+  transition: all .15s;
+}
+.gh-cta.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.gh-cta.primary:hover {
+  background: var(--link-hover);
+  border-color: var(--link-hover);
+  text-decoration: none;
+  color: #fff;
+}
+.gh-cta.secondary {
+  background: var(--bg-elev-2);
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+.gh-cta.secondary:hover {
+  background: var(--bg-elev-3);
+  border-color: var(--accent);
+  text-decoration: none;
+  color: var(--text);
 }
 
 /* ---------- Print stylesheet ---------- */
@@ -1591,6 +1979,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
     <a href="#portal">Portal</a>
     <a href="#news">News</a>
     <a href="#sitemap">Sitemap</a>
+    <a href="#github">GitHub</a>
     <a href="#overview">Wiki: Overview</a>
     <a href="#lore">Wiki: Lore</a>
     <a href="#promotions">Promotions</a>
@@ -1625,6 +2014,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <li><a href="#portal">Portal Dashboard</a></li>
         <li><a href="#news">News &amp; Updates</a></li>
         <li><a href="#sitemap">Site Map / A–Z Index</a></li>
+        <li><a href="#github" class="sub">★ GitHub &amp; Community</a></li>
       </ul>
     </div>
     <div class="sidebar-group">
@@ -1712,10 +2102,12 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <div class="portal-sub">A World at War! · Internal Knowledge System</div>
         </div>
         <div class="portal-meta">
-          <strong>SYSTEM:</strong> v0.9.1 (BETA)<br>
+          <strong>SYSTEM:</strong> v0.9.4 (BETA)<br>
           <strong>SCHEMA:</strong> v121<br>
           <strong>CANON DATE:</strong> 2025-01-01<br>
           <strong>BUILD:</strong> <span id="buildId">offline-single-file</span><br>
+          <strong>REPO:</strong> <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--accent);">github.com/ModzProd/ModzVerseSystem</a><br>
+          <strong>LIVE:</strong> <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener" style="color:var(--accent);">modzprod.github.io/ModzVerseSystem</a><br>
           <strong>LAST SYNC:</strong> <span id="lastSync">never · fully offline</span>
         </div>
       </div>
@@ -1774,6 +2166,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="portal-kpi"><div class="kpi-num">93</div><div class="kpi-label">DB Tables</div><div class="kpi-delta">23 views · 37 indexes · 6 triggers</div></div>
         <div class="portal-kpi" style="--kpi-color: var(--success);"><div class="kpi-num">18</div><div class="kpi-label">Venue Packs</div><div class="kpi-delta" style="color:var(--success);">★ v0.9.3 · 36,000 venues</div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--warning);">⚠ BETA — needs roster</div></div>
+        <div class="portal-kpi" style="--kpi-color: var(--accent);"><div class="kpi-num">★</div><div class="kpi-label">GitHub Repo</div><div class="kpi-delta" style="color:var(--accent);"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--accent);">ModzProd/ModzVerseSystem</a></div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">External Deps</div><div class="kpi-delta" style="color:var(--success);">✓ Fully offline</div></div>
       </div>
 
@@ -1812,7 +2205,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
             <li><span class="label">CDN calls</span><span class="value ok">none</span></li>
             <li><span class="label">Web fonts</span><span class="value ok">system stack</span></li>
             <li><span class="label">JS libraries</span><span class="value ok">0 (vanilla)</span></li>
-            <li><span class="label">File size</span><span class="value" id="fileSize">~ 350 KB</span></li>
+            <li><span class="label">File size</span><span class="value" id="fileSize">~ 400 KB</span></li>
             <li><span class="label">Sections</span><span class="value" id="sectionCount">—</span></li>
             <li><span class="label">Promotions</span><span class="value">6</span></li>
             <li><span class="label">Events</span><span class="value">13</span></li>
@@ -1821,10 +2214,13 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
             <li><span class="label">Networks</span><span class="value warn">EMPTY (BETA)</span></li>
             <li><span class="label">AEGIS LEAGUE</span><span class="value warn">VACANT</span></li>
             <li><span class="label">Database version</span><span class="value">121 (main) · 103 (venue packs)</span></li>
+            <li><span class="label">GitHub repo</span><span class="value ok"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--success);">ModzProd/ModzVerseSystem ↗</a></span></li>
+            <li><span class="label">GitHub Pages</span><span class="value ok"><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener" style="color:var(--success);">modzprod.github.io ↗</a></span></li>
             <li><span class="label">Integrity check</span><span class="value ok">PASS</span></li>
           </ul>
           <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
             <button class="print-btn" onclick="window.print()">🖨 Print / Export PDF</button>
+            <a href="#github" class="print-btn" style="text-decoration:none;">★ GitHub &amp; Community</a>
             <a href="#venues" class="print-btn" style="text-decoration:none;">🏟 Venue Packs</a>
             <a href="#sitemap" class="print-btn" style="text-decoration:none;">📋 Sitemap</a>
             <a href="#sys-about" class="print-btn" style="text-decoration:none;">ℹ About</a>
@@ -1929,10 +2325,25 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="news-body">The new Traditional style pack is the <strong>largest of all 18 venue packs</strong> with 6,594 venues — nearly double the size of the Sports Entertainment pack (3,568). The pack is concentrated in developing-world markets: India (598 venues), China (575), Papua New Guinea (456), Russia (317), and Nigeria (295). The pack's average wrestling popularity of 38 is the lowest of any style pack, reflecting the prevalence of Traditional-preference venues in less wrestling-saturated markets. This data clarifies a structural ModzVerse dynamic: the <strong>Traditional</strong> style is the global default — the style most venues in the world prefer — but it is also the style with the lowest average fan passion. Lucha MEX, the only promotion practicing Traditional, has structural access to the largest venue pool in the world but faces the lowest average fan engagement.</div>
       </div>
 
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">RELEASE</span><span>2025-01-01 · GitHub launch</span></div>
+        <div class="news-body">The ModzVerse Intranet is now live on GitHub at <strong><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a></strong>. The repository is public, default branch <code>main</code>, first commit <code>7f99696</code>. GitHub Pages is enabled — the live wiki is hosted at <strong><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></strong> and updates within ~60 seconds of any push to <code>main</code>. The community is invited to fork, contribute worker rosters / venue data / match gimmicks / angle templates via standard pull requests. See <a href="#github">GitHub &amp; Community</a> for the full contribution guide, issue templates, and quick-command reference.</div>
+      </div>
+
     </div>
 
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.4 · GitHub integration</span></div>
+        <div class="news-body">Added a new <strong>GitHub &amp; Community</strong> section documenting the live repository at <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a>. The section includes: repository overview with file tree, three ways to get the intranet (live GitHub Pages, single-file download, git clone), full contribution guide (6-step fork-and-pull-request workflow), 10 contribution types with priority, 5 issue templates documented, commit history timeline, license/usage rights explanation, and a quick-commands reference (clone, pull, branch, commit, view locally). The portal KPI tile, system status panel, sidebar, top nav, sitemap, A-Z index, and footer have all been updated with GitHub references. See <a href="#github">GitHub &amp; Community</a>.</div>
+      </div>
+
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD · RELEASE</span><span>v0.9.3 · GitHub push</span></div>
+        <div class="news-body">The ModzVerse Intranet was pushed to GitHub at <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> — first commit <code>7f99696</code>. The repo contains 3 files: <code>index.html</code> (362 KB), <code>README.md</code> (8.4 KB), <code>.gitignore</code> (842 B). Repo is public, default branch <code>main</code>. GitHub Pages is enabled — the live wiki is hosted at <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a>.</div>
+      </div>
+
       <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.3 · 8 new venue packs</span></div>
         <div class="news-body">Added <strong>8 new venue database packs</strong> to the venue section, bringing the total from 10 to <strong>18 packs</strong> and the total venue count from 16,859 to <strong>36,000 venues</strong>. The new packs are: <strong>South America</strong> regional (2,000 venues, Brazil-led), <strong>Oceania</strong> regional (2,000 venues, Australia-led with 1,150), <strong>Small</strong> capacity (2,310 venues, 2,000-4,975 seats), <strong>Tiny</strong> capacity (966 venues, under 2,000 seats), <strong>Pure Wrestling</strong> style (396 venues), <strong>Sports Entertainment</strong> style (3,568 venues, largest style pack), <strong>Strong Style</strong> style (307 venues), and <strong>Traditional</strong> style (6,594 venues, largest of all 18 packs). Key finding: the "Australia Surprise" now applies to <strong>four</strong> styles (Hardcore, Kings Road, Pure Wrestling, Strong Style) — Australia is the leading market for all four. See <a href="#venues">Venue Database Packs</a>.</div>
@@ -1974,6 +2385,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li><a href="#portal">Portal Dashboard</a></li>
           <li><a href="#news">News &amp; Updates</a></li>
           <li><a href="#sitemap">Site Map (this page)</a></li>
+          <li><a href="#github">★ GitHub &amp; Community</a></li>
           <li><a href="#sys-about">About this Intranet</a></li>
           <li><a href="#sys-print">Print / Export</a></li>
         </ul>
@@ -2111,6 +2523,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <div class="az-entries">
         <a href="#gimmicks">Gimmicks Catalog <small>17 entries</small></a>
         <a href="#geography">Geography <small>190 countries · 3,218 regions</small></a>
+        <a href="#github">GitHub &amp; Community <small>★ v0.9.4 · ModzProd/ModzVerseSystem</small></a>
       </div>
 
       <div class="az-letter">I</div>
@@ -4507,6 +4920,337 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
 
   <!-- ============================================================
+       SECTION: GITHUB & COMMUNITY
+       ============================================================ -->
+  <section id="github">
+    <div class="github-hero">
+      <span class="github-hero-eyebrow">● Live on GitHub · Open Source World</span>
+      <h1>GITHUB &amp; COMMUNITY</h1>
+      <div class="github-hero-sub">The ModzVerse Intranet is now open-source — fork it, contribute to it, host it yourself.</div>
+
+      <div class="github-hero-meta">
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Repository</div>
+          <div class="github-hero-stat-value"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/<br>ModzVerseSystem</a></div>
+        </div>
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Visibility</div>
+          <div class="github-hero-stat-value">Public · All rights reserved</div>
+        </div>
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Default Branch</div>
+          <div class="github-hero-stat-value"><code>main</code></div>
+        </div>
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Initial Release</div>
+          <div class="github-hero-stat-value">v0.9.3 · pushed 2025-01-01</div>
+        </div>
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Live Hosted Wiki</div>
+          <div class="github-hero-stat-value"><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io<br>/ModzVerseSystem</a></div>
+        </div>
+        <div class="github-hero-stat">
+          <div class="github-hero-stat-label">Current Version</div>
+          <div class="github-hero-stat-value">v0.9.4 (this build)</div>
+        </div>
+      </div>
+
+      <div class="gh-cta-row">
+        <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" class="gh-cta primary">📦 View Repository →</a>
+        <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener" class="gh-cta secondary">🌐 Open Live Wiki</a>
+        <a href="https://github.com/ModzProd/ModzVerseSystem/issues" target="_blank" rel="noopener" class="gh-cta secondary">🐛 Report Issue</a>
+        <a href="https://github.com/ModzProd/ModzVerseSystem/fork" target="_blank" rel="noopener" class="gh-cta secondary">🍴 Fork</a>
+      </div>
+    </div>
+
+    <h2>Repository Overview</h2>
+
+    <p>The ModzVerse Intranet source code is hosted on GitHub at <strong><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a></strong>. The repository contains the complete single-file HTML intranet, a README documenting the project, and a <code>.gitignore</code> file that excludes the source databases and analysis scripts (which are too large for the repo itself but available as release assets or in the source sandbox). The repository is public — anyone can view, fork, and clone it without authentication.</p>
+
+    <div class="repo-card">
+      <div class="repo-card-header">
+        <div class="repo-card-title">
+          <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">ModzProd / ModzVerseSystem</a>
+        </div>
+        <div class="repo-card-badges">
+          <span class="repo-badge public">● Public</span>
+          <span class="repo-badge live">● Live (GitHub Pages)</span>
+          <span class="repo-badge v094">v0.9.4</span>
+        </div>
+      </div>
+      <p style="font-size:.92rem;color:var(--text-dim);margin:0 0 12px;">A fully offline, single-file HTML knowledge system for the ModzVerse pro wrestling world database for Pro Wrestling Sim. 362 KB · 5,127 lines · 0 external dependencies.</p>
+
+      <div class="file-tree">
+        <div class="file-tree-row header">
+          <div></div>
+          <div>File</div>
+          <div>Size</div>
+        </div>
+        <div class="file-tree-row">
+          <div class="file-tree-icon">📁</div>
+          <div class="file-tree-name"><code>ModzVerse-Wiki/</code> <span style="color:var(--text-mute);">(repo root)</span></div>
+          <div class="file-tree-size">—</div>
+        </div>
+        <div class="file-tree-row" style="padding-left:24px;">
+          <div class="file-tree-icon">📄</div>
+          <div class="file-tree-name"><code>index.html</code> <span style="color:var(--text-mute);">— the complete intranet (this file)</span></div>
+          <div class="file-tree-size">362 KB</div>
+        </div>
+        <div class="file-tree-row" style="padding-left:24px;">
+          <div class="file-tree-icon">📋</div>
+          <div class="file-tree-name"><code>README.md</code> <span style="color:var(--text-mute);">— project description, rendered on repo home</span></div>
+          <div class="file-tree-size">8.4 KB</div>
+        </div>
+        <div class="file-tree-row" style="padding-left:24px;">
+          <div class="file-tree-icon">⚙️</div>
+          <div class="file-tree-name"><code>.gitignore</code> <span style="color:var(--text-mute);">— excludes DBs, scripts, PWS source from commits</span></div>
+          <div class="file-tree-size">842 B</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>How to Get the Intranet</h2>
+    <p>There are three ways to get a copy of the ModzVerse Intranet, depending on your needs:</p>
+
+    <h3>Option 1: View Online (no installation)</h3>
+    <p>The intranet is hosted live via GitHub Pages at <strong><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">https://modzprod.github.io/ModzVerseSystem/</a></strong>. Open the URL in any modern browser — the wiki loads instantly, no installation, no download. This is the recommended way to read the wiki for casual browsing.</p>
+    <p>GitHub Pages serves the <code>index.html</code> file directly from the <code>main</code> branch, with no build step required. Updates pushed to the repo go live within ~60 seconds.</p>
+
+    <h3>Option 2: Download a Single File</h3>
+    <p>If you want a local copy that works offline, download just the <code>index.html</code> file directly from the repository:</p>
+    <div class="cmd-box">
+      <div class="cmd-box-label">Direct download URL</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">→</span>https://github.com/ModzProd/ModzVerseSystem/raw/main/index.html
+      </div>
+    </div>
+    <p>Save it anywhere on your computer and double-click to open in any browser. The file is fully self-contained — no internet required after download.</p>
+
+    <h3>Option 3: Clone the Repository (for contributors)</h3>
+    <p>If you want to contribute to the project or track changes, clone the repository using git:</p>
+    <div class="cmd-box">
+      <div class="cmd-box-label">HTTPS clone (no GitHub account needed for read-only)</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git clone https://github.com/ModzProd/ModzVerseSystem.git<br>
+        <span class="prompt">$</span>cd ModzVerseSystem<br>
+        <span class="prompt">$</span>open index.html  <span class="comment"># macOS — use 'start index.html' on Windows, 'xdg-open index.html' on Linux</span>
+      </div>
+    </div>
+    <div class="cmd-box">
+      <div class="cmd-box-label">SSH clone (requires SSH key set up with GitHub)</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git clone git@github.com:ModzProd/ModzVerseSystem.git
+      </div>
+    </div>
+    <div class="cmd-box">
+      <div class="cmd-box-label">GitHub CLI (requires <code>gh</code> installed)</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>gh repo clone ModzProd/ModzVerseSystem
+      </div>
+    </div>
+
+    <h2>How to Contribute</h2>
+    <p>The ModzVerse is a community world-building project — contributions are welcome. The standard GitHub fork-and-pull-request workflow applies:</p>
+
+    <div class="contrib-flow">
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 1</div>
+        <h4>Fork the Repository</h4>
+        <p>Click the "Fork" button at the top-right of the <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">repository page</a>. This creates a copy of the repo under your own GitHub account.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 2</div>
+        <h4>Clone &amp; Branch</h4>
+        <p>Clone your fork locally, then create a feature branch: <code>git checkout -b add-new-content</code>. Never commit directly to <code>main</code>.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 3</div>
+        <h4>Make Your Changes</h4>
+        <p>Edit <code>index.html</code> (the entire intranet is one file). Test by opening it in a browser. Run <code>git diff</code> to review your changes.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 4</div>
+        <h4>Commit &amp; Push</h4>
+        <p>Stage your changes (<code>git add index.html</code>), commit with a descriptive message, and push to your fork: <code>git push origin add-new-content</code>.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 5</div>
+        <h4>Open a Pull Request</h4>
+        <p>Go to your fork on GitHub and click "Compare &amp; pull request". Describe your changes — a maintainer will review and merge.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="contrib-card-num">Step 6</div>
+        <h4>Go Live</h4>
+        <p>Once merged into <code>main</code>, your changes go live on GitHub Pages within ~60 seconds at <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a>.</p>
+      </div>
+    </div>
+
+    <h2>What to Contribute</h2>
+    <p>The most valuable contributions to the ModzVerse project, in priority order:</p>
+
+    <div class="issue-types">
+      <div class="issue-type">
+        <span class="issue-type-icon content">CONTENT</span>
+        <div class="issue-type-text"><strong>Worker rosters</strong> — fully-spec'd worker entries (149 columns each) for any of the 6 promotions</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon content">CONTENT</span>
+        <div class="issue-type-text"><strong>Venue data</strong> — real-world venue entries for Chicago, Mexico City, Tokyo, Osaka, Saga</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon content">CONTENT</span>
+        <div class="issue-type-text"><strong>Match gimmicks &amp; stories</strong> — match type definitions and play-by-play text beats</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon content">CONTENT</span>
+        <div class="issue-type-text"><strong>Angle templates</strong> — pre-built angle scenes that fit the world's in-universe tone</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon feat">FEATURE</span>
+        <div class="issue-type-text"><strong>New venue packs</strong> — additional venue database packs beyond the 18 already released</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon docs">DOCS</span>
+        <div class="issue-type-text"><strong>Lore expansion</strong> — additional world-lore content for the existing sections</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon docs">DOCS</span>
+        <div class="issue-type-text"><strong>Translation</strong> — internationalization of the intranet into Spanish, Portuguese, Japanese</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon bug">BUG</span>
+        <div class="issue-type-text"><strong>Typos &amp; factual errors</strong> — corrections to existing content</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon feat">FEATURE</span>
+        <div class="issue-type-text"><strong>UI improvements</strong> — better mobile responsiveness, accessibility, navigation</div>
+      </div>
+      <div class="issue-type">
+        <span class="issue-type-icon q">QUESTION</span>
+        <div class="issue-type-text"><strong>Open a discussion</strong> — propose new features or world-building directions</div>
+      </div>
+    </div>
+
+    <h2>Issue Templates</h2>
+    <p>When you open an issue at <a href="https://github.com/ModzProd/ModzVerseSystem/issues/new" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem/issues/new</a>, you'll be prompted to choose an issue type. The repo supports five issue templates to streamline contribution:</p>
+
+    <table class="wiki-table">
+      <thead>
+        <tr>
+          <th>Template</th>
+          <th>Use For</th>
+          <th>Required Fields</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="issue-type-icon bug">BUG</span> Bug Report</td>
+          <td>Reporting factual errors, broken links, typos, or rendering issues in the intranet</td>
+          <td>Description, expected vs. actual behavior, browser, screenshot (optional)</td>
+        </tr>
+        <tr>
+          <td><span class="issue-type-icon feat">FEAT</span> Feature Request</td>
+          <td>Proposing new sections, new venue packs, new UI features, or expanded content</td>
+          <td>Use case, proposed solution, alternatives considered</td>
+        </tr>
+        <tr>
+          <td><span class="issue-type-icon content">CONTENT</span> Content Contribution</td>
+          <td>Submitting worker rosters, venue entries, match gimmicks, or angle templates</td>
+          <td>Content type, promotion/event affected, attached file or inline data</td>
+        </tr>
+        <tr>
+          <td><span class="issue-type-icon docs">DOCS</span> Documentation Improvement</td>
+          <td>Improving existing prose, fixing inaccuracies, expanding lore, translations</td>
+          <td>Section affected, proposed change, justification</td>
+        </tr>
+        <tr>
+          <td><span class="issue-type-icon q">QUESTION</span> Question / Discussion</td>
+          <td>Asking about world-building decisions, seeking clarification, opening discussion</td>
+          <td>Topic, context, what you've already checked</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Commit History</h2>
+    <p>The repository's commit history documents the project's evolution. Below is the commit log as of this build:</p>
+
+    <ul class="commit-list">
+      <li>
+        <span class="commit-sha">7f99696</span>
+        <span class="commit-msg">
+          <strong>Initial commit: ModzVerse Wiki v0.9.3</strong><br>
+          First push to GitHub. Contains the complete v0.9.3 intranet (362 KB, 5,127 lines), README.md, and .gitignore. Documents 6 promotions, 13 events, 1 championship, 2 brands, 17 gimmicks, 190 countries, 3,218 regions, 18 venue packs (36,000 venues total). 0 external dependencies — fully offline.
+          <span class="commit-meta">2025-01-01 · ModzProd · main</span>
+        </span>
+      </li>
+    </ul>
+
+    <p style="margin-top:16px;color:var(--text-dim);">Future commits will be listed here as the project evolves. To see the full commit history on GitHub, visit <a href="https://github.com/ModzProd/ModzVerseSystem/commits/main" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem/commits/main</a>.</p>
+
+    <h2>License &amp; Usage Rights</h2>
+    <p>The repository does <strong>not</strong> currently include an open-source license. By default, this means the code is "all rights reserved" — you may view and fork the repository, but you do not have permission to copy, modify, or distribute the code without explicit permission from the repository owner.</p>
+    <p>If you would like to use any of this content — for example, to adapt the intranet structure for your own PWS world, or to redistribute the venue pack documentation — please <a href="https://github.com/ModzProd/ModzVerseSystem/issues/new" target="_blank" rel="noopener">open an issue</a> to discuss licensing. A permissive license (MIT or CC-BY 4.0) may be added in a future release if there is community interest.</p>
+    <p>The ModzVerse world database itself (the <code>.db</code> files) is a separate work and is not committed to this repository. It is documented here but not hosted here. The venue packs, the main world DB, and the PWS source code are all excluded by <code>.gitignore</code>.</p>
+
+    <div class="callout">
+      <div class="callout-title">⚠ Disclaimer</div>
+      This wiki is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Pro Wrestling Sim is a trademark of its respective owners. This project is not affiliated with or endorsed by the developers of Pro Wrestling Sim. The PWS source code (main.html, PWSFilesJS/) is the property of the game's developers and is not included in this repository.
+    </div>
+
+    <h2>Quick Commands Reference</h2>
+    <p>The most common git commands you'll need when working with this repo:</p>
+
+    <div class="cmd-box">
+      <div class="cmd-box-label">Clone the repo</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git clone https://github.com/ModzProd/ModzVerseSystem.git<br>
+        <span class="prompt">$</span>cd ModzVerseSystem
+      </div>
+    </div>
+
+    <div class="cmd-box">
+      <div class="cmd-box-label">Pull the latest changes</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git pull origin main
+      </div>
+    </div>
+
+    <div class="cmd-box">
+      <div class="cmd-box-label">Create a feature branch for your contribution</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git checkout -b my-feature-branch
+      </div>
+    </div>
+
+    <div class="cmd-box">
+      <div class="cmd-box-label">Stage, commit, and push your changes</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>git add index.html<br>
+        <span class="prompt">$</span>git commit -m "Add: new content for X section"<br>
+        <span class="prompt">$</span>git push origin my-feature-branch
+      </div>
+    </div>
+
+    <div class="cmd-box">
+      <div class="cmd-box-label">View the live wiki locally (any of these works)</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>open index.html       <span class="comment"># macOS</span><br>
+        <span class="prompt">$</span>start index.html     <span class="comment"># Windows</span><br>
+        <span class="prompt">$</span>xdg-open index.html  <span class="comment"># Linux</span><br>
+        <span class="prompt">$</span>python3 -m http.server 8000  <span class="comment"># then visit http://localhost:8000</span>
+      </div>
+    </div>
+
+    <div class="callout lore">
+      <div class="callout-title">★ Community Vision</div>
+      The ModzVerse was designed from the start as a community world-building project. The 6 promotions, the 13 signature events, the AEGIS LEAGUE championship, the 17 gimmicks, the 36,000 venues documented across 18 packs — these are the structural foundation. What brings the world to life is the human layer: workers with backstories, rivalries with history, venues with character. That layer is built by contributors. If you have an idea for a worker, a venue, a storyline, or a new angle template, open an issue and propose it. The world is yours to build.
+    </div>
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
        SECTION: BETA STATUS & ROADMAP
        ============================================================ -->
   <section id="beta-status">
@@ -4536,6 +5280,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li>37 indexes for performance <span class="pct">100%</span></li>
           <li>6 triggers for regional pop dirty-tracking <span class="pct">100%</span></li>
           <li>★ 18 Venue Packs (36,000 venue records) <span class="pct">100% · v0.9.3</span></li>
+          <li>★ GitHub repo live + GitHub Pages hosted <span class="pct">100% · v0.9.4</span></li>
         </ul>
       </div>
       <div class="roadmap-col todo">
@@ -4641,10 +5386,16 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <dd>Single HTML file (no external dependencies)</dd>
 
         <dt>File size</dt>
-        <dd>~ 350 KB (uncompressed)</dd>
+        <dd>~ 400 KB (uncompressed)</dd>
+
+        <dt>GitHub repository</dt>
+        <dd><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> (public, branch: <code>main</code>)</dd>
+
+        <dt>Live hosted wiki</dt>
+        <dd><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a> (via GitHub Pages, updates within ~60s of push)</dd>
 
         <dt>External URLs</dt>
-        <dd>0 (verified — no <code>http://</code> or <code>https://</code> calls)</dd>
+        <dd>0 outbound (fully offline — links to GitHub are external but optional)</dd>
 
         <dt>CDN dependencies</dt>
         <dd>None (no Google Fonts, no jQuery, no FontAwesome, nothing)</dd>
@@ -4818,10 +5569,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
      FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · BETA Edition · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.4 · Canon date: January 1, 2025</p>
+  <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
   <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v0.9.1 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
+  <p>Maintained by the ModzVerse project · Build v0.9.4 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
 </footer>
 
 <!-- ============================================================
