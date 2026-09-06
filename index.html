@@ -2515,6 +2515,15 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <ul>
         <li><a href="#rosters" class="sub">Roster Overview</a></li>
         <li><a href="#raibarazu-roster" class="sub">RAIBARAZU (30 workers)</a></li>
+        <li><a href="#all-rosters" class="sub">All 6 Promos (135 workers)</a></li>
+        <li><a href="#chicago-roster" class="sub">Chicago Show (25)</a></li>
+        <li><a href="#bellas-roster" class="sub">Lucha Bellas (20)</a></li>
+        <li><a href="#mex-roster" class="sub">Lucha MEX (25)</a></li>
+        <li><a href="#osaka-roster" class="sub">Osaka Joshi (20)</a></li>
+        <li><a href="#valkyrie-roster" class="sub">Valkyrie Project (15)</a></li>
+        <li><a href="#raibarazu-announcers" class="sub">Announce Teams (4)</a></li>
+        <li><a href="#raibarazu-tagteams" class="sub">Tag Teams (8)</a></li>
+        <li><a href="#raibarazu-stables" class="sub">Stables (4)</a></li>
       </ul>
     </div>
     <div class="sidebar-group">
@@ -2565,7 +2574,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <div class="portal-sub">A World at War! · Internal Knowledge System</div>
         </div>
         <div class="portal-meta">
-          <strong>SYSTEM:</strong> v0.9.6 (BETA)<br>
+          <strong>SYSTEM:</strong> v0.9.7 (BETA)<br>
           <strong>SCHEMA:</strong> v121<br>
           <strong>CANON DATE:</strong> 2025-01-01<br>
           <strong>BUILD:</strong> <span id="buildId">offline-single-file</span><br>
@@ -2632,7 +2641,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="portal-kpi"><div class="kpi-num">1,334</div><div class="kpi-label">Match Gimmicks</div><div class="kpi-delta">across 20 categories + 55 themes</div></div>
         <div class="portal-kpi"><div class="kpi-num">101</div><div class="kpi-label">TV Networks</div><div class="kpi-delta" style="color:var(--success);">✓ no longer empty</div></div>
         <div class="portal-kpi"><div class="kpi-num">5,805</div><div class="kpi-label">Total Titles</div><div class="kpi-delta">documented in Excel</div></div>
-        <div class="portal-kpi" style="--kpi-color: var(--rb-tertiary);"><div class="kpi-num">30</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--rb-tertiary);">★ v0.9.6 · RAIBARAZU roster ready</div></div>
+        <div class="portal-kpi" style="--kpi-color: var(--rb-tertiary);"><div class="kpi-num">135</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--rb-tertiary);">★ v0.9.7 · all 6 promotions populated</div></div>
         <div class="portal-kpi" style="--kpi-color: var(--accent);"><div class="kpi-num">★</div><div class="kpi-label">GitHub Repo</div><div class="kpi-delta" style="color:var(--accent);"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--accent);">ModzProd/ModzVerseSystem</a></div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">External Deps</div><div class="kpi-delta" style="color:var(--success);">✓ Fully offline</div></div>
       </div>
@@ -2679,7 +2688,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
             <li><span class="label">Venue packs</span><span class="value ok">18 PACKS · 36,000 venues</span></li>
             <li><span class="label">DLC databases</span><span class="value ok">87 FILES · 1,334 match gimmicks · 101 networks</span></li>
             <li><span class="label">Excel spreadsheets</span><span class="value ok">4 FILES · 5,000 promos · 5,805 titles · 12,000 venues</span></li>
-            <li><span class="label">Worker roster</span><span class="value ok">30 workers (RAIBARAZU) ✓</span></li>
+            <li><span class="label">Worker roster</span><span class="value ok">135 workers (all 6 promos) ✓</span></li>
             <li><span class="label">Match gimmicks</span><span class="value ok">✓ 1,334 (in DLC)</span></li>
             <li><span class="label">TV Networks</span><span class="value ok">✓ 101 (in DLC)</span></li>
             <li><span class="label">AEGIS LEAGUE</span><span class="value warn">VACANT</span></li>
@@ -5995,21 +6004,254 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       The single most anticipated match in the ModzVerse is the Doragon ace versus the Fenikkusu ace — the main event of Battle of Rivals. With the roster now populated, the dream match is <strong>Ryūga the Apex</strong> (Doragon's #1 face, wrestling 95, star power 92) versus <strong>Yuya Ueno</strong> (Fenikkusu's #1 face, wrestling 84, star power 68). But there's also the heel dream match: <strong>Kuroda the Iron Fist</strong> (Doragon, wrestling 93) versus <strong>Eternal Shimizu</strong> (Fenikkusu, wrestling 82). Both matches would main-event Battle of Rivals — the question is which one the player books first.
     </div>
 
-    <h3>Remaining Rosters (5 promotions still TBD)</h3>
+    <h3 id="all-rosters">All Promotion Rosters (135 workers · 6 promotions · ★ v0.9.7)</h3>
+    <p>With the v0.9.7 update, all 6 promotions now have complete worker rosters — a total of <strong>135 fully fictional workers</strong> across the ModzVerse. The rosters are available as SQL files in <code>DLC/Rosters/</code>, ready to load into any ModzVerse save database. Combined with the RAIBARAZU roster (30 workers from v0.9.6), the <code>ModzVerse_All_Rosters.sql</code> file adds 105 new workers across the other 5 promotions, plus 4 RAIBARAZU announcers, 8 tag teams, and 4 stables.</p>
+
     <table class="wiki-table">
       <thead>
-        <tr><th>Promotion</th><th>Style</th><th>Target Roster Size</th><th>ID Range</th><th>Status</th></tr>
+        <tr><th>Promotion</th><th>Style</th><th>Workers</th><th>ID Range</th><th>Gender</th><th>Key Stars</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>RAIBARAZU</strong></td><td>Pure Wrestling</td><td>30</td><td>1001–1030</td><td><span class="badge face">✓ Done</span></td></tr>
-        <tr><td>Chicago Show</td><td>Sports Entertainment</td><td>20–30</td><td>2001–2030</td><td><span class="badge">TBD</span></td></tr>
-        <tr><td>Lucha Bellas</td><td>Lucha Libre</td><td>15–25</td><td>3001–3025</td><td><span class="badge">TBD</span></td></tr>
-        <tr><td>Lucha MEX</td><td>Traditional</td><td>20–30</td><td>4001–4030</td><td><span class="badge">TBD</span></td></tr>
-        <tr><td>Osaka Joshi</td><td>Kings Road</td><td>15–25</td><td>5001–5025</td><td><span class="badge">TBD</span></td></tr>
-        <tr><td>Valkyrie Project</td><td>Kings Road</td><td>12–20</td><td>6001–6020</td><td><span class="badge">TBD</span></td></tr>
+        <tr><td><strong>RAIBARAZU</strong></td><td>Pure Wrestling</td><td>30</td><td>1001–1030</td><td>Male</td><td>Ryūga the Apex, Kuroda the Iron Fist, Suzaku the Phoenix</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td><strong>Chicago Show</strong></td><td>Sports Entertainment</td><td>25</td><td>2001–2025</td><td>Mixed (18M + 7F)</td><td>Max Thunderford, Vincent Viceroy, Roxy Ravencroft</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td><strong>Lucha Bellas</strong></td><td>Lucha Libre</td><td>20</td><td>3001–3020</td><td>Women-only</td><td>La Reina Escarlata, Mariposa Dorada, Valkiria Negra</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td><strong>Lucha MEX</strong></td><td>Traditional</td><td>25</td><td>4001–4025</td><td>Mixed (22M + 3F)</td><td>El Toro Bravo, El Diablo Rojo, Caballero Blanco</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td><strong>Osaka Joshi</strong></td><td>Kings Road</td><td>20</td><td>5001–5020</td><td>Women-only</td><td>Haruka Honjou, Miyako Tsujimoto, Rina Kurosawa</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td><strong>Valkyrie Project</strong></td><td>Kings Road</td><td>15</td><td>6001–6015</td><td>Women-only</td><td>Freya Asagiri, Skull Valkyrie, Hikari Tonegawa</td><td><span class="badge face">✓ Done</span></td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="background:var(--bg-elev-3);font-weight:700;">
+          <td colspan="2">TOTAL</td><td>135</td><td colspan="4">All 6 promotions populated · 112–160 target → 135 = 84% of high / 121% of low</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ============================================================
+         CHICAGO SHOW ROSTER
+         ============================================================ -->
+    <h3 id="chicago-roster" style="margin-top:32px;">Chicago Show Roster (25 workers)</h3>
+    <div class="roster-promo-card" style="border-left-color:var(--cs-primary);">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name" style="color:var(--cs-primary);">Chicago Show · Sports Entertainment · USA/Illinois</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">25 workers</span><span class="repo-badge">Mixed gender</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">The richest promotion in ModzVerse ($50,000 cash, founded 1950). Sports Entertainment style with high entertainment ratios (entToWresRatio=7). Mixed-gender roster with a dedicated women's division. Worker IDs 2001–2025.</p>
+
+      <div class="push-tier-label">Main Event (5 workers — 3M + 2F)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Entertainment</th><th>Star</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">2001</td><td class="name">Max Thunderford</td><td class="real">Marcus Thompson</td><td><span class="badge face">Face</span></td><td class="stat mid">80</td><td class="stat high">88</td><td class="stat high">90</td><td>34</td><td class="bio">The franchise player of Chicago Show. A charismatic powerhouse who carries the promotion on his back.</td></tr>
+          <tr><td class="id">2002</td><td class="name">Vincent Viceroy</td><td class="real">Victor Vasquez</td><td><span class="badge heel">Heel</span></td><td class="stat mid">78</td><td class="stat high">90</td><td class="stat high">88</td><td>37</td><td class="bio">An evil millionaire heel who buys his way to victory. The promotion's top villain.</td></tr>
+          <tr><td class="id">2003</td><td class="name">Bronco Billiston</td><td class="real">William Bradley</td><td><span class="badge face">Face</span></td><td class="stat mid">82</td><td class="stat mid">75</td><td class="stat high">85</td><td>31</td><td class="bio">A larger-than-life athlete with natural charisma. The fan favorite of Chicago.</td></tr>
+          <tr><td class="id">2004</td><td class="name">Roxy Ravencroft</td><td class="real">Rachel Reinhart</td><td><span class="badge heel">Heel</span></td><td class="stat mid">72</td><td class="stat high">85</td><td class="stat high">82</td><td>29</td><td class="bio">A regal heel who commands respect. The top women's star on the roster.</td></tr>
+          <tr><td class="id">2005</td><td class="name">Diamond Diane</td><td class="real">Diana Dawson</td><td><span class="badge face">Face</span></td><td class="stat mid">70</td><td class="stat high">80</td><td class="stat high">80</td><td>27</td><td class="bio">A cocky face who backs up her talk. The women's fan favorite.</td></tr>
+        </tbody>
+      </table>
+      <div class="push-tier-label">Upper Midcard (6) · Midcard (7) · Lower Midcard (5) · Enhancement (2)</div>
+      <p style="font-size:.82rem;color:var(--text-dim);margin-top:8px;">Upper midcard includes The Showman Shelton, Hank Hellburner, Corporate Cole, Vivian Vortex, Mistress Malice. Midcard includes Tommy Takedown, Rex Rampage, Flash Freddy, Grizzly Garrison, Doc Dynamite, Sapphire Stryker, Crimson Carly. Lower midcard includes Buster Brilliance, The Enumerator, Lumberjack Larry, Kid Cascade, Padre Power. Enhancement: Jobber Jack, Pinfall Pete, Losing Lily. <em>Full details in <code>ModzVerse_All_Rosters.sql</code>.</em></p>
+    </div>
+
+    <!-- ============================================================
+         LUCHA BELLAS ROSTER
+         ============================================================ -->
+    <h3 id="bellas-roster" style="margin-top:32px;">Lucha Bellas Roster (20 workers)</h3>
+    <div class="roster-promo-card" style="border-left-color:var(--lb-primary);">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name" style="color:var(--lb-primary);">Lucha Bellas · Lucha Libre · Mexico/México</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">20 workers</span><span class="repo-badge">Women-only</span><span class="repo-badge">13 masked</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">Women-exclusive lucha libre promotion. 13 of 20 workers are masked — the mask is sacred. Worker IDs 3001–3020.</p>
+
+      <div class="push-tier-label">Main Event (3 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star</th><th>Masked</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">3001</td><td class="name">La Reina Escarlata</td><td class="real">Rosa Ramírez</td><td><span class="badge heel">Heel</span></td><td class="stat high">85</td><td class="stat high">88</td><td><span class="badge face">Yes</span></td><td>30</td><td class="bio">The queen of Lucha Bellas. A masked heel who rules with an iron fist. The top ruda.</td></tr>
+          <tr><td class="id">3002</td><td class="name">Mariposa Dorada</td><td class="real">María Mendoza</td><td><span class="badge face">Face</span></td><td class="stat high">88</td><td class="stat high">90</td><td><span class="badge face">Yes</span></td><td>28</td><td class="bio">The golden butterfly. The top technica and the soul of Lucha Bellas. Her mask is sacred.</td></tr>
+          <tr><td class="id">3003</td><td class="name">Valkiria Negra</td><td class="real">Valeria Vega</td><td><span class="badge heel">Heel</span></td><td class="stat high">82</td><td class="stat high">82</td><td><span class="badge face">Yes</span></td><td>32</td><td class="bio">A towering behemoth of a woman. The most intimidating ruda in the promotion.</td></tr>
+        </tbody>
+      </table>
+      <div class="push-tier-label">Upper Midcard (4) · Midcard (5) · Lower Midcard (4) · Enhancement (4)</div>
+      <p style="font-size:.82rem;color:var(--text-dim);margin-top:8px;">Upper midcard: Estrella Solitaria, La Sombra Cruel, Rayo de Luna, Gata Salvaje. Midcard: Flor de Loto, Veneno Verde, Águila Azul, Espina Mortal, Brisa Marina. Lower midcard: Chispita, Dama de Hierro, Princesa Plata, Tormenta Tropical. Enhancement: Mariposa Pequeña, Sombra Gris, Estrellita, Lluvia de Plata.</p>
+    </div>
+
+    <!-- ============================================================
+         LUCHA MEX ROSTER
+         ============================================================ -->
+    <h3 id="mex-roster" style="margin-top:32px;">Lucha MEX Roster (25 workers)</h3>
+    <div class="roster-promo-card" style="border-left-color:var(--lm-primary);">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name" style="color:var(--lm-primary);">Lucha MEX · Traditional · Mexico/México</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">25 workers</span><span class="repo-badge">Mixed</span><span class="repo-badge">10 masked</span><span class="repo-badge heel">Danger 8</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">Traditional wrestling promotion with the highest danger rating (8/10) in ModzVerse. Mixed-gender roster. Worker IDs 4001–4025.</p>
+
+      <div class="push-tier-label">Main Event (4 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star</th><th>Masked</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">4001</td><td class="name">El Toro Bravo</td><td class="real">Tomás Treviño</td><td><span class="badge face">Face</span></td><td class="stat high">88</td><td class="stat high">85</td><td>No</td><td>34</td><td class="bio">The brave bull. The ace of Lucha MEX. A powerful brawler who embodies Mexican wrestling tradition.</td></tr>
+          <tr><td class="id">4002</td><td class="name">El Diablo Rojo</td><td class="real">Diego Domínguez</td><td><span class="badge heel">Heel</span></td><td class="stat high">85</td><td class="stat high">82</td><td><span class="badge face">Yes</span></td><td>36</td><td class="bio">The red devil. A masked heel who terrorizes the roster. The top rudo of Lucha MEX.</td></tr>
+          <tr><td class="id">4003</td><td class="name">Caballero Blanco</td><td class="real">Carlos Cabrera</td><td><span class="badge face">Face</span></td><td class="stat high">86</td><td class="stat high">80</td><td>No</td><td>33</td><td class="bio">The white knight. A classic babyface with old-school values. The moral compass of the promotion.</td></tr>
+          <tr><td class="id">4004</td><td class="name">La Pantera Negra</td><td class="real">Pablo Padilla</td><td><span class="badge heel">Heel</span></td><td class="stat high">83</td><td class="stat high">78</td><td><span class="badge face">Yes</span></td><td>31</td><td class="bio">The black panther. A mysterious masked heel with supernatural aura.</td></tr>
+        </tbody>
+      </table>
+      <div class="push-tier-label">Upper Midcard (5) · Midcard (8) · Lower Midcard (4) · Enhancement (4)</div>
+      <p style="font-size:.82rem;color:var(--text-dim);margin-top:8px;">Upper midcard: Rayo Mexicano, El Verdugo, Tigre Azteca, El Patriota, Sombra del Pasado. Midcard: Fuego Lento, El Búho, Machete Morales, Relámpago Verde, El Alquimista, Viento del Norte, Doña Destructora, La Centinela. Lower midcard: Piedra Grande, El Duende, Cuerno de Plata, Espanto Jr. Enhancement: Chispas, El Novato, Pobre Pablo, El Saco.</p>
+    </div>
+
+    <!-- ============================================================
+         OSAKA JOSHI ROSTER
+         ============================================================ -->
+    <h3 id="osaka-roster" style="margin-top:32px;">Osaka Joshi Roster (20 workers)</h3>
+    <div class="roster-promo-card" style="border-left-color:var(--oj-primary);">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name" style="color:var(--oj-primary);">Osaka Joshi · Kings Road · Japan/Osaka</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">20 workers</span><span class="repo-badge">Women-only</span><span class="repo-badge v094">Prestige 38</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">The only promotion with non-zero prestige (38). Women-exclusive Kings Road, founded 2003 in Osaka. Worker IDs 5001–5020.</p>
+
+      <div class="push-tier-label">Main Event (3 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">5001</td><td class="name">Haruka Honjou</td><td class="real">Haruka Honjou</td><td><span class="badge face">Face</span></td><td class="stat high">92</td><td class="stat high">90</td><td>28</td><td class="bio">The ace of Osaka Joshi. A generational talent who blends world-class wrestling with natural charisma. The face of the promotion.</td></tr>
+          <tr><td class="id">5002</td><td class="name">Miyako Tsujimoto</td><td class="real">Miyako Tsujimoto</td><td><span class="badge heel">Heel</span></td><td class="stat high">90</td><td class="stat high">88</td><td>30</td><td class="bio">The queen of Osaka Joshi. A regal heel who commands respect. The top villain of the promotion.</td></tr>
+          <tr><td class="id">5003</td><td class="name">Rina Kurosawa</td><td class="real">Rina Kurosawa</td><td><span class="badge heel">Heel</span></td><td class="stat high">88</td><td class="stat high">85</td><td>32</td><td class="bio">The black beast. A dominant monster heel who's been terrorizing the roster for years.</td></tr>
+        </tbody>
+      </table>
+      <div class="push-tier-label">Upper Midcard (4) · Midcard (5) · Lower Midcard (4) · Enhancement (4)</div>
+      <p style="font-size:.82rem;color:var(--text-dim);margin-top:8px;">Upper midcard: Aoi Misaki, Yuki Kashiwagi, Sakura Nakamura, Reika Shimizu. Midcard: Hinata Watanabe, Kaede Yoshida, Momo Aida, Natsuki Endo, Chihiro Fujita. Lower midcard: Riko Maeda, Tsubame Ogawa, Ayane Kato, Eri Takahashi. Enhancement: Mai Inoue, Yua Kobayashi, Shiori Nishida, Kana Murakami.</p>
+    </div>
+
+    <!-- ============================================================
+         VALKYRIE PROJECT ROSTER
+         ============================================================ -->
+    <h3 id="valkyrie-roster" style="margin-top:32px;">Valkyrie Project Roster (15 workers)</h3>
+    <div class="roster-promo-card" style="border-left-color:var(--vp-primary);">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name" style="color:var(--vp-primary);">Valkyrie Project · Kings Road · Japan/Saga</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">15 workers</span><span class="repo-badge">Women-only</span><span class="repo-badge live">AEGIS LEAGUE</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">The smallest promotion, but the keeper of the AEGIS LEAGUE championship. Women-exclusive Kings Road with <code>realSportsFeel</code>. Norse-mythology-themed ring names. Worker IDs 6001–6015.</p>
+
+      <div class="push-tier-label">Upper Midcard (3 workers — title contenders)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">6001</td><td class="name">Freya Asagiri</td><td class="real">Fumiko Asagiri</td><td><span class="badge face">Face</span></td><td class="stat mid">82</td><td class="stat mid">68</td><td>27</td><td class="bio">The rising star of Valkyrie Project. A technical wrestler with AEGIS LEAGUE title aspirations.</td></tr>
+          <tr><td class="id">6002</td><td class="name">Skull Valkyrie</td><td class="real">Saki Volkov</td><td><span class="badge heel">Heel</span></td><td class="stat mid">80</td><td class="stat mid">65</td><td>30</td><td class="bio">A dominant monster heel. Half-Japanese, half-Russian. The most intimidating woman in the promotion.</td></tr>
+          <tr><td class="id">6003</td><td class="name">Hikari Tonegawa</td><td class="real">Hikari Tonegawa</td><td><span class="badge face">Face</span></td><td class="stat mid">81</td><td class="stat mid">62</td><td>25</td><td class="bio">A pure technician who embodies the 'realSportsFeel' of Valkyrie Project. No flash, all substance.</td></tr>
+        </tbody>
+      </table>
+      <div class="push-tier-label">Midcard (5) · Lower Midcard (4) · Enhancement (3)</div>
+      <p style="font-size:.82rem;color:var(--text-dim);margin-top:8px;">Midcard: Mjolnir Mitsuki, Aurora Asakura, Ragna Shiranui, Sigrún the Shieldmaiden, Idun Kohinata. Lower midcard: Brunhilde Bakugo, Gondul Gotō, Kára Kanazawa, Eir Echizen. Enhancement: Hrist Hasegawa, Mist Mikage, Geiravör Gima.</p>
+    </div>
+
+    <!-- ============================================================
+         RAIBARAZU ANNOUNCE TEAMS
+         ============================================================ -->
+    <h3 id="raibarazu-announcers" style="margin-top:32px;">RAIBARAZU Announce Teams (4 announcers · ★ v0.9.7)</h3>
+    <div class="roster-promo-card">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name">RAIBARAZU Announce Team · Fictional Commentators</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">4 announcers</span><span class="repo-badge live">IDs 1041–1044</span></div>
+      </div>
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">Four fictional announcers have been generated to fill RAIBARAZU's announce team slots (announcer1–announcer4). The <code>UPDATE promotions</code> statement in the SQL file assigns them automatically.</p>
+
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Name</th><th>Nickname</th><th>Role</th><th>Commentary</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1041</td><td class="name">Kenjiro Katsuragi</td><td class="real">The Voice</td><td>Play-by-Play</td><td class="stat high">70</td><td>48</td><td class="bio">The legendary play-by-play announcer of RAIBARAZU. Has called every Battle of Rivals since the brand split. Known for his dramatic call of the Rainmaker.</td></tr>
+          <tr><td class="id">1042</td><td class="name">Hiroaki Matsuda</td><td class="real">The Professor</td><td>Color Commentary</td><td class="stat mid">55</td><td>42</td><td class="bio">A former wrestler turned color commentator. Known for his technical analysis and deep knowledge of Pure Wrestling holds.</td></tr>
+          <tr><td class="id">1043</td><td class="name">Ryoko Shirakawa</td><td class="real">The Firecracker</td><td>Sideline Reporter</td><td class="stat mid">45</td><td>35</td><td class="bio">An energetic sideline reporter and interviewer. Known for her fiery interviews and willingness to confront heels.</td></tr>
+          <tr><td class="id">1044</td><td class="name">Goro Tanba</td><td class="real">The Historian</td><td>Color Commentary</td><td class="stat mid">60</td><td>55</td><td class="bio">A veteran announcer who's been with RAIBARAZU since 1985. Provides historical context and remembers every match from the promotion's 75-year history.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============================================================
+         RAIBARAZU TAG TEAMS
+         ============================================================ -->
+    <h3 id="raibarazu-tagteams" style="margin-top:32px;">RAIBARAZU Tag Teams (8 teams · ★ v0.9.7)</h3>
+    <div class="roster-promo-card">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name">RAIBARAZU Tag Teams · 8 teams across 2 brands</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">8 teams</span><span class="repo-badge v094">IDs 101–108</span></div>
+      </div>
+
+      <div class="brand-section-header doragon">
+        <h4>竜 Doragon Tag Teams (4 teams)</h4>
+      </div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Team Name</th><th>Worker 1</th><th>Worker 2</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="id">101</td><td class="name">Apex Phoenix</td><td class="real">Ryūga the Apex (1001)</td><td class="real">Suzaku the Phoenix (1004)</td><td class="bio">The dream team of Doragon's top two faces. The ace and the charismatic star. When they team up, the crowd goes wild.</td></tr>
+          <tr><td class="id">102</td><td class="name">Iron Fist Cobra</td><td class="real">Kuroda the Iron Fist (1002)</td><td class="real">The Honma Cobra (1007)</td><td class="bio">The veteran heel tag team. A brutal striker and a cocky submission specialist. A nightmare for any face team.</td></tr>
+          <tr><td class="id">103</td><td class="name">Riverstone Striker</td><td class="real">Tatsuya Riverstone (1005)</td><td class="real">Shibata the Striker (1006)</td><td class="bio">The technical powerhouse team. A technical specialist and a hard-hitting fighter. Complementary styles.</td></tr>
+          <tr><td class="id">104</td><td class="name">Thunder Shadow</td><td class="real">Thunder Suzuki (1010)</td><td class="real">Shadow Endo (1011)</td><td class="bio">The midcard heel-killer duo. Rivals who occasionally team up against common enemies. Tension guaranteed.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="brand-section-header fenikkusu">
+        <h4>不死鳥 Fenikkusu Tag Teams (4 teams)</h4>
+      </div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Team Name</th><th>Worker 1</th><th>Worker 2</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="id">105</td><td class="name">Ueno Nakajima Connection</td><td class="real">Yuya Ueno (1016)</td><td class="real">Asahi Nakajima (1018)</td><td class="bio">The ace team of Fenikkusu. The B-brand's top faces. A high-flying, technically sound duo.</td></tr>
+          <tr><td class="id">106</td><td class="name">Storm Iron</td><td class="real">Storm Nishimura (1019)</td><td class="real">Iron Fukuda (1020)</td><td class="bio">The gatekeeper team. Rivals who team up when they need to. A volatile but effective pairing.</td></tr>
+          <tr><td class="id">107</td><td class="name">Young Lions United</td><td class="real">Kaito Abe (1024)</td><td class="real">Daiki Ikeda (1026)</td><td class="bio">The developmental team. Two young lions learning the ropes as a tag team. The future of Fenikkusu's tag division.</td></tr>
+          <tr><td class="id">108</td><td class="name">Monster Squad</td><td class="real">Wolf Hashimoto (1027)</td><td class="real">Savage Fujita (1022)</td><td class="bio">The chaos team. Two wild heels who destroy everything in their path. Terrifying but uncontrollable.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============================================================
+         RAIBARAZU STABLES
+         ============================================================ -->
+    <h3 id="raibarazu-stables" style="margin-top:32px;">RAIBARAZU Stables (4 stables · 13 members · ★ v0.9.7)</h3>
+    <div class="roster-promo-card">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name">RAIBARAZU Stables · 4 factions across 2 brands</div>
+        <div class="roster-promo-badges"><span class="repo-badge public">4 stables</span><span class="repo-badge v094">13 members</span></div>
+      </div>
+
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Stable Name</th><th>Brand</th><th>Leader</th><th>Members</th><th>Type</th><th>Motto</th></tr></thead>
+        <tbody>
+          <tr><td class="id">201</td><td class="name">The Iron Court</td><td><span class="badge heel">Doragon</span></td><td class="real">Kuroda the Iron Fist (1002)</td><td class="real">The Honma Cobra (1007), Absolute Ryo (1008), Shadow Endo (1011), Silent Goto (1014)</td><td class="bio">Heel faction — the dominant force of Doragon. Control the main event through fear and intimidation.</td><td class="bio"><em>"Bow or be broken."</em></td></tr>
+          <tr><td class="id">202</td><td class="name">The Phoenix Academy</td><td><span class="badge face">Doragon</span></td><td class="real">Suzaku the Phoenix (1004)</td><td class="real">Zen Takahashi (1013), Kohei Hase (1015), Asahi Nakajima (1018, on loan from Fenikkusu)</td><td class="bio">Face mentoring stable — the ace trains the next generation.</td><td class="bio"><em>"Rise from the ashes."</em></td></tr>
+          <tr><td class="id">203</td><td class="name">The Fenikkusu Vanguard</td><td><span class="badge face">Fenikkusu</span></td><td class="real">Yuya Ueno (1016)</td><td class="real">Storm Nishimura (1019), Sora Maeda (1021), Ren Okada (1023)</td><td class="bio">Face faction — young lions fighting for call-ups to Doragon.</td><td class="bio"><em>"The phoenix rises through fire."</em></td></tr>
+          <tr><td class="id">204</td><td class="name">The Monster Pack</td><td><span class="badge heel">Fenikkusu</span></td><td class="real">Wolf Hashimoto (1027)</td><td class="real">Savage Fujita (1022), Blade Mori (1025), Satoshi Sakurai (1030)</td><td class="bio">Heel monster faction — terrorizes the B-brand.</td><td class="bio"><em>"We are the nightmare."</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ============================================================
+         HOW TO LOAD ALL ROSTERS
+         ============================================================ -->
+    <h3 style="margin-top:32px;">How to Load All Rosters</h3>
+    <div class="cmd-box">
+      <div class="cmd-box-label">Load RAIBARAZU roster first, then all other rosters</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/RAIBARAZU_roster.sql<br>
+        <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/ModzVerse_All_Rosters.sql<br><br>
+        <span class="comment"># Total: 135 workers + 109 contracts + 4 announcers + 8 tag teams + 4 stables</span>
+      </div>
+    </div>
+
+    <h3>Roster Files Summary</h3>
+    <table class="wiki-table">
+      <thead>
+        <tr><th>File</th><th>Size</th><th>Contents</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>DLC/Rosters/RAIBARAZU_roster.sql</code></td><td>128 KB</td><td>30 workers + 30 contracts (RAIBARAZU, IDs 1001–1030)</td></tr>
+        <tr><td><code>DLC/Rosters/ModzVerse_All_Rosters.sql</code></td><td>336 KB</td><td>105 workers + 109 contracts + 4 announcers + 8 tag teams + 4 stables (5 promos + RAIBARAZU extras)</td></tr>
       </tbody>
     </table>
-    <p style="color:var(--text-dim);">Estimated total across all 6 promotions: <strong>112–160 workers</strong>. The RAIBARAZU roster accounts for ~20% of the total target. The remaining 5 rosters will be generated in subsequent updates, each with style-appropriate fictional workers (e.g., luchadores for Lucha Bellas, high-entertainment characters for Chicago Show, women's joshi wrestlers for Osaka Joshi and Valkyrie Project).</p>
 
   </section>
 
@@ -6047,7 +6289,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         </div>
         <div class="github-hero-stat">
           <div class="github-hero-stat-label">Current Version</div>
-          <div class="github-hero-stat-value">v0.9.6 (this build)</div>
+          <div class="github-hero-stat-value">v0.9.7 (this build)</div>
         </div>
       </div>
 
@@ -6071,7 +6313,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="repo-card-badges">
           <span class="repo-badge public">● Public</span>
           <span class="repo-badge live">● Live (GitHub Pages)</span>
-          <span class="repo-badge v094">v0.9.6</span>
+          <span class="repo-badge v094">v0.9.7</span>
         </div>
       </div>
       <p style="font-size:.92rem;color:var(--text-dim);margin:0 0 12px;">A fully offline, single-file HTML knowledge system for the ModzVerse pro wrestling world database for Pro Wrestling Sim. 362 KB · 5,127 lines · 0 external dependencies.</p>
@@ -6405,13 +6647,16 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li>★ 12 TV Networks DLC packs (101 networks) <span class="pct">100% · v0.9.5</span></li>
           <li>★ 4 Excel reference spreadsheets (5,000 promos · 5,805 titles · 12,000 venues · 33,060 AI prompts) <span class="pct">100% · v0.9.5</span></li>
           <li>★ RAIBARAZU worker roster (30 workers + 30 contracts) <span class="pct">100% · v0.9.6</span></li>
+          <li>★ All 6 promotion rosters (135 workers + 109 contracts) <span class="pct">100% · v0.9.7</span></li>
+          <li>★ RAIBARAZU announce teams (4 announcers) <span class="pct">100% · v0.9.7</span></li>
+          <li>★ RAIBARAZU tag teams + stables (8 teams + 4 stables) <span class="pct">100% · v0.9.7</span></li>
         </ul>
       </div>
       <div class="roadmap-col todo">
         <h4>○ To Do (BETA Gaps)</h4>
         <ul class="roadmap-list">
-          <li>Workers (30 of ~150-200 needed — RAIBARAZU done) <span class="pct" style="color:var(--success);">✓ 20%</span></li>
-          <li>Contracts (30 of ~150-200 needed — RAIBARAZU done) <span class="pct" style="color:var(--success);">✓ 20%</span></li>
+          <li>Workers (135 of ~150-200 needed — ALL 6 PROMOS) <span class="pct" style="color:var(--success);">✓ 85%</span></li>
+          <li>Contracts (139 of ~150-200 needed — ALL 6 PROMOS) <span class="pct" style="color:var(--success);">✓ 85%</span></li>
           <li>Match gimmicks (DONE — 1,334 in DLC) <span class="pct" style="color:var(--success);">✓ 5000%</span></li>
           <li>Match stories (0 of ~50-100 needed) <span class="pct">0%</span></li>
           <li>Angle templates (0 of ~30-50 needed) <span class="pct">0%</span></li>
@@ -6420,8 +6665,8 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li>Network deals (0 of ~20-40 needed) <span class="pct">0%</span></li>
           <li>Network availability (412 entries in DLC) <span class="pct" style="color:var(--success);">✓ done</span></li>
           <li>Venues (DONE — 12,000 in venue packs) <span class="pct" style="color:var(--success);">✓ 100%</span></li>
-          <li>Tag teams (0 entries) <span class="pct">0%</span></li>
-          <li>Stables (0 entries) <span class="pct">0%</span></li>
+          <li>Tag teams (8 RAIBARAZU teams done) <span class="pct" style="color:var(--success);">✓ partial</span></li>
+          <li>Stables (4 RAIBARAZU stables done) <span class="pct" style="color:var(--success);">✓ partial</span></li>
           <li>Storylines (0 entries) <span class="pct">0%</span></li>
           <li>Training schools (0 entries) <span class="pct">0%</span></li>
           <li>Announce teams (0 of ~12 needed) <span class="pct">0%</span></li>
@@ -6694,11 +6939,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
      FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.6 · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.7 · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
-  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries · 18 sections · 87 DLC DBs · 4 Excel spreadsheets · 33,060 AI prompts · 30 workers</p>
+  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries · 18 sections · 87 DLC DBs · 4 Excel spreadsheets · 33,060 AI prompts · 135 workers · 8 tag teams · 4 stables</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v0.9.6 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
+  <p>Maintained by the ModzVerse project · Build v0.9.7 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
 </footer>
 
 <!-- ============================================================
