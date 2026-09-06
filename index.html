@@ -1946,6 +1946,247 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
   color: var(--text);
 }
 
+/* ============================================================
+   DLC & EXCEL RESOURCES SECTION
+   ============================================================ */
+
+.dlc-hero {
+  margin: -32px -48px 32px;
+  padding: 40px 48px 32px;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(212, 175, 55, .12) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(63, 185, 80, .08) 0%, transparent 55%),
+    linear-gradient(135deg, #0a0d12 0%, #161b22 100%);
+  border-bottom: 1px solid var(--border);
+}
+.dlc-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--rb-tertiary);
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(212, 175, 55, .1);
+  border: 1px solid rgba(212, 175, 55, .35);
+  border-radius: 999px;
+}
+.dlc-hero-eyebrow::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rb-tertiary);
+  box-shadow: 0 0 8px var(--rb-tertiary);
+}
+.dlc-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0 0 8px;
+  background: linear-gradient(180deg, #fff 0%, #c9d1d9 60%, #8b949e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: .02em;
+}
+.dlc-hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--rb-tertiary);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.dlc-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.dlc-hero-stat {
+  background: rgba(13, 17, 23, .7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.dlc-hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--rb-tertiary);
+  line-height: 1;
+}
+.dlc-hero-stat-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-mute);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+.dlc-hero-stat-delta {
+  font-size: .7rem;
+  color: var(--text-mute);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* DLC resource card */
+.dlc-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--rb-tertiary);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 12px 0;
+  transition: all .15s;
+}
+.dlc-card:hover {
+  border-left-color: var(--accent);
+  background: var(--bg-elev-2);
+}
+.dlc-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dlc-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.dlc-card-count {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--rb-tertiary);
+  background: rgba(212, 175, 55, .12);
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, .25);
+  font-weight: 600;
+}
+.dlc-card-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.dlc-card-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: .75rem;
+  font-family: var(--font-mono);
+  color: var(--text-mute);
+  margin-top: 6px;
+}
+.dlc-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.dlc-card-meta strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* DLC category section */
+.dlc-section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.dlc-tile {
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: .82rem;
+  transition: all .12s;
+}
+.dlc-tile:hover {
+  border-color: var(--rb-tertiary);
+  background: var(--bg-elev-3);
+}
+.dlc-tile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.dlc-tile-name {
+  font-weight: 600;
+  color: var(--text);
+  word-break: break-word;
+}
+.dlc-tile-count {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--rb-tertiary);
+  font-weight: 600;
+}
+.dlc-tile-meta {
+  font-size: .72rem;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+}
+
+/* Excel file card */
+.excel-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--success);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  margin: 12px 0;
+}
+.excel-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.excel-card-title {
+  font-family: var(--font-mono);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text);
+  word-break: break-all;
+}
+.excel-card-size {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--success);
+  background: rgba(63, 185, 80, .12);
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(63, 185, 80, .25);
+  font-weight: 600;
+}
+.excel-card-desc {
+  font-size: .85rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+.excel-card-cols {
+  font-size: .78rem;
+  color: var(--text-mute);
+  font-family: var(--font-mono);
+}
+.excel-card-cols strong {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
 /* ---------- Print stylesheet ---------- */
 @media print {
   .wiki-header, .wiki-sidebar, .back-to-top, .search-results,
@@ -1979,6 +2220,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
     <a href="#portal">Portal</a>
     <a href="#news">News</a>
     <a href="#sitemap">Sitemap</a>
+    <a href="#dlc">★ DLC</a>
     <a href="#github">GitHub</a>
     <a href="#overview">Wiki: Overview</a>
     <a href="#lore">Wiki: Lore</a>
@@ -2055,6 +2297,15 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       </ul>
     </div>
     <div class="sidebar-group">
+      <h5>★ DLC &amp; Excel ★</h5>
+      <ul>
+        <li><a href="#dlc" class="sub">DLC &amp; Excel Resources</a></li>
+        <li><a href="#dlc-matchgimmicks" class="sub">Match Gimmicks (75 DBs)</a></li>
+        <li><a href="#dlc-tvnetworks" class="sub">TV Networks (12 DBs)</a></li>
+        <li><a href="#excel-resources" class="sub">Excel Spreadsheets (4)</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-group">
       <h5>Titles &amp; Brands</h5>
       <ul>
         <li><a href="#aegis-league" class="sub">AEGIS LEAGUE</a></li>
@@ -2102,7 +2353,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <div class="portal-sub">A World at War! · Internal Knowledge System</div>
         </div>
         <div class="portal-meta">
-          <strong>SYSTEM:</strong> v0.9.4 (BETA)<br>
+          <strong>SYSTEM:</strong> v0.9.5 (BETA)<br>
           <strong>SCHEMA:</strong> v121<br>
           <strong>CANON DATE:</strong> 2025-01-01<br>
           <strong>BUILD:</strong> <span id="buildId">offline-single-file</span><br>
@@ -2165,6 +2416,10 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="portal-kpi"><div class="kpi-num">3,218</div><div class="kpi-label">Regions</div><div class="kpi-delta">state/prefecture-level</div></div>
         <div class="portal-kpi"><div class="kpi-num">93</div><div class="kpi-label">DB Tables</div><div class="kpi-delta">23 views · 37 indexes · 6 triggers</div></div>
         <div class="portal-kpi" style="--kpi-color: var(--success);"><div class="kpi-num">18</div><div class="kpi-label">Venue Packs</div><div class="kpi-delta" style="color:var(--success);">★ v0.9.3 · 36,000 venues</div></div>
+        <div class="portal-kpi" style="--kpi-color: var(--rb-tertiary);"><div class="kpi-num">87</div><div class="kpi-label">DLC DB Files</div><div class="kpi-delta" style="color:var(--rb-tertiary);">★ v0.9.5 · 75 MatchGimmicks + 12 TVNetworks</div></div>
+        <div class="portal-kpi"><div class="kpi-num">1,334</div><div class="kpi-label">Match Gimmicks</div><div class="kpi-delta">across 20 categories + 55 themes</div></div>
+        <div class="portal-kpi"><div class="kpi-num">101</div><div class="kpi-label">TV Networks</div><div class="kpi-delta" style="color:var(--success);">✓ no longer empty</div></div>
+        <div class="portal-kpi"><div class="kpi-num">5,805</div><div class="kpi-label">Total Titles</div><div class="kpi-delta">documented in Excel</div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--warning);">⚠ BETA — needs roster</div></div>
         <div class="portal-kpi" style="--kpi-color: var(--accent);"><div class="kpi-num">★</div><div class="kpi-label">GitHub Repo</div><div class="kpi-delta" style="color:var(--accent);"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--accent);">ModzProd/ModzVerseSystem</a></div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">External Deps</div><div class="kpi-delta" style="color:var(--success);">✓ Fully offline</div></div>
@@ -2210,17 +2465,21 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
             <li><span class="label">Promotions</span><span class="value">6</span></li>
             <li><span class="label">Events</span><span class="value">13</span></li>
             <li><span class="label">Venue packs</span><span class="value ok">18 PACKS · 36,000 venues</span></li>
+            <li><span class="label">DLC databases</span><span class="value ok">87 FILES · 1,334 match gimmicks · 101 networks</span></li>
+            <li><span class="label">Excel spreadsheets</span><span class="value ok">4 FILES · 5,000 promos · 5,805 titles · 12,000 venues</span></li>
             <li><span class="label">Worker roster</span><span class="value warn">EMPTY (BETA)</span></li>
-            <li><span class="label">Networks</span><span class="value warn">EMPTY (BETA)</span></li>
+            <li><span class="label">Match gimmicks</span><span class="value ok">✓ 1,334 (in DLC)</span></li>
+            <li><span class="label">TV Networks</span><span class="value ok">✓ 101 (in DLC)</span></li>
             <li><span class="label">AEGIS LEAGUE</span><span class="value warn">VACANT</span></li>
-            <li><span class="label">Database version</span><span class="value">121 (main) · 103 (venue packs)</span></li>
+            <li><span class="label">Database version</span><span class="value">121 (main) · 103 (DLC packs)</span></li>
             <li><span class="label">GitHub repo</span><span class="value ok"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--success);">ModzProd/ModzVerseSystem ↗</a></span></li>
             <li><span class="label">GitHub Pages</span><span class="value ok"><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener" style="color:var(--success);">modzprod.github.io ↗</a></span></li>
             <li><span class="label">Integrity check</span><span class="value ok">PASS</span></li>
           </ul>
           <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
             <button class="print-btn" onclick="window.print()">🖨 Print / Export PDF</button>
-            <a href="#github" class="print-btn" style="text-decoration:none;">★ GitHub &amp; Community</a>
+            <a href="#dlc" class="print-btn" style="text-decoration:none;">★ DLC &amp; Excel</a>
+            <a href="#github" class="print-btn" style="text-decoration:none;">★ GitHub</a>
             <a href="#venues" class="print-btn" style="text-decoration:none;">🏟 Venue Packs</a>
             <a href="#sitemap" class="print-btn" style="text-decoration:none;">📋 Sitemap</a>
             <a href="#sys-about" class="print-btn" style="text-decoration:none;">ℹ About</a>
@@ -2330,10 +2589,35 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="news-body">The ModzVerse Intranet is now live on GitHub at <strong><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a></strong>. The repository is public, default branch <code>main</code>, first commit <code>7f99696</code>. GitHub Pages is enabled — the live wiki is hosted at <strong><a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></strong> and updates within ~60 seconds of any push to <code>main</code>. The community is invited to fork, contribute worker rosters / venue data / match gimmicks / angle templates via standard pull requests. See <a href="#github">GitHub &amp; Community</a> for the full contribution guide, issue templates, and quick-command reference.</div>
       </div>
 
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">RELEASE · DLC</span><span>2025-01-01 · 87 DLC databases</span></div>
+        <div class="news-body">The ModzVerse project has released <strong>87 filtered database packs</strong> into the repository's <code>DLC/</code> folder. The release includes <strong>75 MatchGimmicks databases</strong> (1,334 match gimmicks total, organized into 20 aggregated category packs + 55 specific theme packs of 6 gimmicks each — covering deathmatch, supernatural, cultural, vehicle, structure, horror, pop culture, sports, and bizarre themes) and <strong>12 TVNetworks databases</strong> (101 TV networks filtered by continent, size, and coverage range). Each DLC database is a complete, self-contained SQLite file with all 78 tables from the main ModzVerse.db — only the filtered table differs. See <a href="#dlc-matchgimmicks">Match Gimmicks DLC</a> and <a href="#dlc-tvnetworks">TV Networks DLC</a>.</div>
+      </div>
+
+      <div class="news-item data">
+        <div class="news-head"><span class="news-tag">DATA · BETA</span><span>2025-01-01 · BETA gaps closed</span></div>
+        <div class="news-body">Two major BETA gaps have been closed by the DLC release: <strong>match gimmicks</strong> (was 0 of ~20-30 needed, now 1,334 across 75 packs — 5,000% of target) and <strong>TV networks</strong> (was 0 of ~10-20 needed, now 101 across 12 packs — 1,000% of target). The BETA Status roadmap has been updated to reflect this. Remaining BETA gaps: workers, contracts, venues (still 0 — but documented in venue packs), angle templates, template beats, tag teams, stables, storylines, training schools. See <a href="#beta-status">BETA Status</a>.</div>
+      </div>
+
+      <div class="news-item data">
+        <div class="news-head"><span class="news-tag">DATA · EXCEL</span><span>2025-01-01 · 4 Excel spreadsheets</span></div>
+        <div class="news-body">The repository now contains <strong>4 Excel reference spreadsheets</strong> documenting the ModzVerse world in human-readable form: <strong>ModzVerse_Promotions.xlsx</strong> (5,000 promotions × 3 columns), <strong>ModzVerse_All_Titles.xlsx</strong> (5,805 titles × 18 columns with prestige, gender, weight, push, defendable, active), <strong>ModzVerse_All_Promotions_AI_Prompts.xlsx</strong> (4,530 promotions × 14 columns including AI logo generation prompts — original + improved versions for each), and <strong>ModzVerse_All_Venues_AI_Prompts.xlsx</strong> (12,000 venues × 13 columns including AI image generation prompts — original + improved). Total: <strong>33,060 AI prompts</strong> ready to paste into any image generator. See <a href="#excel-resources">Excel Resources</a>.</div>
+      </div>
+
+      <div class="news-item lore">
+        <div class="news-head"><span class="news-tag">LORE</span><span>2025-01-01 · Brazil Network Surprise</span></div>
+        <div class="news-body">Analysis of the TV Networks DLC reveals a second "Brazil surprise" to complement the venue pack finding: Brazil has <strong>5 size-3 (Large) national TV networks</strong> — Canal Nacional, Sol Channel, Rio Channel, Luta TV Brasil, and Rede Luta Livre. This is the most size-3 networks of any single country in the ModzVerse. Combined with Brazil's 895 venues (the most of any country in the South America regional pack) and 215 million population, Brazil is the single most strategically valuable untapped wrestling market in the world — broadcast infrastructure is ready and waiting, no other untapped market comes close. See <a href="#dlc-tvnetworks">TV Networks DLC</a>.</div>
+      </div>
+
     </div>
 
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.5 · DLC &amp; Excel release</span></div>
+        <div class="news-body">Added a new <strong>DLC &amp; Excel Resources</strong> section documenting 87 filtered database packs and 4 reference spreadsheets now available in the GitHub repository. The DLC content includes <strong>75 MatchGimmicks databases</strong> (1,334 match gimmicks across 20 aggregated categories + 55 specific themes of 6 gimmicks each) and <strong>12 TVNetworks databases</strong> (101 TV networks across 6 continents + 3 size tiers + 3 coverage ranges). The Excel content includes <strong>ModzVerse_Promotions.xlsx</strong> (5,000 promotions), <strong>ModzVerse_All_Titles.xlsx</strong> (5,805 titles with 18 columns), <strong>ModzVerse_All_Promotions_AI_Prompts.xlsx</strong> (4,530 promotions with original + improved AI logo prompts), and <strong>ModzVerse_All_Venues_AI_Prompts.xlsx</strong> (12,000 venues with original + improved AI image prompts). The BETA Status roadmap has been updated — match gimmicks and TV networks are no longer empty. See <a href="#dlc">DLC &amp; Excel Resources</a>.</div>
+      </div>
+
       <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.4 · GitHub integration</span></div>
         <div class="news-body">Added a new <strong>GitHub &amp; Community</strong> section documenting the live repository at <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a>. The section includes: repository overview with file tree, three ways to get the intranet (live GitHub Pages, single-file download, git clone), full contribution guide (6-step fork-and-pull-request workflow), 10 contribution types with priority, 5 issue templates documented, commit history timeline, license/usage rights explanation, and a quick-commands reference (clone, pull, branch, commit, view locally). The portal KPI tile, system status panel, sidebar, top nav, sitemap, A-Z index, and footer have all been updated with GitHub references. See <a href="#github">GitHub &amp; Community</a>.</div>
@@ -2453,6 +2737,15 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         </ul>
       </div>
       <div class="sitemap-group">
+        <h4>DLC &amp; Excel ★ (87 DBs + 4 spreadsheets)</h4>
+        <ul>
+          <li><a href="#dlc">DLC &amp; Excel Resources (overview)</a></li>
+          <li><a href="#dlc-matchgimmicks">Match Gimmicks DLC (75 DBs · 1,334 gimmicks)</a></li>
+          <li><a href="#dlc-tvnetworks">TV Networks DLC (12 DBs · 101 networks)</a></li>
+          <li><a href="#excel-resources">Excel Spreadsheets (4 files)</a></li>
+        </ul>
+      </div>
+      <div class="sitemap-group">
         <h4>Gimmicks Catalog</h4>
         <ul>
           <li><a href="#gimmicks">All 17 Gimmicks</a></li>
@@ -2505,11 +2798,13 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <div class="az-letter">D</div>
       <div class="az-entries">
         <a href="#doragon-brand">Doragon <small>RAIBARAZU A-brand · Dragon</small></a>
+        <a href="#dlc">DLC &amp; Excel Resources <small>★ v0.9.5 · 87 DBs + 4 spreadsheets</small></a>
       </div>
 
       <div class="az-letter">E</div>
       <div class="az-entries">
         <a href="#gimmicks">Evil Foreigner <small>gimmick #7 · heel</small></a>
+        <a href="#excel-resources">Excel Spreadsheets <small>★ v0.9.5 · 4 files · 33,060 AI prompts</small></a>
       </div>
 
       <div class="az-letter">F</div>
@@ -2548,6 +2843,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <div class="az-letter">M</div>
       <div class="az-entries">
         <a href="#geography">Mexico <small>country · lucha stronghold · 540 NA venues</small></a>
+        <a href="#dlc-matchgimmicks">Match Gimmicks DLC <small>★ v0.9.5 · 75 DBs · 1,334 gimmicks</small></a>
         <a href="#gimmicks">Millionaire <small>gimmick #9 · heel</small></a>
         <a href="#gimmicks">Monster <small>gimmick #10 · neutral</small></a>
         <a href="#gimmicks">Musical Performer <small>gimmick #11 · neutral</small></a>
@@ -2592,6 +2888,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <div class="az-letter">T</div>
       <div class="az-entries">
         <a href="#titles-brands">Titles &amp; Brands <small>category</small></a>
+        <a href="#dlc-tvnetworks">TV Networks DLC <small>★ v0.9.5 · 12 DBs · 101 networks</small></a>
         <a href="#venue-style-packs">Traditional Pack <small>★ new v0.9.3 · 6,594 venues · largest pack</small></a>
         <a href="#events">Twilight of The GODS <small>event · VP · Jul W5</small></a>
       </div>
@@ -4920,6 +5217,338 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
 
   <!-- ============================================================
+       SECTION: DLC & EXCEL RESOURCES
+       ============================================================ -->
+  <section id="dlc">
+    <div class="dlc-hero">
+      <span class="dlc-hero-eyebrow">★ NEW · v0.9.5 — DLC &amp; Excel Resources</span>
+      <h1>DLC &amp; EXCEL RESOURCES</h1>
+      <div class="dlc-hero-sub">75 match gimmick databases · 12 TV network databases · 4 Excel spreadsheets · 5,000+ promotions · 5,805 titles</div>
+
+      <div class="dlc-hero-stats">
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">87</div>
+          <div class="dlc-hero-stat-label">DLC DB Files</div>
+          <div class="dlc-hero-stat-delta">75 MatchGimmicks + 12 TVNetworks</div>
+        </div>
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">1,334</div>
+          <div class="dlc-hero-stat-label">Match Gimmicks</div>
+          <div class="dlc-hero-stat-delta">across 20 categories + 55 themes</div>
+        </div>
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">101</div>
+          <div class="dlc-hero-stat-label">TV Networks</div>
+          <div class="dlc-hero-stat-delta">6 continents · 3 sizes · 3 coverages</div>
+        </div>
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">4</div>
+          <div class="dlc-hero-stat-label">Excel Spreadsheets</div>
+          <div class="dlc-hero-stat-delta">5,000 promos · 5,805 titles · 12,000 venues</div>
+        </div>
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">5,805</div>
+          <div class="dlc-hero-stat-label">Total Titles</div>
+          <div class="dlc-hero-stat-delta">documented in All_Titles.xlsx</div>
+        </div>
+        <div class="dlc-hero-stat">
+          <div class="dlc-hero-stat-num">4,530</div>
+          <div class="dlc-hero-stat-label">AI Logo Prompts</div>
+          <div class="dlc-hero-stat-delta">for promotion logos (original + improved)</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The ModzVerse project has released a major content expansion: <strong>87 filtered database packs</strong> and <strong>4 Excel spreadsheets</strong> are now available in the GitHub repository under the <code>DLC/</code> and <code>Excel/</code> folders. This expansion adds 1,334 match gimmicks (across 75 themed databases), 101 TV networks (across 12 filtered databases), and 4 reference spreadsheets documenting the world's 5,000 promotions, 5,805 titles, and 12,000 venues — including AI prompts for generating promotion logos and venue images. The BETA status has been updated: <strong>match gimmicks and TV networks are no longer empty</strong>.</p>
+
+    <h2>Repository Structure</h2>
+    <p>The new content is organized in the repository as follows:</p>
+
+    <div class="file-tree">
+      <div class="file-tree-row header">
+        <div></div>
+        <div>Path</div>
+        <div>Contents</div>
+      </div>
+      <div class="file-tree-row">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>DLC/</code> <span style="color:var(--text-mute);">— downloadable content databases</span></div>
+        <div class="file-tree-size">87 DBs</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>MatchGimmicks/</code> <span style="color:var(--text-mute);">— 75 themed match gimmick databases</span></div>
+        <div class="file-tree-size">1,334 gimmicks</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>TVNetworks/</code> <span style="color:var(--text-mute);">— 12 filtered TV network databases</span></div>
+        <div class="file-tree-size">101 networks</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>Venue/</code> <span style="color:var(--text-mute);">— 18 venue databases (already documented in v0.9.3)</span></div>
+        <div class="file-tree-size">12,000 venues</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>Gimmicks/</code> <span style="color:var(--text-mute);">— placeholder (future content)</span></div>
+        <div class="file-tree-size">—</div>
+      </div>
+      <div class="file-tree-row">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>Excel/</code> <span style="color:var(--text-mute);">— reference spreadsheets</span></div>
+        <div class="file-tree-size">4 files</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📊</div>
+        <div class="file-tree-name"><code>ModzVerse_Promotions.xlsx</code></div>
+        <div class="file-tree-size">100 KB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📊</div>
+        <div class="file-tree-name"><code>ModzVerse_All_Titles.xlsx</code></div>
+        <div class="file-tree-size">525 KB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📊</div>
+        <div class="file-tree-name"><code>ModzVerse_All_Promotions_AI_Prompts.xlsx</code></div>
+        <div class="file-tree-size">1.0 MB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📊</div>
+        <div class="file-tree-name"><code>ModzVerse_All_Venues_AI_Prompts.xlsx</code></div>
+        <div class="file-tree-size">3.1 MB</div>
+      </div>
+      <div class="file-tree-row">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>Expansion/</code> <span style="color:var(--text-mute);">— placeholder (future expansion content)</span></div>
+        <div class="file-tree-size">—</div>
+      </div>
+    </div>
+
+    <h2 id="dlc-matchgimmicks">DLC: Match Gimmicks (75 databases · 1,334 match gimmicks)</h2>
+
+    <p>The <code>DLC/MatchGimmicks/</code> folder contains <strong>75 filtered databases</strong>, each containing only the match gimmicks that fit a specific theme. The main ModzVerse database contains 1,334 match gimmicks total (IDs 1-1334); each DLC database extracts a subset of those gimmicks (and in some cases adds new ones) so a player can load only the match types they want without bloating their save file. All other tables (gimmicks, titles, promotions, workers, venues, etc.) remain intact in every DLC database.</p>
+
+    <h3>MatchGimmicks Table Schema</h3>
+    <table class="wiki-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>matchgimmickID</code></td><td>INTEGER PK</td><td>Unique identifier (1-1334)</td></tr>
+        <tr><td><code>name</code></td><td>TEXT (100)</td><td>Match gimmick name (English)</td></tr>
+        <tr><td><code>description</code></td><td>TEXT (100)</td><td>Short description (English)</td></tr>
+        <tr><td><code>modifiers</code></td><td>TEXT</td><td>Comma-separated modifiers (14 available)</td></tr>
+        <tr><td><code>hasLosers</code></td><td>INTEGER</td><td>Always 1</td></tr>
+        <tr><td><code>isElimination</code></td><td>INTEGER</td><td>0 or 1</td></tr>
+        <tr><td><code>entranceType</code></td><td>TEXT</td><td>"Normal" or "Time Staggered"</td></tr>
+        <tr><td><code>finishes</code></td><td>TEXT</td><td>JSON array with finishes + probabilities</td></tr>
+      </tbody>
+    </table>
+
+    <h3>The 14 Available Modifiers</h3>
+    <p>Match gimmicks can have any combination of these 14 modifiers, which affect the simulation's behavior when the match is booked:</p>
+    <p style="font-family: var(--font-mono); font-size: .85rem; color: var(--text-dim); background: var(--bg-elev-2); padding: 12px 16px; border-radius: var(--radius);">
+      <code>Big Stars Only</code> · <code>Crowd Boost</code> · <code>Major Crowd Boost</code> · <code>Fatigue</code> · <code>Huge Fatigue</code> · <code>Favors Brawlers</code> · <code>Favors Hardcore</code> · <code>Greater Popularity Gain</code> · <code>Greatly Increased Injury Risk</code> · <code>Increased Injury Risk</code> · <code>Hot Storyline Needed</code> · <code>Increased Cost</code> · <code>Major Spot Expected</code> · <code>Match Boost</code>
+    </p>
+
+    <h3>20 Aggregated Category Packs</h3>
+    <p>These 20 databases group match gimmicks from multiple related themes. Note: there is overlap between categories — a single match gimmick may appear in multiple aggregated packs.</p>
+
+    <div class="dlc-section-grid">
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Deathmatch</span><span class="dlc-tile-count">223</span></div><div class="dlc-tile-meta">IDs 17-1238 · Deathmatch &amp; brutality</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">GimmickStip</span><span class="dlc-tile-count">151</span></div><div class="dlc-tile-meta">IDs 1-1184 · Title/career/contract stipulations</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">SpecialArena</span><span class="dlc-tile-count">137</span></div><div class="dlc-tile-meta">IDs 3-1334 · Special arenas &amp; supernatural</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Cultural</span><span class="dlc-tile-count">120</span></div><div class="dlc-tile-meta">IDs 9-1136 · Cultures &amp; traditions</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">SteelStructure</span><span class="dlc-tile-count">107</span></div><div class="dlc-tile-meta">IDs 6-1094 · Steel structures &amp; heights</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Inferno</span><span class="dlc-tile-count">104</span></div><div class="dlc-tile-meta">IDs 4-1190 · Inferno, fire &amp; elements</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Vehicle</span><span class="dlc-tile-count">91</span></div><div class="dlc-tile-meta">IDs 12-1088 · Vehicles &amp; collisions</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Elimination</span><span class="dlc-tile-count">85</span></div><div class="dlc-tile-meta">IDs 44-1304 · Elimination &amp; battle royal</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Survival</span><span class="dlc-tile-count">59</span></div><div class="dlc-tile-meta">IDs 15-1298 · Survival &amp; obstacles</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Cage</span><span class="dlc-tile-count">47</span></div><div class="dlc-tile-meta">IDs 2-1124 · Cages &amp; cells</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Hardcore</span><span class="dlc-tile-count">44</span></div><div class="dlc-tile-meta">IDs 27-1154 · Hardcore &amp; no rules</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Weapon</span><span class="dlc-tile-count">38</span></div><div class="dlc-tile-meta">IDs 33-1034 · Weapons &amp; objects</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Ladders</span><span class="dlc-tile-count">32</span></div><div class="dlc-tile-meta">IDs 5-1052 · Ladders &amp; pole matches</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Escape</span><span class="dlc-tile-count">24</span></div><div class="dlc-tile-meta">IDs 23-994 · Escape &amp; chambers</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Submission</span><span class="dlc-tile-count">20</span></div><div class="dlc-tile-meta">IDs 21-1280 · Submission &amp; I Quit</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">MultiMan</span><span class="dlc-tile-count">12</span></div><div class="dlc-tile-meta">IDs 79-961 · Multi-man matches</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Tables</span><span class="dlc-tile-count">12</span></div><div class="dlc-tile-meta">IDs 139-986 · Tables</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">TagTeam</span><span class="dlc-tile-count">12</span></div><div class="dlc-tile-meta">IDs 263-923 · Tag team</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">FirstBlood</span><span class="dlc-tile-count">9</span></div><div class="dlc-tile-meta">IDs 97-1220 · First blood &amp; vampire</div></div>
+      <div class="dlc-tile"><div class="dlc-tile-head"><span class="dlc-tile-name">Strap</span><span class="dlc-tile-count">7</span></div><div class="dlc-tile-meta">IDs 295-921 · Strap &amp; chain</div></div>
+    </div>
+
+    <h3>55 Specific Theme Packs (6 match gimmicks each)</h3>
+    <p>These 55 databases each contain exactly <strong>6 exclusive match gimmicks</strong> with sequential IDs (1005-1334). They are organized into 11 thematic groups of 5 packs each:</p>
+
+    <table class="wiki-table">
+      <thead><tr><th>Theme Group</th><th>Packs (5 each)</th><th>Sample Match</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Extremes &amp; Mortal</strong></td><td>CasketBuried · BarbedWire · ThumbtacksGlass · Electrified · PiranhaShark</td><td>Casket Shutdown Match · Barbed Wire Massacre · Thumbtack Torture · Electrified Cage of Torment · Piranha Pit Match</td></tr>
+        <tr><td><strong>Structures &amp; Heights</strong></td><td>Scaffold · LadderSpecials · PoleMatches · RooftopBalcony · ElevatorShaft</td><td>Scaffold Showdown · Championship Ladder Ascent · Flag on a Pole Brawl · Rooftop Fall Match · Elevator Shaft Plunge</td></tr>
+        <tr><td><strong>Vehicles</strong></td><td>CarVan · BusTruck · Train · BoatShip · Construction</td><td>Car Crusher Match · School Bus Demolition · Train Car Brawl · Pirate Ship Plunder · Bulldozer Brawl</td></tr>
+        <tr><td><strong>Special Arenas</strong></td><td>CarnivalCircus · HauntedHouse · MazeLabyrinth · DungeonCastle · HospitalAsylum</td><td>Circus of Carnage · Haunted House Horror · Labyrinth of Lost Souls · Dungeon of Despair · Hospital Ward Havoc</td></tr>
+        <tr><td><strong>Cultures &amp; Styles</strong></td><td>LuchaLibre · JapaneseDM · BritishStrong · MexicanRules · TribalIndigenous</td><td>Lucha de Apuestas Mask vs Mask · Japanese Deathmatch Rules · British Rounds Match · Mexican Rules Deathmatch · Tribal Warfare Match</td></tr>
+        <tr><td><strong>Stipulations</strong></td><td>CareerRetirement · TitleVsTitle · ContractMoney · ServantSlave · LoserLeaves</td><td>Career Threatening Match · Title Unification Match · Contract on a Line Match · Loser Becomes Servant Match · Loser Leaves Town Match</td></tr>
+        <tr><td><strong>Elements &amp; Nature</strong></td><td>FireInferno2 · IceFrozen · MudSwamp · SandDesert · WaterSea</td><td>Ring of Fire Match · Ice Deathmatch · Mud Pit Brawl · Desert Storm Match · Water Match</td></tr>
+        <tr><td><strong>Horror &amp; Supernatural</strong></td><td>VampireWerewolf · ZombieApocalypse · CursedSupernatural · CemeteryGraveyard · WitchOccult</td><td>Vampire's Lair Bloodbath · Zombie Outbreak Match · Cursed Ring Match · Cemetery Deathmatch · Witch's Coven Match</td></tr>
+        <tr><td><strong>Pop Culture &amp; Fiction</strong></td><td>VideoGame · Movie · GladiatorArena · PirateShip · SpaceStation</td><td>Final Boss Match · Action Movie Deathmatch · Colosseum Carnage · Pirate Ship Plunder · Space Station Showdown</td></tr>
+        <tr><td><strong>Sports &amp; Competition</strong></td><td>BoxingMMA · MartialArtsTourn · OlympicAthletic · ObstacleWipeout · TimedSprint</td><td>Boxing Rules Match · Martial Arts Bracket · Olympic Trials Match · Obstacle Course Brawl · 5 Minute Sprint Match</td></tr>
+        <tr><td><strong>Unusual &amp; Bizarre</strong></td><td>FoodKitchen · LibraryStudy · MallStore · ZooFarm · LockerRoomGym</td><td>Kitchen Brawl · Library Brawl · Mall Brawl · Zoo Deathmatch · Locker Room Brawl</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout lore">
+      <div class="callout-title">★ Notable Match Gimmicks</div>
+      The 1,334 match gimmicks include some genuinely creative concepts: a <strong>Piranha Pit Match</strong> (where the ring is surrounded by a piranha-filled pool), a <strong>Space Station Showdown</strong>, a <strong>Zombie Outbreak Match</strong>, a <strong>Witch's Coven Match</strong>, and a <strong>5 Minute Sprint Match</strong>. The cultural packs are particularly thoughtful — the <strong>Lucha de Apuestas Mask vs Mask</strong> match is the lucha libre tradition's most dramatic stipulation, while the <strong>British Rounds Match</strong> preserves the old-world territorial wrestling format.
+    </div>
+
+    <h2 id="dlc-tvnetworks">DLC: TV Networks (12 databases · 101 networks)</h2>
+
+    <p>The <code>DLC/TVNetworks/</code> folder contains <strong>12 filtered databases</strong>, each containing all 78 tables from the main ModzVerse.db but with only a specific subset of the 101 total TV networks. Each DLC database includes the complete schema (databaseVersion=103) with all 15,303 gimmicks, 1,334 match gimmicks, 12,000 venues, 5,505 titles, and 5,000 promotions intact — only the <code>networks</code> and <code>networkAvailability</code> tables are filtered.</p>
+
+    <h3>TV Networks Table Schema</h3>
+    <table class="wiki-table">
+      <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>networkID</code></td><td>INTEGER PK</td><td>Unique network identifier (1-101)</td></tr>
+        <tr><td><code>name</code></td><td>TEXT (100)</td><td>Network name</td></tr>
+        <tr><td><code>type</code></td><td>TEXT (30)</td><td>Always "TV Network"</td></tr>
+        <tr><td><code>model</code></td><td>TEXT</td><td>Broadcast model (default: Free)</td></tr>
+        <tr><td><code>payment</code></td><td>TEXT</td><td>Payment type: "Pay Per Show"</td></tr>
+        <tr><td><code>size</code></td><td>INTEGER</td><td>1 (Small) · 2 (Medium) · 3 (Large)</td></tr>
+        <tr><td><code>library</code></td><td>INTEGER</td><td>Library size</td></tr>
+        <tr><td><code>openDate</code></td><td>TEXT (11)</td><td>Opening date</td></tr>
+        <tr><td><code>status</code></td><td>INTEGER</td><td>Active status (1 = active)</td></tr>
+        <tr><td><code>logo</code></td><td>TEXT</td><td>Logo filename</td></tr>
+      </tbody>
+    </table>
+
+    <h3>12 Filtered Network Databases</h3>
+
+    <h4>By Continent (6 databases)</h4>
+    <table class="wiki-table">
+      <thead><tr><th>File</th><th>Continent</th><th>Networks</th><th>Availability Entries</th></tr></thead>
+      <tbody>
+        <tr><td><code>ModzVerse_TVNetworks_Africa.db</code></td><td>Africa</td><td>10</td><td>39</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_Asia.db</code></td><td>Asia</td><td>24</td><td>104</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_Europe.db</code></td><td>Europe</td><td>21</td><td>87</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_NorthAmerica.db</code></td><td>North America</td><td>18</td><td>77</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_Oceania.db</code></td><td>Oceania</td><td>9</td><td>31</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_SouthAmerica.db</code></td><td>South America</td><td>19</td><td>74</td></tr>
+      </tbody>
+    </table>
+
+    <h4>By Network Size (3 databases)</h4>
+    <table class="wiki-table">
+      <thead><tr><th>File</th><th>Size</th><th>Networks</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>ModzVerse_TVNetworks_SizeSmall.db</code></td><td>1</td><td>32</td><td>Small / local networks</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_SizeMedium.db</code></td><td>2</td><td>48</td><td>Medium / regional networks</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_SizeLarge.db</code></td><td>3</td><td>21</td><td>Large / national networks</td></tr>
+      </tbody>
+    </table>
+
+    <h4>By Coverage Range (3 databases)</h4>
+    <table class="wiki-table">
+      <thead><tr><th>File</th><th>Coverage</th><th>Networks</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>ModzVerse_TVNetworks_Local.db</code></td><td>1-2 regions</td><td>3</td><td>Single-city / local coverage</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_Regional.db</code></td><td>3-5 regions</td><td>92</td><td>Multi-region coverage</td></tr>
+        <tr><td><code>ModzVerse_TVNetworks_Wide.db</code></td><td>6+ regions</td><td>6</td><td>Continental / wide coverage</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Notable Networks by Continent</h3>
+    <p>Asia leads with 24 networks, including <strong>Japanese Wrestling Network</strong> (size 3, 5 regions), <strong>Puroresu TV</strong> (size 3, 5 regions), <strong>Tokyo Dome Network</strong> (size 2, 4 regions), and <strong>Bharat Wrestling TV</strong> (size 3, 5 regions) — covering both the Japanese and Indian wrestling markets. Europe follows with 21 networks led by <strong>British Wrestling Network</strong> (size 3, 4 regions) and the <strong>European Wrestling Alliance</strong> (size 3, 7 regions — the widest European coverage). North America has 18 networks led by <strong>WrestleNet USA</strong>, <strong>USA Sports Channel</strong>, and <strong>American Wrestling Network</strong> (all size 3, 5 regions).</p>
+
+    <p>South America has 19 networks (Brazil-led, with <strong>Canal Nacional</strong>, <strong>Sol Channel</strong>, <strong>Rio Channel</strong>, <strong>Luta TV Brasil</strong>, and <strong>Rede Luta Livre</strong> all at size 3) — a remarkably deep broadcast infrastructure for a continent with no home promotion in the launch roster. Africa has 10 networks (Nigeria, Egypt, and South Africa each have size-2 networks). Oceania rounds out the list with 9 networks, all Australian or New Zealand-based.</p>
+
+    <div class="callout">
+      <div class="callout-title">★ The Brazil Network Surprise</div>
+      The TV Networks DLC reveals a second "Brazil surprise" to complement the venue pack finding: Brazil has <strong>5 size-3 (Large) national TV networks</strong> — Canal Nacional, Sol Channel, Rio Channel, Luta TV Brasil, and Rede Luta Livre. This is the most size-3 networks of any single country in the ModzVerse. Combined with Brazil's 895 venues and 215 million population, this makes Brazil the single most strategically valuable untapped wrestling market in the world. A player starting a Brazilian promotion has broadcast infrastructure ready and waiting — no other untapped market comes close.
+    </div>
+
+    <h2 id="excel-resources">Excel Reference Spreadsheets (4 files)</h2>
+
+    <p>The <code>Excel/</code> folder contains <strong>4 reference spreadsheets</strong> documenting the ModzVerse world's content in human-readable form. These are not game databases — they are reference documents for contributors, players, and content creators who want to browse the world's data without opening SQLite databases. Two of the spreadsheets also include <strong>AI image generation prompts</strong> (original and improved versions) for every promotion logo and venue image, ready to paste into any AI image generator.</p>
+
+    <div class="excel-card">
+      <div class="excel-card-head">
+        <div class="excel-card-title">📊 ModzVerse_Promotions.xlsx</div>
+        <span class="excel-card-size">100.6 KB · 5,000 rows</span>
+      </div>
+      <div class="excel-card-desc">A basic 3-column list of every promotion in the ModzVerse world. Useful for quick lookup of promotion names by country or continent.</div>
+      <div class="excel-card-cols"><strong>3 columns:</strong> Promotions · Continent · Country · <em>(plus header rows)</em></div>
+      <div class="excel-card-cols" style="margin-top:6px;"><strong>5,000 promotions</strong> across <strong>190 countries</strong></div>
+    </div>
+
+    <div class="excel-card">
+      <div class="excel-card-head">
+        <div class="excel-card-title">📊 ModzVerse_All_Titles.xlsx</div>
+        <span class="excel-card-size">524.7 KB · 5,805 rows · 2 sheets</span>
+      </div>
+      <div class="excel-card-desc">The complete title catalog with 18 columns of metadata per title. Includes a Summary sheet with the total title count. Useful for cross-referencing which promotions hold which titles, what weight/gender limits apply, and which titles are active.</div>
+      <div class="excel-card-cols"><strong>Sheet 1 "All Titles" (18 columns):</strong> titleID · Title Name · Promo ID · Promotion · Short Name · Country · Region · Style · Promo Prestige · Title Prestige · Created · Type · Gender · Weight Limit · Min Push · Max Push · Defendable · Active</div>
+      <div class="excel-card-cols" style="margin-top:6px;"><strong>Sheet 2 "Summary":</strong> Total Titles Created: 5,805</div>
+    </div>
+
+    <div class="excel-card">
+      <div class="excel-card-head">
+        <div class="excel-card-title">📊 ModzVerse_All_Promotions_AI_Prompts.xlsx</div>
+        <span class="excel-card-size">1009.9 KB · 4,530 rows</span>
+      </div>
+      <div class="excel-card-desc">Every promotion in the ModzVerse world with full metadata plus <strong>two AI logo generation prompts</strong> per promotion (original + improved). Paste either prompt into any AI image generator (Midjourney, DALL-E, Stable Diffusion, etc.) to produce a logo for the promotion. The "Improved" column contains refined prompts with more specific style direction.</div>
+      <div class="excel-card-cols"><strong>14 columns:</strong> Promotion ID · Full Name · Short Name · Continent · Country · Style · Prestige · Women Div. · Status · Founded · Description · AI Logo Prompt (Original) · AI Logo Prompt (Improved)</div>
+      <div class="excel-card-cols" style="margin-top:6px;"><strong>4,530 promotions</strong> with <strong>9,060 AI prompts total</strong> (original + improved for each)</div>
+    </div>
+
+    <div class="excel-card">
+      <div class="excel-card-head">
+        <div class="excel-card-title">📊 ModzVerse_All_Venues_AI_Prompts.xlsx</div>
+        <span class="excel-card-size">3048.7 KB · 12,000 rows</span>
+      </div>
+      <div class="excel-card-desc">Every venue in the ModzVerse world with full metadata plus <strong>two AI image generation prompts</strong> per venue (original + improved). Paste either prompt into an AI image generator to produce a venue illustration. The "Improved" column contains refined prompts with era-specific architecture cues and lighting direction.</div>
+      <div class="excel-card-cols"><strong>13 columns:</strong> Venue ID · Venue Name · Continent · Country · Capacity · Type · Wrest. Pop. · Pref. Style · Open Date · Status · AI Image Prompt (Original) · AI Image Prompt (Improved)</div>
+      <div class="excel-card-cols" style="margin-top:6px;"><strong>12,000 venues</strong> with <strong>24,000 AI prompts total</strong> (original + improved for each)</div>
+    </div>
+
+    <h2>How to Use the DLC &amp; Excel Resources</h2>
+
+    <h3>Loading a DLC Database</h3>
+    <p>Each DLC database is a complete, self-contained SQLite file. To use one:</p>
+    <ol>
+      <li>Choose a DLC database that fits your booking theme (e.g., <code>ModzVerse_MatchGimmicks_Cage.db</code> for cage matches only)</li>
+      <li>Download the <code>.db</code> file from the <a href="https://github.com/ModzProd/ModzVerseSystem/tree/main/DLC" target="_blank" rel="noopener">DLC folder on GitHub</a></li>
+      <li>Replace (or merge) your existing Pro Wrestling Sim database with the DLC file</li>
+      <li>Launch the game — all other tables (gimmicks, titles, promotions, workers, venues, etc.) remain intact; only the filtered table is changed</li>
+    </ol>
+
+    <h3>Using the Excel AI Prompts</h3>
+    <p>The <code>ModzVerse_All_Promotions_AI_Prompts.xlsx</code> and <code>ModzVerse_All_Venues_AI_Prompts.xlsx</code> spreadsheets contain ready-to-use AI image generation prompts:</p>
+    <ol>
+      <li>Open the spreadsheet in Excel, Google Sheets, or LibreOffice Calc</li>
+      <li>Find the promotion or venue you want to generate an image for (filter by continent, country, or style)</li>
+      <li>Copy the contents of the "AI Logo Prompt (Improved)" or "AI Image Prompt (Improved)" column</li>
+      <li>Paste into any AI image generator (Midjourney, DALL-E 3, Stable Diffusion, etc.) and generate</li>
+      <li>The "Improved" column gives more reliable, more detailed results than the "Original" column</li>
+    </ol>
+
+    <div class="callout warning">
+      <div class="callout-title">⚠ Schema Version Note</div>
+      All 87 DLC databases are at <strong>schema version 103</strong>, while the main ModzVerse world is at <strong>schema version 121</strong>. When loading a DLC database into a v121 save file, PWS will run a migration to bring the schema up to v121 — this is automatic but may take a few seconds. Do not be alarmed if you see migration messages in the console.
+    </div>
+
+    <div class="callout warning">
+      <div class="callout-title">⚠ Overlap with Existing Venue Documentation</div>
+      The <code>DLC/Venue/</code> folder contains the same 18 venue pack databases already documented in the <a href="#venues">Venue Database Packs</a> section of this intranet. The DLC folder is the canonical home in the GitHub repo; the venue section of this intranet documents the same files with full statistics. No duplication of content — the venue documentation in this wiki applies to the files in <code>DLC/Venue/</code>.
+    </div>
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
        SECTION: GITHUB & COMMUNITY
        ============================================================ -->
   <section id="github">
@@ -4951,7 +5580,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         </div>
         <div class="github-hero-stat">
           <div class="github-hero-stat-label">Current Version</div>
-          <div class="github-hero-stat-value">v0.9.4 (this build)</div>
+          <div class="github-hero-stat-value">v0.9.5 (this build)</div>
         </div>
       </div>
 
@@ -4975,7 +5604,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="repo-card-badges">
           <span class="repo-badge public">● Public</span>
           <span class="repo-badge live">● Live (GitHub Pages)</span>
-          <span class="repo-badge v094">v0.9.4</span>
+          <span class="repo-badge v094">v0.9.5</span>
         </div>
       </div>
       <p style="font-size:.92rem;color:var(--text-dim);margin:0 0 12px;">A fully offline, single-file HTML knowledge system for the ModzVerse pro wrestling world database for Pro Wrestling Sim. 362 KB · 5,127 lines · 0 external dependencies.</p>
@@ -5176,6 +5805,30 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
     <ul class="commit-list">
       <li>
+        <span class="commit-sha">c3cf26a</span>
+        <span class="commit-msg">
+          <strong>Merge: remote 'Add' + v0.9.4 GitHub section</strong><br>
+          Merged remote commit f2ad4bf (which added DLC/, Excel/, Expansion/ folders with content) with local commit 2e93941 (v0.9.4 GitHub &amp; Community section). Merge was clean — disjoint file sets. Pushed successfully.
+          <span class="commit-meta">2025-01-01 · ModzProd · main</span>
+        </span>
+      </li>
+      <li>
+        <span class="commit-sha">f2ad4bf</span>
+        <span class="commit-msg">
+          <strong>Add (remote)</strong><br>
+          User's remote push that added the DLC/ folder (MatchGimmicks, TVNetworks, Venue, Gimmicks READMEs), the Excel/ folder (4 reference spreadsheets with AI prompts), and the Expansion/ placeholder folder. Merged into local main in c3cf26a.
+          <span class="commit-meta">2025-01-01 · ModzProd · remote</span>
+        </span>
+      </li>
+      <li>
+        <span class="commit-sha">2e93941</span>
+        <span class="commit-msg">
+          <strong>v0.9.4: Add GitHub &amp; Community section</strong><br>
+          Added new GitHub &amp; Community section with repo overview, file tree, 3 ways to get the intranet (live Pages, single-file download, git clone), 6-step contribution guide, 10 contribution types, 5 issue templates, commit history, license/usage rights, and quick commands reference.
+          <span class="commit-meta">2025-01-01 · AI assistant · local</span>
+        </span>
+      </li>
+      <li>
         <span class="commit-sha">7f99696</span>
         <span class="commit-msg">
           <strong>Initial commit: ModzVerse Wiki v0.9.3</strong><br>
@@ -5185,7 +5838,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       </li>
     </ul>
 
-    <p style="margin-top:16px;color:var(--text-dim);">Future commits will be listed here as the project evolves. To see the full commit history on GitHub, visit <a href="https://github.com/ModzProd/ModzVerseSystem/commits/main" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem/commits/main</a>.</p>
+    <p style="margin-top:16px;color:var(--text-dim);"><strong>Note:</strong> Commit <code>2e93941</code> (v0.9.4 GitHub &amp; Community section) was followed in this build by a new local commit for v0.9.5 (DLC &amp; Excel Resources section) — not yet pushed at time of writing. To see the full live commit history on GitHub, visit <a href="https://github.com/ModzProd/ModzVerseSystem/commits/main" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem/commits/main</a>.</p>
 
     <h2>License &amp; Usage Rights</h2>
     <p>The repository does <strong>not</strong> currently include an open-source license. By default, this means the code is "all rights reserved" — you may view and fork the repository, but you do not have permission to copy, modify, or distribute the code without explicit permission from the repository owner.</p>
@@ -5281,6 +5934,9 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li>6 triggers for regional pop dirty-tracking <span class="pct">100%</span></li>
           <li>★ 18 Venue Packs (36,000 venue records) <span class="pct">100% · v0.9.3</span></li>
           <li>★ GitHub repo live + GitHub Pages hosted <span class="pct">100% · v0.9.4</span></li>
+          <li>★ 75 Match Gimmicks DLC packs (1,334 gimmicks) <span class="pct">100% · v0.9.5</span></li>
+          <li>★ 12 TV Networks DLC packs (101 networks) <span class="pct">100% · v0.9.5</span></li>
+          <li>★ 4 Excel reference spreadsheets (5,000 promos · 5,805 titles · 12,000 venues · 33,060 AI prompts) <span class="pct">100% · v0.9.5</span></li>
         </ul>
       </div>
       <div class="roadmap-col todo">
@@ -5288,19 +5944,20 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <ul class="roadmap-list">
           <li>Workers (0 of ~150-200 needed) <span class="pct">0%</span></li>
           <li>Contracts (0 of ~150-200 needed) <span class="pct">0%</span></li>
-          <li>Networks (0 of ~10-20 needed) <span class="pct">0%</span></li>
-          <li>Network deals (0 of ~20-40 needed) <span class="pct">0%</span></li>
-          <li>Network availability (0 entries) <span class="pct">0%</span></li>
-          <li>Match gimmicks (0 of ~20-30 needed) <span class="pct">0%</span></li>
+          <li>Match gimmicks (DONE — 1,334 in DLC) <span class="pct" style="color:var(--success);">✓ 5000%</span></li>
           <li>Match stories (0 of ~50-100 needed) <span class="pct">0%</span></li>
           <li>Angle templates (0 of ~30-50 needed) <span class="pct">0%</span></li>
           <li>Template beats (0 of ~100-200 needed) <span class="pct">0%</span></li>
+          <li>Networks (DONE — 101 in DLC) <span class="pct" style="color:var(--success);">✓ 1000%</span></li>
+          <li>Network deals (0 of ~20-40 needed) <span class="pct">0%</span></li>
+          <li>Network availability (412 entries in DLC) <span class="pct" style="color:var(--success);">✓ done</span></li>
+          <li>Venues (DONE — 12,000 in venue packs) <span class="pct" style="color:var(--success);">✓ 100%</span></li>
           <li>Tag teams (0 entries) <span class="pct">0%</span></li>
           <li>Stables (0 entries) <span class="pct">0%</span></li>
           <li>Storylines (0 entries) <span class="pct">0%</span></li>
           <li>Training schools (0 entries) <span class="pct">0%</span></li>
           <li>Announce teams (0 of ~12 needed) <span class="pct">0%</span></li>
-          <li>Worker pictures / picture pool <span class="pct">0%</span></li>
+          <li>Worker pictures / picture pool (0 entries — Excel AI prompts ready) <span class="pct">0%</span></li>
           <li>Future trigger events (0 entries) <span class="pct">0%</span></li>
         </ul>
       </div>
@@ -5569,11 +6226,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
      FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.4 · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.5 · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
-  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries</p>
+  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries · 17 sections · 87 DLC DBs · 4 Excel spreadsheets · 33,060 AI prompts</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v0.9.4 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
+  <p>Maintained by the ModzVerse project · Build v0.9.5 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
 </footer>
 
 <!-- ============================================================
