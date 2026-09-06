@@ -1,6 +1,7 @@
 # RAIBARAZU Worker Roster
 
 > **30 workers** (15 Doragon A-Brand + 15 Fenikkusu B-Brand)
+> All workers are **fully fictional characters** — no real-world wrestler names
 > Generated for ModzVerse v0.9.6
 > File: `RAIBARAZU_roster.sql` (128 KB · 481 lines · 30 worker INSERTs + 30 contract INSERTs)
 
@@ -30,33 +31,33 @@
 ### Main Event (4 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1001 | Kazuchika Okada | Kazuchika Tanaka | Face | 95 | 92 | 32 | The ace of Doragon. A generational talent with peerless ring work. |
-| 1002 | Genichiro Tenryu | Genichiro Sato | Heel | 93 | 88 | 38 | The veteran ace of Doragon's heel side. A brutal striker with old-school mentality. |
-| 1003 | The Crimson Dragon | Hiroshi Yamamoto | Heel | 90 | 85 | 34 | A towering behemoth who dominates opponents with raw power. |
-| 1004 | Shinsuke Nakajima | Shinsuke Watanabe | Face | 92 | 90 | 33 | The charismatic ace. Blends world-class wrestling with natural star power. |
+| 1001 | Ryūga the Apex | Akira Tanahashi | Face | 95 | 92 | 32 | The ace of Doragon. A generational talent with peerless ring work, considered the soul of the RAIBARAZU brand. |
+| 1002 | Kuroda the Iron Fist | Hiroshi Kuroda | Heel | 93 | 88 | 38 | The veteran ace of Doragon's heel side. A brutal striker with old-school mentality who has terrorized the roster for a decade. |
+| 1003 | The Crimson Dragon | Daisuke Yamamoto | Heel | 90 | 85 | 34 | A towering behemoth who dominates opponents with raw power. His arrival in RAIBARAZU signaled a new era of destruction. |
+| 1004 | Suzaku the Phoenix | Daichi Suzaku | Face | 92 | 90 | 33 | The charismatic ace. Blends world-class wrestling with natural star power. The crowd's undisputed favorite. |
 
 ### Upper Midcard (5 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1005 | Tatsumi Fujinami | Tatsumi Ito | Face | 85 | 75 | 29 | A technical specialist who can carry any match to a strong rating. |
-| 1006 | Katsuyori Shibata | Katsuyori Kobayashi | Face | 87 | 72 | 31 | A hard-hitting fighter who embodies the spirit of Strong Style. |
-| 1007 | Mitsuharu Honma | Mitsuhuri Kato | Heel | 82 | 78 | 35 | A cocky veteran who backs up his talk with solid ring work. |
+| 1005 | Tatsuya Riverstone | Tatsuya Ishikawa | Face | 85 | 75 | 29 | A technical specialist who can carry any match to a strong rating. The quiet backbone of the Doragon midcard. |
+| 1006 | Shibata the Striker | Katsuya Mori | Face | 87 | 72 | 31 | A hard-hitting fighter who embodies the spirit of Strong Style. Known for his devastating elbow strikes. |
+| 1007 | The Honma Cobra | Mitsuharu Honma | Heel | 82 | 78 | 35 | A cocky veteran who backs up his talk with solid ring work. Famous for his signature Cobra Clutch submission. |
 | 1008 | Absolute Ryo | Ryo Yoshida | Heel | 84 | 70 | 36 | A badass striker who doesn't need to talk — his fists do the talking. |
-| 1009 | Golden Kenji | Kenji Yamada | Face | 83 | 72 | 27 | A wholesome babyface who connects with the crowd through pure workrate. |
+| 1009 | Golden Kenji | Kenji Yamada | Face | 83 | 72 | 27 | A wholesome babyface who connects with the crowd through pure workrate. The eternal underdog of Doragon. |
 
 ### Midcard (4 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1010 | Thunder Suzuki | Daisuke Suzuki | Face | 78 | 60 | 28 | A reliable midcard hand who always delivers solid matches. |
-| 1011 | Shadow Endo | Tomoaki Endo | Heel | 76 | 58 | 30 | A brooding heel who uses underhanded tactics to win. |
-| 1012 | Kenta Ishii | Kenta Ishii | Face | 79 | 55 | 32 | A tough-as-nails brawler who never backs down from a fight. |
-| 1013 | Zen Takahashi | Yusuke Takahashi | Face | 77 | 58 | 26 | A young technician with potential to move up the card. |
+| 1010 | Thunder Suzuki | Daisuke Suzuki | Face | 78 | 60 | 28 | A reliable midcard hand who always delivers solid matches. The workhorse of Doragon house shows. |
+| 1011 | Shadow Endo | Tomoaki Endo | Heel | 76 | 58 | 30 | A brooding heel who uses underhanded tactics to win. His signature move is a low blow disguised as a punch. |
+| 1012 | Kiba the Fang | Kenta Ishikawa | Face | 79 | 55 | 32 | A tough-as-nails brawler who never backs down from a fight. Known for his biting — both metaphorically and literally. |
+| 1013 | Zen Takahashi | Yusuke Takahashi | Face | 77 | 58 | 26 | A young technician with potential to move up the card. Trains under Suzaku the Phoenix. |
 
 ### Lower Midcard (2 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1014 | Silent Goto | Shoichi Goto | Heel | 70 | 45 | 33 | A silent enforcer who does the bidding of the main event heels. |
-| 1015 | Kohei Hase | Kohei Hase | Face | 72 | 48 | 24 | A promising young lion working his way up the Doragon roster. |
+| 1014 | Silent Goto | Shoichi Goto | Heel | 70 | 45 | 33 | A silent enforcer who does the bidding of the main event heels. Speaks only with his offense. |
+| 1015 | Kohei Hase | Kohei Hase | Face | 72 | 48 | 24 | A promising young lion working his way up the Doragon roster. The future of Pure Wrestling. |
 
 ---
 
@@ -66,32 +67,32 @@
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
 | 1016 | Yuya Ueno | Yuya Ueno | Face | 84 | 68 | 28 | The ace of Fenikkusu. Rumored to be next in line for a Doragon call-up. |
-| 1017 | Eternal Shimizu | Hikaru Shimizu | Heel | 82 | 65 | 30 | A dominant heel on the B-brand who's outgrown his competition. |
-| 1018 | Asahi Nakajima | Asahi Nakajima | Face | 81 | 62 | 25 | A high-flying technician who's the fan favorite of Fenikkusu. |
+| 1017 | Eternal Shimizu | Hikaru Shimizu | Heel | 82 | 65 | 30 | A dominant heel on the B-brand who's outgrown his competition. Needs a tougher challenge. |
+| 1018 | Asahi Nakajima | Asahi Nakajima | Face | 81 | 62 | 25 | A high-flying technician who's the fan favorite of Fenikkusu. Known for his springboard offense. |
 
 ### Midcard (5 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1019 | Storm Nishimura | Riku Nishimura | Face | 75 | 55 | 27 | A solid midcarder who main-events Fenikkusu house shows. |
-| 1020 | Iron Fukuda | Takeshi Fukuda | Heel | 74 | 52 | 31 | A rough brawler who uses shortcuts and weapons to win. |
-| 1021 | Sora Maeda | Sora Maeda | Face | 76 | 55 | 24 | A young high-flyer who's building a following on Fenikkusu. |
-| 1022 | Savage Fujita | Masato Fujita | Heel | 73 | 50 | 29 | A wild, unpredictable brawler who lives up to his name. |
-| 1023 | Ren Okada | Ren Okada | Face | 75 | 52 | 26 | A clean-cut babyface who represents the future of Fenikkusu. |
+| 1019 | Storm Nishimura | Riku Nishimura | Face | 75 | 55 | 27 | A solid midcarder who main-events Fenikkusu house shows. Reliable and consistent. |
+| 1020 | Iron Fukuda | Takeshi Fukuda | Heel | 74 | 52 | 31 | A rough brawler who uses shortcuts and weapons to win. The gatekeeper of Fenikkusu's heel side. |
+| 1021 | Sora Maeda | Sora Maeda | Face | 76 | 55 | 24 | A young high-flyer who's building a following on Fenikkusu. The future of the B-brand's aerial division. |
+| 1022 | Savage Fujita | Masato Fujita | Heel | 73 | 50 | 29 | A wild, unpredictable brawler who lives up to his name. Banned from 3 venues for crowd violence. |
+| 1023 | Ren Okada | Ren Okada | Face | 75 | 52 | 26 | A clean-cut babyface who represents the future of Fenikkusu. The total package. |
 
 ### Lower Midcard (4 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1024 | Kaito Abe | Kaito Abe | Face | 68 | 42 | 23 | A young lion still learning the ropes. |
-| 1025 | Blade Mori | Akira Mori | Heel | 67 | 40 | 32 | A veteran gatekeeper who tests the young lions. |
-| 1026 | Daiki Ikeda | Daiki Ikeda | Face | 69 | 44 | 25 | A versatile worker who can fill any role on the card. |
-| 1027 | Wolf Hashimoto | Yuji Hashimoto | Heel | 65 | 38 | 35 | A monster heel who squashes enhancement talent. |
+| 1024 | Kaito Abe | Kaito Abe | Face | 68 | 42 | 23 | A young lion still learning the ropes. Trains under Yuya Ueno. |
+| 1025 | Blade Mori | Akira Mori | Heel | 67 | 40 | 32 | A veteran gatekeeper who tests the young lions. Has been with RAIBARAZU since the brand split. |
+| 1026 | Daiki Ikeda | Daiki Ikeda | Face | 69 | 44 | 25 | A versatile worker who can fill any role on the card. The utility player of Fenikkusu. |
+| 1027 | Wolf Hashimoto | Yuji Hashimoto | Heel | 65 | 38 | 35 | A monster heel who squashes enhancement talent. His matches rarely last more than 5 minutes. |
 
 ### Enhancement Talent (3 workers)
 | ID | Ring Name | Real Name | Disp | Wrestling | Star Power | Age | Bio |
 |---|---|---|---|---|---|---|---|
-| 1028 | Haruto Kimura | Haruto Kimura | Face | 55 | 30 | 22 | A young enhancement talent who's just starting his career. |
-| 1029 | Hayato Hayashi | Hayato Hayashi | Face | 52 | 28 | 21 | A rookie who's paying his dues in the enhancement role. |
-| 1030 | Satoshi Sakurai | Satoshi Sakurai | Heel | 54 | 32 | 28 | A jobber heel who makes faces look good. |
+| 1028 | Haruto Kimura | Haruto Kimura | Face | 55 | 30 | 22 | A young enhancement talent who's just starting his career. Pays his dues by making stars look good. |
+| 1029 | Hayato Hayashi | Hayato Hayashi | Face | 52 | 28 | 21 | A rookie who's paying his dues in the enhancement role. The lowest man on the Fenikkusu totem pole. |
+| 1030 | Satoshi Sakurai | Satoshi Sakurai | Heel | 54 | 32 | 28 | A jobber heel who makes faces look good. Has never won a match on a RAIBARAZU supershow. |
 
 ---
 
@@ -126,6 +127,12 @@ All workers use IDs in the reserved range **1001–1030**. This avoids conflicts
    ```
 3. Or open the DB in DB Browser for SQLite and paste the SQL into the "Execute SQL" tab
 4. The 30 workers and 30 contracts will be inserted, ready for the game to load
+
+---
+
+## Fictional Characters Disclaimer
+
+All worker names and characters in this roster are **entirely fictional**. Any resemblance to real-world professional wrestlers — living or dead — is purely coincidental. The ring names, real names, biographies, and personality traits are original creations for the ModzVerse fictional world and do not represent or reference any actual person.
 
 ---
 
