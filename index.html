@@ -2187,6 +2187,210 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
   font-weight: 600;
 }
 
+/* ============================================================
+   WORKER ROSTERS SECTION
+   ============================================================ */
+
+.roster-hero {
+  margin: -32px -48px 32px;
+  padding: 40px 48px 32px;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(200, 16, 46, .10) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(212, 175, 55, .08) 0%, transparent 55%),
+    linear-gradient(135deg, #0a0d12 0%, #161b22 100%);
+  border-bottom: 1px solid var(--border);
+}
+.roster-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--rb-tertiary);
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(212, 175, 55, .1);
+  border: 1px solid rgba(212, 175, 55, .35);
+  border-radius: 999px;
+}
+.roster-hero-eyebrow::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rb-tertiary);
+  box-shadow: 0 0 8px var(--rb-tertiary);
+}
+.roster-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin: 0 0 8px;
+  background: linear-gradient(180deg, #fff 0%, #c9d1d9 60%, #8b949e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: .02em;
+}
+.roster-hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--rb-tertiary);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.roster-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.roster-hero-stat {
+  background: rgba(13, 17, 23, .7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.roster-hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--rb-tertiary);
+  line-height: 1;
+}
+.roster-hero-stat-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-mute);
+  margin-top: 6px;
+  font-family: var(--font-mono);
+}
+.roster-hero-stat-delta {
+  font-size: .7rem;
+  color: var(--text-mute);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* Roster promotion card */
+.roster-promo-card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--rb-primary);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin: 16px 0;
+}
+.roster-promo-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.roster-promo-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.roster-promo-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* Worker table */
+.worker-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+  margin: 8px 0 16px;
+}
+.worker-table th {
+  background: var(--bg-elev-3);
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.worker-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(48, 54, 61, .4);
+  vertical-align: middle;
+}
+.worker-table tbody tr:hover { background: var(--bg-elev-2); }
+.worker-table .id { font-family: var(--font-mono); color: var(--text-mute); font-size: .75rem; }
+.worker-table .name { font-weight: 600; color: var(--text); }
+.worker-table .real { color: var(--text-dim); font-size: .78rem; }
+.worker-table .stat { font-family: var(--font-mono); text-align: center; font-weight: 600; }
+.worker-table .stat.high { color: var(--success); }
+.worker-table .stat.mid { color: var(--accent-warm); }
+.worker-table .stat.low { color: var(--text-mute); }
+.worker-table .bio { color: var(--text-dim); font-size: .75rem; line-height: 1.4; max-width: 250px; }
+
+/* Brand section header */
+.brand-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 10px;
+  padding: 10px 16px;
+  background: var(--bg-elev-2);
+  border-radius: var(--radius);
+  border-left: 3px solid;
+}
+.brand-section-header.doragon { border-left-color: var(--rb-primary); }
+.brand-section-header.fenikkusu { border-left-color: var(--rb-tertiary); }
+.brand-section-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  font-weight: 700;
+}
+.brand-section-header .brand-count {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--text-mute);
+  margin-left: auto;
+}
+
+/* Push tier label */
+.push-tier-label {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-mute);
+  margin: 14px 0 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Contract summary table */
+.contract-table th { font-size: .72rem; }
+.contract-table td { font-size: .8rem; }
+
+/* Fictional disclaimer */
+.fictional-disclaimer {
+  background: rgba(88, 166, 255, .06);
+  border: 1px solid rgba(88, 166, 255, .2);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+.fictional-disclaimer strong { color: var(--text); }
+
 /* ---------- Print stylesheet ---------- */
 @media print {
   .wiki-header, .wiki-sidebar, .back-to-top, .search-results,
@@ -2221,6 +2425,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
     <a href="#news">News</a>
     <a href="#sitemap">Sitemap</a>
     <a href="#dlc">★ DLC</a>
+    <a href="#rosters">Rosters</a>
     <a href="#github">GitHub</a>
     <a href="#overview">Wiki: Overview</a>
     <a href="#lore">Wiki: Lore</a>
@@ -2306,6 +2511,13 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       </ul>
     </div>
     <div class="sidebar-group">
+      <h5>★ Worker Rosters ★</h5>
+      <ul>
+        <li><a href="#rosters" class="sub">Roster Overview</a></li>
+        <li><a href="#raibarazu-roster" class="sub">RAIBARAZU (30 workers)</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-group">
       <h5>Titles &amp; Brands</h5>
       <ul>
         <li><a href="#aegis-league" class="sub">AEGIS LEAGUE</a></li>
@@ -2353,7 +2565,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <div class="portal-sub">A World at War! · Internal Knowledge System</div>
         </div>
         <div class="portal-meta">
-          <strong>SYSTEM:</strong> v0.9.5 (BETA)<br>
+          <strong>SYSTEM:</strong> v0.9.6 (BETA)<br>
           <strong>SCHEMA:</strong> v121<br>
           <strong>CANON DATE:</strong> 2025-01-01<br>
           <strong>BUILD:</strong> <span id="buildId">offline-single-file</span><br>
@@ -2420,7 +2632,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="portal-kpi"><div class="kpi-num">1,334</div><div class="kpi-label">Match Gimmicks</div><div class="kpi-delta">across 20 categories + 55 themes</div></div>
         <div class="portal-kpi"><div class="kpi-num">101</div><div class="kpi-label">TV Networks</div><div class="kpi-delta" style="color:var(--success);">✓ no longer empty</div></div>
         <div class="portal-kpi"><div class="kpi-num">5,805</div><div class="kpi-label">Total Titles</div><div class="kpi-delta">documented in Excel</div></div>
-        <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--warning);">⚠ BETA — needs roster</div></div>
+        <div class="portal-kpi" style="--kpi-color: var(--rb-tertiary);"><div class="kpi-num">30</div><div class="kpi-label">Workers</div><div class="kpi-delta" style="color:var(--rb-tertiary);">★ v0.9.6 · RAIBARAZU roster ready</div></div>
         <div class="portal-kpi" style="--kpi-color: var(--accent);"><div class="kpi-num">★</div><div class="kpi-label">GitHub Repo</div><div class="kpi-delta" style="color:var(--accent);"><a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener" style="color:var(--accent);">ModzProd/ModzVerseSystem</a></div></div>
         <div class="portal-kpi"><div class="kpi-num">0</div><div class="kpi-label">External Deps</div><div class="kpi-delta" style="color:var(--success);">✓ Fully offline</div></div>
       </div>
@@ -2467,7 +2679,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
             <li><span class="label">Venue packs</span><span class="value ok">18 PACKS · 36,000 venues</span></li>
             <li><span class="label">DLC databases</span><span class="value ok">87 FILES · 1,334 match gimmicks · 101 networks</span></li>
             <li><span class="label">Excel spreadsheets</span><span class="value ok">4 FILES · 5,000 promos · 5,805 titles · 12,000 venues</span></li>
-            <li><span class="label">Worker roster</span><span class="value warn">EMPTY (BETA)</span></li>
+            <li><span class="label">Worker roster</span><span class="value ok">30 workers (RAIBARAZU) ✓</span></li>
             <li><span class="label">Match gimmicks</span><span class="value ok">✓ 1,334 (in DLC)</span></li>
             <li><span class="label">TV Networks</span><span class="value ok">✓ 101 (in DLC)</span></li>
             <li><span class="label">AEGIS LEAGUE</span><span class="value warn">VACANT</span></li>
@@ -2590,6 +2802,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       </div>
 
       <div class="news-item success">
+        <div class="news-head"><span class="news-tag">RELEASE</span><span>2025-01-01 · RAIBARAZU roster</span></div>
+        <div class="news-body">The first complete worker roster has been generated for <strong>RAIBARAZU</strong> — 30 fully fictional workers (15 Doragon + 15 Fenikkusu) with 30 contracts, ready to load via SQL. The roster includes 4 main eventers (Ryūga the Apex, Kuroda the Iron Fist, The Crimson Dragon, Suzaku the Phoenix), 8 upper midcarders, 9 midcarders, 6 lower midcarders, and 3 enhancement talents. All workers are male, Japanese, Tokyo-based, Pure Wrestling style. Available at <code>DLC/Rosters/RAIBARAZU_roster.sql</code>. See <a href="#rosters">Worker Rosters</a>.</div>
+      </div>
+
+      <div class="news-item success">
         <div class="news-head"><span class="news-tag">RELEASE · DLC</span><span>2025-01-01 · 87 DLC databases</span></div>
         <div class="news-body">The ModzVerse project has released <strong>87 filtered database packs</strong> into the repository's <code>DLC/</code> folder. The release includes <strong>75 MatchGimmicks databases</strong> (1,334 match gimmicks total, organized into 20 aggregated category packs + 55 specific theme packs of 6 gimmicks each — covering deathmatch, supernatural, cultural, vehicle, structure, horror, pop culture, sports, and bizarre themes) and <strong>12 TVNetworks databases</strong> (101 TV networks filtered by continent, size, and coverage range). Each DLC database is a complete, self-contained SQLite file with all 78 tables from the main ModzVerse.db — only the filtered table differs. See <a href="#dlc-matchgimmicks">Match Gimmicks DLC</a> and <a href="#dlc-tvnetworks">TV Networks DLC</a>.</div>
       </div>
@@ -2613,6 +2830,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.6 · Worker Rosters section</span></div>
+        <div class="news-body">Added a new <strong>Worker Rosters</strong> section documenting the RAIBARAZU roster — 30 fictional workers across Doragon (15) and Fenikkusu (15) brands, with full worker tables by push tier, contract summary, how-to-load instructions, file tree, and the 'Doragon-Fenikkusu Dream Match' lore callout. Updated portal KPIs (workers 0→30), System Status (worker roster now ✓), BETA Status roadmap (workers + contracts moved from 0% to 20%), top nav, sidebar, sitemap, A-Z index, footer, and version to v0.9.6.</div>
+      </div>
+
       <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.5 · DLC &amp; Excel release</span></div>
         <div class="news-body">Added a new <strong>DLC &amp; Excel Resources</strong> section documenting 87 filtered database packs and 4 reference spreadsheets now available in the GitHub repository. The DLC content includes <strong>75 MatchGimmicks databases</strong> (1,334 match gimmicks across 20 aggregated categories + 55 specific themes of 6 gimmicks each) and <strong>12 TVNetworks databases</strong> (101 TV networks across 6 continents + 3 size tiers + 3 coverage ranges). The Excel content includes <strong>ModzVerse_Promotions.xlsx</strong> (5,000 promotions), <strong>ModzVerse_All_Titles.xlsx</strong> (5,805 titles with 18 columns), <strong>ModzVerse_All_Promotions_AI_Prompts.xlsx</strong> (4,530 promotions with original + improved AI logo prompts), and <strong>ModzVerse_All_Venues_AI_Prompts.xlsx</strong> (12,000 venues with original + improved AI image prompts). The BETA Status roadmap has been updated — match gimmicks and TV networks are no longer empty. See <a href="#dlc">DLC &amp; Excel Resources</a>.</div>
@@ -2746,6 +2968,13 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         </ul>
       </div>
       <div class="sitemap-group">
+        <h4>Worker Rosters ★ (30 workers)</h4>
+        <ul>
+          <li><a href="#rosters">Roster Overview</a></li>
+          <li><a href="#raibarazu-roster">RAIBARAZU Roster (30 workers · 2 brands)</a></li>
+        </ul>
+      </div>
+      <div class="sitemap-group">
         <h4>Gimmicks Catalog</h4>
         <ul>
           <li><a href="#gimmicks">All 17 Gimmicks</a></li>
@@ -2868,7 +3097,9 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
       <div class="az-letter">R</div>
       <div class="az-entries">
         <a href="#promo-raibarazu">RAIBARAZU <small>promotion #4 · Japan · Tokyo</small></a>
+        <a href="#raibarazu-roster">RAIBARAZU Roster <small>★ v0.9.6 · 30 workers · 2 brands</small></a>
         <a href="#roadmap">Roadmap to v1.0 <small>BETA roadmap</small></a>
+        <a href="#rosters">Rosters (Worker) <small>★ v0.9.6 · 30 fictional workers</small></a>
         <a href="#events">Road to Autumn Blood Moon <small>event · RB · tour · Sep</small></a>
         <a href="#events">Road to Battle of Rivals <small>event · RB · tour · annual</small></a>
         <a href="#events">Road to Fall of Honor <small>event · RB · tour · Oct</small></a>
@@ -5549,6 +5780,242 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
   <div class="section-divider"></div>
 
   <!-- ============================================================
+       SECTION: WORKER ROSTERS
+       ============================================================ -->
+  <section id="rosters">
+    <div class="roster-hero">
+      <span class="roster-hero-eyebrow">★ NEW · v0.9.6 — Worker Rosters</span>
+      <h1>WORKER ROSTERS</h1>
+      <div class="roster-hero-sub">The human layer of ModzVerse — fully fictional characters, ready to load</div>
+
+      <div class="roster-hero-stats">
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">1</div>
+          <div class="roster-hero-stat-label">Roster Generated</div>
+          <div class="roster-hero-stat-delta">RAIBARAZU (of 6 promotions)</div>
+        </div>
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">30</div>
+          <div class="roster-hero-stat-label">Workers</div>
+          <div class="roster-hero-stat-delta">15 Doragon + 15 Fenikkusu</div>
+        </div>
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">30</div>
+          <div class="roster-hero-stat-label">Contracts</div>
+          <div class="roster-hero-stat-delta">Written + PPA</div>
+        </div>
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">76.4</div>
+          <div class="roster-hero-stat-label">Avg Wrestling Skill</div>
+          <div class="roster-hero-stat-delta">out of 100</div>
+        </div>
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">18 / 12</div>
+          <div class="roster-hero-stat-label">Faces / Heels</div>
+          <div class="roster-hero-stat-delta">60% face / 40% heel</div>
+        </div>
+        <div class="roster-hero-stat">
+          <div class="roster-hero-stat-num">29.1</div>
+          <div class="roster-hero-stat-label">Avg Age</div>
+          <div class="roster-hero-stat-delta">years</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The ModzVerse project has generated its first complete worker roster for <strong>RAIBARAZU</strong> — the flagship promotion. This is the biggest remaining BETA gap being addressed: the world's structural foundation (promotions, events, titles, venues, match gimmicks, TV networks) is now complete, and the human layer is beginning to take shape. The roster file is available as a downloadable SQL file in the repository's <code>DLC/Rosters/</code> folder, ready to load into any ModzVerse save database.</p>
+
+    <div class="fictional-disclaimer">
+      <strong>⚠ Fictional Characters Disclaimer:</strong> All worker names and characters in this roster are <strong>entirely fictional</strong>. Any resemblance to real-world professional wrestlers — living or dead — is purely coincidental. The ring names, real names, biographies, and personality traits are original creations for the ModzVerse fictional world and do not represent or reference any actual person.
+    </div>
+
+    <h2 id="raibarazu-roster">RAIBARAZU Roster (30 workers)</h2>
+
+    <div class="roster-promo-card">
+      <div class="roster-promo-card-head">
+        <div class="roster-promo-name">RAIBARAZU · Pure Wrestling · Japan/Tokyo</div>
+        <div class="roster-promo-badges">
+          <span class="repo-badge public">30 workers</span>
+          <span class="repo-badge v094">2 brands</span>
+          <span class="repo-badge live">SQL file ready</span>
+        </div>
+      </div>
+
+      <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:14px;">RAIBARAZU is the largest promotion in ModzVerse (Asia pop 60, founded 1950, Pure Wrestling style, touring company with steroid testing). The roster is split into two brands: <strong style="color:var(--rb-primary);">Doragon</strong> (A-brand, the flagship) and <strong style="color:var(--rb-tertiary);">Fenikkusu</strong> (B-brand, developmental). Worker IDs 1001–1030 are reserved for this roster.</p>
+
+      <!-- DORAGON BRAND -->
+      <div class="brand-section-header doragon">
+        <h4>竜 Doragon (A-Brand) — 15 workers</h4>
+        <span class="brand-count">Main Event: 4 · Upper Mid: 5 · Midcard: 4 · Lower Mid: 2</span>
+      </div>
+
+      <div class="push-tier-label">Main Event (4 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1001</td><td class="name">Ryūga the Apex</td><td class="real">Akira Tanahashi</td><td><span class="badge face">Face</span></td><td class="stat high">95</td><td class="stat high">92</td><td class="stat">32</td><td class="bio">The ace of Doragon. A generational talent with peerless ring work, considered the soul of the RAIBARAZU brand.</td></tr>
+          <tr><td class="id">1002</td><td class="name">Kuroda the Iron Fist</td><td class="real">Hiroshi Kuroda</td><td><span class="badge heel">Heel</span></td><td class="stat high">93</td><td class="stat high">88</td><td class="stat">38</td><td class="bio">The veteran ace of Doragon's heel side. A brutal striker with old-school mentality who has terrorized the roster for a decade.</td></tr>
+          <tr><td class="id">1003</td><td class="name">The Crimson Dragon</td><td class="real">Daisuke Yamamoto</td><td><span class="badge heel">Heel</span></td><td class="stat high">90</td><td class="stat high">85</td><td class="stat">34</td><td class="bio">A towering behemoth who dominates opponents with raw power. His arrival signaled a new era of destruction.</td></tr>
+          <tr><td class="id">1004</td><td class="name">Suzaku the Phoenix</td><td class="real">Daichi Suzaku</td><td><span class="badge face">Face</span></td><td class="stat high">92</td><td class="stat high">90</td><td class="stat">33</td><td class="bio">The charismatic ace. Blends world-class wrestling with natural star power. The crowd's undisputed favorite.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Upper Midcard (5 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1005</td><td class="name">Tatsuya Riverstone</td><td class="real">Tatsuya Ishikawa</td><td><span class="badge face">Face</span></td><td class="stat mid">85</td><td class="stat mid">75</td><td class="stat">29</td><td class="bio">A technical specialist who can carry any match to a strong rating. The quiet backbone of the Doragon midcard.</td></tr>
+          <tr><td class="id">1006</td><td class="name">Shibata the Striker</td><td class="real">Katsuya Mori</td><td><span class="badge face">Face</span></td><td class="stat mid">87</td><td class="stat mid">72</td><td class="stat">31</td><td class="bio">A hard-hitting fighter who embodies the spirit of Strong Style. Known for his devastating elbow strikes.</td></tr>
+          <tr><td class="id">1007</td><td class="name">The Honma Cobra</td><td class="real">Mitsuharu Honma</td><td><span class="badge heel">Heel</span></td><td class="stat mid">82</td><td class="stat mid">78</td><td class="stat">35</td><td class="bio">A cocky veteran who backs up his talk with solid ring work. Famous for his signature Cobra Clutch submission.</td></tr>
+          <tr><td class="id">1008</td><td class="name">Absolute Ryo</td><td class="real">Ryo Yoshida</td><td><span class="badge heel">Heel</span></td><td class="stat mid">84</td><td class="stat mid">70</td><td class="stat">36</td><td class="bio">A badass striker who doesn't need to talk — his fists do the talking.</td></tr>
+          <tr><td class="id">1009</td><td class="name">Golden Kenji</td><td class="real">Kenji Yamada</td><td><span class="badge face">Face</span></td><td class="stat mid">83</td><td class="stat mid">72</td><td class="stat">27</td><td class="bio">A wholesome babyface who connects with the crowd through pure workrate. The eternal underdog of Doragon.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Midcard (4 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1010</td><td class="name">Thunder Suzuki</td><td class="real">Daisuke Suzuki</td><td><span class="badge face">Face</span></td><td class="stat mid">78</td><td class="stat low">60</td><td class="stat">28</td><td class="bio">A reliable midcard hand who always delivers solid matches. The workhorse of Doragon house shows.</td></tr>
+          <tr><td class="id">1011</td><td class="name">Shadow Endo</td><td class="real">Tomoaki Endo</td><td><span class="badge heel">Heel</span></td><td class="stat mid">76</td><td class="stat low">58</td><td class="stat">30</td><td class="bio">A brooding heel who uses underhanded tactics to win. His signature move is a low blow disguised as a punch.</td></tr>
+          <tr><td class="id">1012</td><td class="name">Kiba the Fang</td><td class="real">Kenta Ishikawa</td><td><span class="badge face">Face</span></td><td class="stat mid">79</td><td class="stat low">55</td><td class="stat">32</td><td class="bio">A tough-as-nails brawler who never backs down from a fight. Known for his biting — both metaphorically and literally.</td></tr>
+          <tr><td class="id">1013</td><td class="name">Zen Takahashi</td><td class="real">Yusuke Takahashi</td><td><span class="badge face">Face</span></td><td class="stat mid">77</td><td class="stat low">58</td><td class="stat">26</td><td class="bio">A young technician with potential to move up the card. Trains under Suzaku the Phoenix.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Lower Midcard (2 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1014</td><td class="name">Silent Goto</td><td class="real">Shoichi Goto</td><td><span class="badge heel">Heel</span></td><td class="stat low">70</td><td class="stat low">45</td><td class="stat">33</td><td class="bio">A silent enforcer who does the bidding of the main event heels. Speaks only with his offense.</td></tr>
+          <tr><td class="id">1015</td><td class="name">Kohei Hase</td><td class="real">Kohei Hase</td><td><span class="badge face">Face</span></td><td class="stat low">72</td><td class="stat low">48</td><td class="stat">24</td><td class="bio">A promising young lion working his way up the Doragon roster. The future of Pure Wrestling.</td></tr>
+        </tbody>
+      </table>
+
+      <!-- FENIKKUSU BRAND -->
+      <div class="brand-section-header fenikkusu">
+        <h4>不死鳥 Fenikkusu (B-Brand) — 15 workers</h4>
+        <span class="brand-count">Upper Mid: 3 · Midcard: 5 · Lower Mid: 4 · Enhancement: 3</span>
+      </div>
+
+      <div class="push-tier-label">Upper Midcard (3 workers — the "almost ready for call-up" group)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1016</td><td class="name">Yuya Ueno</td><td class="real">Yuya Ueno</td><td><span class="badge face">Face</span></td><td class="stat mid">84</td><td class="stat mid">68</td><td class="stat">28</td><td class="bio">The ace of Fenikkusu. Rumored to be next in line for a Doragon call-up.</td></tr>
+          <tr><td class="id">1017</td><td class="name">Eternal Shimizu</td><td class="real">Hikaru Shimizu</td><td><span class="badge heel">Heel</span></td><td class="stat mid">82</td><td class="stat mid">65</td><td class="stat">30</td><td class="bio">A dominant heel on the B-brand who's outgrown his competition. Needs a tougher challenge.</td></tr>
+          <tr><td class="id">1018</td><td class="name">Asahi Nakajima</td><td class="real">Asahi Nakajima</td><td><span class="badge face">Face</span></td><td class="stat mid">81</td><td class="stat mid">62</td><td class="stat">25</td><td class="bio">A high-flying technician who's the fan favorite of Fenikkusu. Known for his springboard offense.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Midcard (5 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1019</td><td class="name">Storm Nishimura</td><td class="real">Riku Nishimura</td><td><span class="badge face">Face</span></td><td class="stat mid">75</td><td class="stat low">55</td><td class="stat">27</td><td class="bio">A solid midcarder who main-events Fenikkusu house shows. Reliable and consistent.</td></tr>
+          <tr><td class="id">1020</td><td class="name">Iron Fukuda</td><td class="real">Takeshi Fukuda</td><td><span class="badge heel">Heel</span></td><td class="stat mid">74</td><td class="stat low">52</td><td class="stat">31</td><td class="bio">A rough brawler who uses shortcuts and weapons to win. The gatekeeper of Fenikkusu's heel side.</td></tr>
+          <tr><td class="id">1021</td><td class="name">Sora Maeda</td><td class="real">Sora Maeda</td><td><span class="badge face">Face</span></td><td class="stat mid">76</td><td class="stat low">55</td><td class="stat">24</td><td class="bio">A young high-flyer who's building a following on Fenikkusu. The future of the B-brand's aerial division.</td></tr>
+          <tr><td class="id">1022</td><td class="name">Savage Fujita</td><td class="real">Masato Fujita</td><td><span class="badge heel">Heel</span></td><td class="stat mid">73</td><td class="stat low">50</td><td class="stat">29</td><td class="bio">A wild, unpredictable brawler who lives up to his name. Banned from 3 venues for crowd violence.</td></tr>
+          <tr><td class="id">1023</td><td class="name">Ren Okada</td><td class="real">Ren Okada</td><td><span class="badge face">Face</span></td><td class="stat mid">75</td><td class="stat low">52</td><td class="stat">26</td><td class="bio">A clean-cut babyface who represents the future of Fenikkusu. The total package.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Lower Midcard (4 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1024</td><td class="name">Kaito Abe</td><td class="real">Kaito Abe</td><td><span class="badge face">Face</span></td><td class="stat low">68</td><td class="stat low">42</td><td class="stat">23</td><td class="bio">A young lion still learning the ropes. Trains under Yuya Ueno.</td></tr>
+          <tr><td class="id">1025</td><td class="name">Blade Mori</td><td class="real">Akira Mori</td><td><span class="badge heel">Heel</span></td><td class="stat low">67</td><td class="stat low">40</td><td class="stat">32</td><td class="bio">A veteran gatekeeper who tests the young lions. Has been with RAIBARAZU since the brand split.</td></tr>
+          <tr><td class="id">1026</td><td class="name">Daiki Ikeda</td><td class="real">Daiki Ikeda</td><td><span class="badge face">Face</span></td><td class="stat low">69</td><td class="stat low">44</td><td class="stat">25</td><td class="bio">A versatile worker who can fill any role on the card. The utility player of Fenikkusu.</td></tr>
+          <tr><td class="id">1027</td><td class="name">Wolf Hashimoto</td><td class="real">Yuji Hashimoto</td><td><span class="badge heel">Heel</span></td><td class="stat low">65</td><td class="stat low">38</td><td class="stat">35</td><td class="bio">A monster heel who squashes enhancement talent. His matches rarely last more than 5 minutes.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="push-tier-label">Enhancement Talent (3 workers)</div>
+      <table class="worker-table">
+        <thead><tr><th>ID</th><th>Ring Name</th><th>Real Name</th><th>Disp</th><th>Wrestling</th><th>Star Power</th><th>Age</th><th>Bio</th></tr></thead>
+        <tbody>
+          <tr><td class="id">1028</td><td class="name">Haruto Kimura</td><td class="real">Haruto Kimura</td><td><span class="badge face">Face</span></td><td class="stat low">55</td><td class="stat low">30</td><td class="stat">22</td><td class="bio">A young enhancement talent who's just starting his career. Pays his dues by making stars look good.</td></tr>
+          <tr><td class="id">1029</td><td class="name">Hayato Hayashi</td><td class="real">Hayato Hayashi</td><td><span class="badge face">Face</span></td><td class="stat low">52</td><td class="stat low">28</td><td class="stat">21</td><td class="bio">A rookie who's paying his dues in the enhancement role. The lowest man on the Fenikkusu totem pole.</td></tr>
+          <tr><td class="id">1030</td><td class="name">Satoshi Sakurai</td><td class="real">Satoshi Sakurai</td><td><span class="badge heel">Heel</span></td><td class="stat low">54</td><td class="stat low">32</td><td class="stat">28</td><td class="bio">A jobber heel who makes faces look good. Has never won a match on a RAIBARAZU supershow.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Contract Summary</h3>
+    <table class="wiki-table contract-table">
+      <thead>
+        <tr><th>Push Tier</th><th>Contract Type</th><th>Monthly Value</th><th>Max Apps/Month</th><th>Merch %</th><th>Signing Bonus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Main Event (0)</td><td>Written</td><td>$12,000–15,000</td><td>8</td><td>15%</td><td>$50,000</td></tr>
+        <tr><td>Upper Midcard (1)</td><td>Written</td><td>$6,400–8,000</td><td>10</td><td>10%</td><td>$20,000</td></tr>
+        <tr><td>Midcard (2)</td><td>Written</td><td>$3,200–4,000</td><td>12</td><td>8%</td><td>$5,000</td></tr>
+        <tr><td>Lower Midcard (3)</td><td>PPA</td><td>$1,200–1,500</td><td>15</td><td>5%</td><td>$0</td></tr>
+        <tr><td>Enhancement (4)</td><td>PPA</td><td>$400–500</td><td>20</td><td>3%</td><td>$0</td></tr>
+      </tbody>
+    </table>
+
+    <h3>How to Load the Roster</h3>
+    <div class="cmd-box">
+      <div class="cmd-box-label">Load the RAIBARAZU roster into your save database</div>
+      <div class="cmd-box-cmd">
+        <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/RAIBARAZU_roster.sql<br><br>
+        <span class="comment"># Or open in DB Browser for SQLite → Execute SQL tab → paste the file contents</span>
+      </div>
+    </div>
+    <p>The SQL file contains 30 <code>INSERT INTO workers</code> statements (149 columns each) and 30 <code>INSERT INTO contracts</code> statements. Worker IDs 1001–1030 are reserved and will not conflict with any existing workers (the main DB currently has 0 workers). After loading, the workers will appear in-game under RAIBARAZU, split between Doragon and Fenikkusu brands via the <code>contracts.brandID</code> field.</p>
+
+    <h3>Roster Files in the Repository</h3>
+    <div class="file-tree">
+      <div class="file-tree-row header"><div></div><div>Path</div><div>Size</div></div>
+      <div class="file-tree-row">
+        <div class="file-tree-icon">📁</div>
+        <div class="file-tree-name"><code>DLC/Rosters/</code></div>
+        <div class="file-tree-size">—</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📄</div>
+        <div class="file-tree-name"><code>RAIBARAZU_roster.sql</code> <span style="color:var(--text-mute);">— 30 workers + 30 contracts, ready to execute</span></div>
+        <div class="file-tree-size">128 KB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📋</div>
+        <div class="file-tree-name"><code>RAIBARAZU_roster_README.md</code> <span style="color:var(--text-mute);">— full roster documentation with tables</span></div>
+        <div class="file-tree-size">8 KB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📋</div>
+        <div class="file-tree-name"><code>README.md</code> <span style="color:var(--text-mute);">— roster folder documentation with ID ranges</span></div>
+        <div class="file-tree-size">2 KB</div>
+      </div>
+    </div>
+
+    <div class="callout lore">
+      <div class="callout-title">★ The Doragon-Fenikkusu Dream Match</div>
+      The single most anticipated match in the ModzVerse is the Doragon ace versus the Fenikkusu ace — the main event of Battle of Rivals. With the roster now populated, the dream match is <strong>Ryūga the Apex</strong> (Doragon's #1 face, wrestling 95, star power 92) versus <strong>Yuya Ueno</strong> (Fenikkusu's #1 face, wrestling 84, star power 68). But there's also the heel dream match: <strong>Kuroda the Iron Fist</strong> (Doragon, wrestling 93) versus <strong>Eternal Shimizu</strong> (Fenikkusu, wrestling 82). Both matches would main-event Battle of Rivals — the question is which one the player books first.
+    </div>
+
+    <h3>Remaining Rosters (5 promotions still TBD)</h3>
+    <table class="wiki-table">
+      <thead>
+        <tr><th>Promotion</th><th>Style</th><th>Target Roster Size</th><th>ID Range</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>RAIBARAZU</strong></td><td>Pure Wrestling</td><td>30</td><td>1001–1030</td><td><span class="badge face">✓ Done</span></td></tr>
+        <tr><td>Chicago Show</td><td>Sports Entertainment</td><td>20–30</td><td>2001–2030</td><td><span class="badge">TBD</span></td></tr>
+        <tr><td>Lucha Bellas</td><td>Lucha Libre</td><td>15–25</td><td>3001–3025</td><td><span class="badge">TBD</span></td></tr>
+        <tr><td>Lucha MEX</td><td>Traditional</td><td>20–30</td><td>4001–4030</td><td><span class="badge">TBD</span></td></tr>
+        <tr><td>Osaka Joshi</td><td>Kings Road</td><td>15–25</td><td>5001–5025</td><td><span class="badge">TBD</span></td></tr>
+        <tr><td>Valkyrie Project</td><td>Kings Road</td><td>12–20</td><td>6001–6020</td><td><span class="badge">TBD</span></td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text-dim);">Estimated total across all 6 promotions: <strong>112–160 workers</strong>. The RAIBARAZU roster accounts for ~20% of the total target. The remaining 5 rosters will be generated in subsequent updates, each with style-appropriate fictional workers (e.g., luchadores for Lucha Bellas, high-entertainment characters for Chicago Show, women's joshi wrestlers for Osaka Joshi and Valkyrie Project).</p>
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
        SECTION: GITHUB & COMMUNITY
        ============================================================ -->
   <section id="github">
@@ -5580,7 +6047,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         </div>
         <div class="github-hero-stat">
           <div class="github-hero-stat-label">Current Version</div>
-          <div class="github-hero-stat-value">v0.9.5 (this build)</div>
+          <div class="github-hero-stat-value">v0.9.6 (this build)</div>
         </div>
       </div>
 
@@ -5604,7 +6071,7 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
         <div class="repo-card-badges">
           <span class="repo-badge public">● Public</span>
           <span class="repo-badge live">● Live (GitHub Pages)</span>
-          <span class="repo-badge v094">v0.9.5</span>
+          <span class="repo-badge v094">v0.9.6</span>
         </div>
       </div>
       <p style="font-size:.92rem;color:var(--text-dim);margin:0 0 12px;">A fully offline, single-file HTML knowledge system for the ModzVerse pro wrestling world database for Pro Wrestling Sim. 362 KB · 5,127 lines · 0 external dependencies.</p>
@@ -5937,13 +6404,14 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
           <li>★ 75 Match Gimmicks DLC packs (1,334 gimmicks) <span class="pct">100% · v0.9.5</span></li>
           <li>★ 12 TV Networks DLC packs (101 networks) <span class="pct">100% · v0.9.5</span></li>
           <li>★ 4 Excel reference spreadsheets (5,000 promos · 5,805 titles · 12,000 venues · 33,060 AI prompts) <span class="pct">100% · v0.9.5</span></li>
+          <li>★ RAIBARAZU worker roster (30 workers + 30 contracts) <span class="pct">100% · v0.9.6</span></li>
         </ul>
       </div>
       <div class="roadmap-col todo">
         <h4>○ To Do (BETA Gaps)</h4>
         <ul class="roadmap-list">
-          <li>Workers (0 of ~150-200 needed) <span class="pct">0%</span></li>
-          <li>Contracts (0 of ~150-200 needed) <span class="pct">0%</span></li>
+          <li>Workers (30 of ~150-200 needed — RAIBARAZU done) <span class="pct" style="color:var(--success);">✓ 20%</span></li>
+          <li>Contracts (30 of ~150-200 needed — RAIBARAZU done) <span class="pct" style="color:var(--success);">✓ 20%</span></li>
           <li>Match gimmicks (DONE — 1,334 in DLC) <span class="pct" style="color:var(--success);">✓ 5000%</span></li>
           <li>Match stories (0 of ~50-100 needed) <span class="pct">0%</span></li>
           <li>Angle templates (0 of ~30-50 needed) <span class="pct">0%</span></li>
@@ -6226,11 +6694,11 @@ section[id], article[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
      FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.5 · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v0.9.6 · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
-  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries · 17 sections · 87 DLC DBs · 4 Excel spreadsheets · 33,060 AI prompts</p>
+  <p>Fully offline single-file knowledge system · 0 external dependencies · 0 web fonts · 0 JS libraries · 18 sections · 87 DLC DBs · 4 Excel spreadsheets · 33,060 AI prompts · 30 workers</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v0.9.5 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
+  <p>Maintained by the ModzVerse project · Build v0.9.6 · Last updated: <span id="lastUpdated"></span> · <span id="buildHash">offline</span></p>
 </footer>
 
 <!-- ============================================================
