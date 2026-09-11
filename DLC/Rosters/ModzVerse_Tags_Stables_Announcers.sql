@@ -9,144 +9,144 @@
 -- ============================================================
 
 -- Tag Team #201: The Windy City Wrecking Crew (promotionID=1)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (201, 'The Windy City Wrecking Crew', 2001, 2003, 1, 1, 'The dream team of Chicago Show''s top two faces. Max Thunderford and Bronco Billiston — the franchise player and the fan favorite. When they team up, Chicago erupts.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (201, 2003, 50.0, 50.0, 2001, 1);
 
 -- Tag Team #202: The Boardroom (promotionID=1)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (202, 'The Boardroom', 2002, 2010, 1, 1, 'The corporate heel tag team. Vincent Viceroy and Corporate Cole — an evil millionaire and his legal counsel. They win through loopholes and bribery.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (202, 2010, 50.0, 50.0, 2002, 1);
 
 -- Tag Team #203: Diamond & Ravencroft (promotionID=1)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (203, 'Diamond & Ravencroft', 2004, 2005, 1, 1, 'The women''s tag team. Roxy Ravencroft (heel queen) and Diamond Diane (cocky face) — rivals who team up against common enemies. Tension guaranteed.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (203, 2004, 2005, 50.0, 'Diamond & Ravencroft', 1);
 
 -- Tag Team #204: The Entertainers (promotionID=1)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (204, 'The Entertainers', 2006, 2013, 1, 1, 'The midcard face team. The Showman Shelton and Flash Freddy — two charismatic entertainers who prioritize style. Crowd favorites.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (204, 2013, 50.0, 50.0, 2006, 1);
 
 -- Tag Team #205: Hellfire & Rampage (promotionID=1)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (205, 'Hellfire & Rampage', 2007, 2012, 1, 1, 'The midcard heel team. Hank Hellburner and Rex Rampage — a badass striker and a powerhouse brawler. Pure destruction.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (205, 2012, 50.0, 50.0, 2007, 1);
 
 -- Tag Team #206: Las Mariposas Estelares (promotionID=2)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (206, 'Las Mariposas Estelares', 3002, 3004, 2, 1, 'The star butterflies. Mariposa Dorada and Estrella Solitaria — two masked technicas with breathtaking aerial offense. The fan favorites.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (206, 3004, 50.0, 50.0, 3002, 1);
 
 -- Tag Team #207: El Trono Escarlata (promotionID=2)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (207, 'El Trono Escarlata', 3001, 3005, 2, 1, 'The Scarlet Throne. La Reina Escarlata and La Sombra Cruel — the queen and her enforcer. The dominant ruda team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (207, 3005, 50.0, 50.0, 3001, 1);
 
 -- Tag Team #208: Las Bestias (promotionID=2)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (208, 'Las Bestias', 3003, 3007, 2, 1, 'The Beasts. Valkiria Negra and Gata Salvaje — two terrifying powerhouses. The most intimidating tag team in Lucha Bellas.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (208, 3007, 50.0, 50.0, 3003, 1);
 
 -- Tag Team #209: Rayo y Águila (promotionID=2)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (209, 'Rayo y Águila', 3006, 3010, 2, 1, 'Lightning and Eagle. Rayo de Luna and Águila Azul — two masked high-flyers who light up the arena. The future of the tag division.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (209, 3010, 50.0, 50.0, 3006, 1);
 
 -- Tag Team #210: Los Honorables (promotionID=3)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (210, 'Los Honorables', 4001, 4003, 3, 1, 'The Honorable Ones. El Toro Bravo and Caballero Blanco — the ace and the white knight. The most respected tag team in Lucha MEX.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (210, 4003, 50.0, 50.0, 4001, 1);
 
 -- Tag Team #211: Los Malditos (promotionID=3)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (211, 'Los Malditos', 4002, 4004, 3, 1, 'The Damned. El Diablo Rojo and La Pantera Negra — two masked heels who terrorize the roster. The most feared team in Mexico.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (211, 4004, 50.0, 50.0, 4002, 1);
 
 -- Tag Team #212: Los Rayos (promotionID=3)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (212, 'Los Rayos', 4005, 4012, 3, 1, 'The Lightnings. Rayo Mexicano and Relámpago Verde — two masked high-flyers with lightning-fast offense. A spectacular team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (212, 4012, 50.0, 50.0, 4005, 1);
 
 -- Tag Team #213: Los Verdugos (promotionID=3)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (213, 'Los Verdugos', 4006, 4009, 3, 1, 'The Executioners. El Verdugo and Sombra del Pasado — two veteran heels who outsmart younger opponents. Experience over youth.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (213, 4009, 50.0, 50.0, 4006, 1);
 
 -- Tag Team #214: Las Centinelas (promotionID=3)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (214, 'Las Centinelas', 4017, 4018, 3, 1, 'The Sentinels. Doña Destructora and La Centinela — the women''s tag team of Lucha MEX. Powerful and dependable.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (214, 4018, 50.0, 50.0, 4017, 1);
 
 -- Tag Team #215: Ace & Apprentice (promotionID=5)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (215, 'Ace & Apprentice', 5001, 5004, 5, 1, 'The ace and her protégée. Haruka Honjou and Aoi Misaki — the face of the promotion training the future. A mentoring tag team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (215, 5004, 50.0, 50.0, 5001, 1);
 
 -- Tag Team #216: Queen's Guard (promotionID=5)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (216, 'Queen's Guard', 5002, 5007, 5, 1, 'The queen''s enforcers. Miyako Tsujimoto and Reika Shimizu — the regal heel and her cocky lieutenant. A veteran heel duo.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (216, 'Queen's Guard', 5002, 5007, 5, 1, 'The queen''s enforcers. Miyako Tsujimoto and Reika Shimizu — the regal heel and her cocky lieutenant. A veteran heel duo.');
 
 -- Tag Team #217: The Destroyers (promotionID=5)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (217, 'The Destroyers', 5003, 5012, 5, 1, 'The destroyers. Rina Kurosawa and Chihiro Fujita — two powerhouse heels who demolish opponents. The most intimidating team in Osaka Joshi.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (217, 5012, 50.0, 50.0, 5003, 1);
 
 -- Tag Team #218: Sakura Storm (promotionID=5)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (218, 'Sakura Storm', 5006, 5010, 5, 1, 'Cherry Blossom Storm. Sakura Nakamura and Momo Aida — two young faces with bright futures. The high-energy team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (218, 5010, 50.0, 50.0, 5006, 1);
 
 -- Tag Team #219: Sunshine Duo (promotionID=5)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (219, 'Sunshine Duo', 5008, 5011, 5, 1, 'The sunshine team. Hinata Watanabe and Natsuki Endo — two wholesome babyfaces who bring joy to every show.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (219, 5011, 50.0, 50.0, 5008, 1);
 
 -- Tag Team #220: The Shieldmaidens (promotionID=6)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (220, 'The Shieldmaidens', 6001, 6003, 6, 1, 'The chosen warriors. Freya Asagiri and Hikari Tonegawa — the top face and the pure technician. The AEGIS LEAGUE contender team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (220, 6003, 50.0, 50.0, 6001, 1);
 
 -- Tag Team #221: Hammer & Skull (promotionID=6)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (221, 'Hammer & Skull', 6002, 6004, 6, 1, 'The destructive duo. Skull Valkyrie and Mjolnir Mitsuki — two powerhouse heels named after Thor''s weapon. Terrifying.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (221, 6004, 50.0, 50.0, 6002, 1);
 
 -- Tag Team #222: Aurora & Kára (promotionID=6)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (222, 'Aurora & Kára', 6005, 6012, 6, 1, 'The northern lights team. Aurora Asakura and Kára Kanazawa — two bright faces who bring energy to Valkyrie Project shows.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (222, 6012, 50.0, 50.0, 6005, 1);
 
 -- Tag Team #223: Ragnarök (promotionID=6)
-INSERT INTO tagteams (tagteamID, tagteamName, worker1, worker2, promotionID, isActive, description) VALUES (223, 'Ragnarök', 6006, 6009, 6, 1, 'The end of all things. Ragna Shiranui and Brunhilde Bakugo — two destructive heels who bring chaos. The nightmare team.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (223, 6009, 50.0, 50.0, 6006, 1);
 
 -- ============================================================
 -- STABLES (10 stables across 5 promotions)
 -- ============================================================
 
 -- Stable #301: The Viceroy Syndicate (promotionID=1)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (301, 'The Viceroy Syndicate', 1, 2002, 'A corporate heel stable led by Vincent Viceroy. The Syndicate controls Chicago Show through money, influence, and legal manipulation. Members include Corporate Cole (the legal counsel), Mistress Malice (the enforcer), and Rex Rampage (the muscle). Their motto: ''Everything has a price.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (301, 2010, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (301, 2011, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (301, 2012, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (301, 'The Viceroy Syndicate', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2011 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2012 LIMIT 1;
 
 -- Stable #302: The Chicago Heart (promotionID=1)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (302, 'The Chicago Heart', 1, 2001, 'A face stable led by Max Thunderford. The Heart represents the working-class spirit of Chicago — blue-collar wrestlers who fight for the fans. Members include Bronco Billiston (the powerhouse), Diamond Diane (the women''s star), and Flash Freddy (the entertainer). Their motto: ''Chicago fights as one.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (302, 2003, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (302, 2005, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (302, 2013, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (302, 'The Chicago Heart', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2013 LIMIT 1;
 
 -- Stable #303: El Consejo Escarlata (promotionID=2)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (303, 'El Consejo Escarlata', 2, 3001, 'The Scarlet Council — a heel stable led by La Reina Escarlata. The Council rules Lucha Bellas through fear and mask-based psychological warfare. Members include La Sombra Cruel (the enforcer), Valkiria Negra (the monster), and Gata Salvaje (the wild card). Their motto: ''The queen''s word is law.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (303, 3005, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (303, 3003, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (303, 3007, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (303, 'El Consejo Escarlata', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3007 LIMIT 1;
 
 -- Stable #304: Las Técnicas Puras (promotionID=2)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (304, 'Las Técnicas Puras', 2, 3002, 'The Pure Technicas — a face stable led by Mariposa Dorada. The Técnicas represent the spirit and tradition of lucha libre — honor, athleticism, and the sacred mask. Members include Estrella Solitaria, Rayo de Luna, Águila Azul, and Flor de Loto. Their motto: ''The mask is our soul.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (304, 3004, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (304, 3006, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (304, 3010, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (304, 3008, 'Member');
+((304, 'Las Técnicas Puras', 50, 2, '')
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3008 LIMIT 1;
 
 -- Stable #305: La Oscuridad (promotionID=3)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (305, 'La Oscuridad', 3, 4002, 'The Darkness — a heel stable led by El Diablo Rojo. La Oscuridad is a faction of masked heels who use supernatural fear and brutal violence to control Lucha MEX. Members include La Pantera Negra (the mystic), El Verdugo (the executioner), El Alquimista (the chemist), and Sombra del Pasado (the veteran). Their motto: ''In darkness, we rule.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (305, 4004, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (305, 4006, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (305, 4010, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (305, 4009, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (305, 'La Oscuridad', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4009 LIMIT 1;
 
 -- Stable #306: La Tradición (promotionID=3)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (306, 'La Tradición', 3, 4001, 'The Tradition — a face stable led by El Toro Bravo. La Tradición represents the old-school values of Mexican wrestling: honor, respect, and hard work. Members include Caballero Blanco (the knight), Rayo Mexicano (the high-flyer), El Patriota (the patriot), and Relámpago Verde (the young lion). Their motto: ''Tradición nunca muere.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (306, 4003, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (306, 4005, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (306, 4008, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (306, 4012, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (306, 'La Tradición', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4012 LIMIT 1;
 
 -- Stable #307: The Royal Court (promotionID=5)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (307, 'The Royal Court', 5, 5002, 'A heel stable led by Miyako Tsujimoto. The Royal Court is a faction of regal, powerful heels who believe they are the aristocracy of Osaka Joshi. Members include Rina Kurosawa (the monster), Reika Shimizu (the veteran), Chihiro Fujita (the gatekeeper), and Kaede Yoshida (the enforcer). Their motto: ''The crown belongs to us.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (307, 5003, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (307, 5007, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (307, 5012, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (307, 5009, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (307, 'The Royal Court', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5012 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5009 LIMIT 1;
 
 -- Stable #308: The Future (promotionID=5)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (308, 'The Future', 5, 5001, 'A face stable led by Haruka Honjou. The Future is a mentoring stable where the ace trains the next generation of Osaka Joshi stars. Members include Aoi Misaki (the protégée), Sakura Nakamura (the underdog), Hinata Watanabe (the workhorse), and Momo Aida (the technician). Their motto: ''The future starts now.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (308, 5004, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (308, 5006, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (308, 5008, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (308, 5010, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (308, 'The Future', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5010 LIMIT 1;
 
 -- Stable #309: The Wild Hunt (promotionID=6)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (309, 'The Wild Hunt', 6, 6002, 'A heel stable led by Skull Valkyrie. The Wild Hunt is a faction of destructive monsters named after the Norse mythological hunt — they ride through Valkyrie Project leaving destruction in their wake. Members include Mjolnir Mitsuki (the hammer), Ragna Shiranui (the chaos bringer), Brunhilde Bakugo (the behemoth), and Gondul Gotō (the veteran). Their motto: ''The hunt never ends.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (309, 6004, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (309, 6006, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (309, 6009, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (309, 6010, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (309, 'The Wild Hunt', 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6009 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6010 LIMIT 1;
 
 -- Stable #310: Valhalla's Chosen (promotionID=6)
-INSERT INTO stables (stableID, stableName, promotionID, leaderWorkerID, description, isActive) VALUES (310, 'Valhalla's Chosen', 6, 6001, 'A face stable led by Freya Asagiri. Valhalla''s Chosen is a faction of warriors who fight with honor and embody the spirit of the Norse Valkyries. Members include Hikari Tonegawa (the technician), Aurora Asakura (the bright star), Sigrún the Shieldmaiden (the warrior), and Idun Kohinata (the young goddess). Their motto: ''Chosen by Valhalla.''', 1);
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (310, 6003, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (310, 6005, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (310, 6007, 'Member');
-INSERT INTO stableworkers (stableID, workerID, role) VALUES (310, 6008, 'Member');
+INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (310, 'Valhalla's Chosen', 6, 6001, 'A face stable led by Freya Asagiri. Valhalla''s Chosen is a faction of warriors who fight with honor and embody the spirit of the Norse Valkyries. Members include Hikari Tonegawa (the technician), 50, 50, '');
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6008 LIMIT 1;
 
 -- ============================================================
 -- ANNOUNCE TEAMS (20 announcers across 5 promotions)
