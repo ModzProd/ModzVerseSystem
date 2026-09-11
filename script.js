@@ -1,0 +1,447 @@
+
+(function() {
+  'use strict';
+
+  // ============================================================
+  // 1. SCROLL SPY — active section highlighting in nav + sidebar
+  // ============================================================
+  const navLinks = document.querySelectorAll('.wiki-nav a');
+  const sidebarLinks = document.querySelectorAll('.wiki-sidebar a');
+  const sections = document.querySelectorAll('section[id], article[id]');
+  const backToTop = document.getElementById('backToTop');
+
+  function setActive(id) {
+    navLinks.forEach(a => {
+      const href = a.getAttribute('href').slice(1);
+      a.classList.toggle('active', href === id);
+    });
+    sidebarLinks.forEach(a => {
+      const href = a.getAttribute('href').slice(1);
+      a.classList.toggle('active', href === id);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ============================================================
+  // 2. BACK TO TOP
+  // ============================================================
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ============================================================
+  // 3. FULL-TEXT SEARCH — overlay with snippets
+  //    Scans every <section>, <article>, <h2>, <h3>, <h4>,
+  //    <p>, <li>, <td>, <th>, and infobox row.
+  // ============================================================
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  const searchResultsHead = document.getElementById('searchResultsHead');
+  const searchResultsBody = document.getElementById('searchResultsBody');
+
+  // Build search index once (deferred until first input)
+  let searchIndex = null;
+  let searchIndexBuilt = false;
+
+  function buildSearchIndex() {
+    if (searchIndexBuilt) return;
+    searchIndexBuilt = true;
+    searchIndex = [];
+    const nodes = document.querySelectorAll('section[id], article[id]');
+    nodes.forEach(node => {
+      const id = node.id;
+      // Get the section title (first h2 or h1)
+      const titleEl = node.querySelector('h1, h2, h3');
+      const title = titleEl ? titleEl.textContent.trim() : id;
+      // Walk all text-bearing children
+      const walker = document.createTreeWalker(
+        node,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(n) {
+            const p = n.parentElement;
+            if (!p) return NodeFilter.FILTER_REJECT;
+            const tag = p.tagName.toLowerCase();
+            if (['script', 'style', 'code', 'kbd'].includes(tag)) return NodeFilter.FILTER_REJECT;
+            const t = n.textContent.trim();
+            if (t.length < 4) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        }
+      );
+      const snippets = [];
+      let cur;
+      while ((cur = walker.nextNode())) {
+        snippets.push({
+          text: cur.textContent.trim().slice(0, 200),
+          parentTag: cur.parentElement.tagName.toLowerCase()
+        });
+      }
+      // Classify promotion article for color-coding
+      let promoClass = '';
+      if (id.startsWith('promo-chicago')) promoClass = 'cs';
+      else if (id.startsWith('promo-lucha-bellas')) promoClass = 'lb';
+      else if (id.startsWith('promo-lucha-mex')) promoClass = 'lm';
+      else if (id.startsWith('promo-raibarazu')) promoClass = 'rb';
+      else if (id.startsWith('promo-osaka')) promoClass = 'oj';
+      else if (id.startsWith('promo-valkyrie')) promoClass = 'vp';
+      searchIndex.push({ id, title, snippets, promoClass });
+    });
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  function highlight(text, q) {
+    const lower = text.toLowerCase();
+    const idx = lower.indexOf(q);
+    if (idx === -1) return escapeHtml(text);
+    const before = text.slice(0, idx);
+    const match = text.slice(idx, idx + q.length);
+    const after = text.slice(idx + q.length);
+    // Ellipsis if the match is deep into a long string
+    const prefix = idx > 40 ? '… ' : '';
+    const shortBefore = idx > 40 ? text.slice(idx - 40, idx) : before;
+    const shortAfter = after.length > 80 ? after.slice(0, 80) + ' …' : after;
+    return prefix + escapeHtml(shortBefore) + '<mark>' + escapeHtml(match) + '</mark>' + escapeHtml(shortAfter);
+  }
+
+  function runSearch(q) {
+    if (!q) {
+      searchResults.classList.remove('visible');
+      searchResultsHead.textContent = 'Type to search…';
+      searchResultsBody.innerHTML = '';
+      return;
+    }
+    buildSearchIndex();
+    const ql = q.toLowerCase();
+    const results = [];
+    for (const entry of searchIndex) {
+      // Title match
+      if (entry.title.toLowerCase().includes(ql)) {
+        results.push({
+          id: entry.id, title: entry.title,
+          context: 'section title',
+          snippet: highlight(entry.title, q),
+          promoClass: entry.promoClass,
+          score: 100
+        });
+      }
+      // Snippet matches
+      for (const snip of entry.snippets) {
+        if (snip.text.toLowerCase().includes(ql)) {
+          results.push({
+            id: entry.id, title: entry.title,
+            context: snip.parentTag,
+            snippet: highlight(snip.text, q),
+            promoClass: entry.promoClass,
+            score: 50
+          });
+          if (results.length > 30) break;
+        }
+      }
+      if (results.length > 30) break;
+    }
+    // Deduplicate by id, keeping the highest-scored
+    const seen = new Map();
+    for (const r of results) {
+      if (!seen.has(r.id) || seen.get(r.id).score < r.score) {
+        seen.set(r.id, r);
+      }
+    }
+    const final = [...seen.values()].sort((a, b) => b.score - a.score).slice(0, 12);
+
+    if (final.length === 0) {
+      searchResultsHead.textContent = '0 results · try a different term';
+      searchResultsBody.innerHTML = '<div class="search-empty">No matches found for "' + escapeHtml(q) + '"</div>';
+    } else {
+      searchResultsHead.textContent = final.length + (final.length === 1 ? ' result' : ' results') + ' for "' + q + '"';
+      searchResultsBody.innerHTML = final.map(r =>
+        '<a href="#' + r.id + '" class="search-result-item ' + r.promoClass + '">' +
+          '<div class="sr-title">' + escapeHtml(r.title) + '</div>' +
+          '<div class="sr-context">↳ ' + escapeHtml(r.id) + ' · ' + r.context + '</div>' +
+          '<div class="sr-snippet">' + r.snippet + '</div>' +
+        '</a>'
+      ).join('');
+    }
+    searchResults.classList.add('visible');
+  }
+
+  let searchDebounce;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchDebounce);
+    const q = e.target.value.trim();
+    searchDebounce = setTimeout(() => runSearch(q), 120);
+  });
+
+  // Hide search results when clicking outside or pressing Escape
+  document.addEventListener('click', (e) => {
+    if (!searchResults.contains(e.target) && e.target !== searchInput) {
+      searchResults.classList.remove('visible');
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchResults.classList.remove('visible');
+      searchInput.blur();
+    }
+    // '/' to focus search (vim-style)
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // ============================================================
+  // 4. DYNAMIC SYSTEM INFO — populate at load
+  // ============================================================
+  const today = new Date().toISOString().slice(0, 10);
+  const lastUpdatedEls = document.querySelectorAll('#lastUpdated, #sysLastUpdated');
+  lastUpdatedEls.forEach(el => { el.textContent = today; });
+  const lastSyncEl = document.getElementById('lastSync');
+  if (lastSyncEl) lastSyncEl.textContent = today + ' · build';
+
+  // Count sections + articles + words
+  const sectionCount = document.querySelectorAll('section[id], article[id]').length;
+  const sectionCountEl = document.getElementById('sectionCount');
+  if (sectionCountEl) sectionCountEl.textContent = sectionCount + ' pages';
+  const sysSectionCountEl = document.getElementById('sysSectionCount');
+  if (sysSectionCountEl) sysSectionCountEl.textContent = sectionCount + ' (' + document.querySelectorAll('section[id]').length + ' sections + ' + document.querySelectorAll('article[id]').length + ' promotion articles)';
+
+  // Word count (approximate — count whitespace-separated tokens in body text)
+  const bodyText = document.querySelector('.wiki-main').innerText || '';
+  const wordCount = bodyText.split(/\s+/).filter(Boolean).length;
+  const sysWordCountEl = document.getElementById('sysWordCount');
+  if (sysWordCountEl) sysWordCountEl.textContent = '~ ' + wordCount.toLocaleString() + ' words';
+
+  // File size estimate
+  const fileSizeEl = document.getElementById('fileSize');
+  if (fileSizeEl) {
+    const bytes = document.documentElement.outerHTML.length;
+    const kb = (bytes / 1024).toFixed(0);
+    fileSizeEl.textContent = '~ ' + kb + ' KB';
+  }
+
+  // ============================================================
+  // 5. OFFLINE VERIFICATION — assert no external URLs
+  //    (Development check — runs in console only, not user-visible)
+  // ============================================================
+  if (typeof console !== 'undefined' && console.info) {
+    const allHtml = document.documentElement.outerHTML;
+    const urlMatches = allHtml.match(/https?:\/\/[^"'<>\s)]+/g) || [];
+    const externalMatches = urlMatches.filter(u =>
+      !u.startsWith('http://localhost') &&
+      !u.startsWith('http://127.0.0.1') &&
+      !u.startsWith('https://preview-') &&
+      !u.startsWith('https://space-z.ai')
+    );
+    if (externalMatches.length === 0) {
+      console.info('%c● ModzVerse Intranet: OFFLINE VERIFIED', 'color:#3fb950;font-weight:600;');
+      console.info('  0 external URLs found · safe for fully offline use');
+      console.info('  ' + sectionCount + ' sections · ~' + wordCount.toLocaleString() + ' words · ' + kb() + ' KB');
+    } else {
+      console.warn('⚠ ModzVerse Intranet: external URLs found:', externalMatches);
+    }
+  }
+  function kb() {
+    return (document.documentElement.outerHTML.length / 1024).toFixed(0);
+  }
+
+  // ============================================================
+  // 6. KEYBOARD NAVIGATION — arrow up/down between sections
+  // ============================================================
+  const allSections = Array.from(document.querySelectorAll('section[id], article[id]'));
+  document.addEventListener('keydown', (e) => {
+    // Skip if user is typing in an input
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+    if (e.key === 'ArrowDown' || e.key === 'j') {
+      const cur = allSections.findIndex(s => {
+        const r = s.getBoundingClientRect();
+        return r.top > 80 && r.top < window.innerHeight * 0.5;
+      });
+      if (cur !== -1 && cur < allSections.length - 1) {
+        e.preventDefault();
+        allSections[cur + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (e.key === 'ArrowUp' || e.key === 'k') {
+      const cur = allSections.findIndex(s => {
+        const r = s.getBoundingClientRect();
+        return r.top >= 0 && r.top < window.innerHeight * 0.5;
+      });
+      if (cur > 0) {
+        e.preventDefault();
+        allSections[cur - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (cur === 0) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  });
+
+})();
+
+
+
+// Worker data (135 workers, ~66,062 bytes)
+const WORKERS = [{"ringName":"Ryūga the Apex","realName":"Akira Tanahashi","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":95,"entertainment":60,"starPower":92,"intimidation":85,"age":32,"heightCm":191,"weightKg":107,"isMasked":false,"bio":"The ace of Doragon. A generational talent with peerless ring work, considered the soul of the RAIBARAZU brand.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1001},{"ringName":"Kuroda the Iron Fist","realName":"Hiroshi Kuroda","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":93,"entertainment":50,"starPower":88,"intimidation":92,"age":38,"heightCm":185,"weightKg":115,"isMasked":false,"bio":"The veteran ace of Doragon's heel side. A brutal striker with old-school mentality who has terrorized the roster for a decade.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1002},{"ringName":"The Crimson Dragon","realName":"Daisuke Yamamoto","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":90,"entertainment":55,"starPower":85,"intimidation":95,"age":34,"heightCm":196,"weightKg":130,"isMasked":false,"bio":"A towering behemoth who dominates opponents with raw power. His arrival in RAIBARAZU signaled a new era of destruction.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":10,"id":1003},{"ringName":"Suzaku the Phoenix","realName":"Daichi Suzaku","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":92,"entertainment":70,"starPower":90,"intimidation":75,"age":33,"heightCm":188,"weightKg":104,"isMasked":false,"bio":"The charismatic ace. Blends world-class wrestling with natural star power. The crowd's undisputed favorite.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1004},{"ringName":"Tatsuya Riverstone","realName":"Tatsuya Ishikawa","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":85,"entertainment":50,"starPower":75,"intimidation":70,"age":29,"heightCm":183,"weightKg":100,"isMasked":false,"bio":"A technical specialist who can carry any match to a strong rating. The quiet backbone of the Doragon midcard.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1005},{"ringName":"Shibata the Striker","realName":"Katsuya Mori","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":87,"entertainment":40,"starPower":72,"intimidation":82,"age":31,"heightCm":180,"weightKg":105,"isMasked":false,"bio":"A hard-hitting fighter who embodies the spirit of Strong Style. Known for his devastating elbow strikes.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1006},{"ringName":"The Honma Cobra","realName":"Mitsuharu Honma","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":82,"entertainment":65,"starPower":78,"intimidation":68,"age":35,"heightCm":185,"weightKg":102,"isMasked":false,"bio":"A cocky veteran who backs up his talk with solid ring work. Famous for his signature Cobra Clutch submission.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":5,"id":1007},{"ringName":"Absolute Ryo","realName":"Ryo Yoshida","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":84,"entertainment":45,"starPower":70,"intimidation":88,"age":36,"heightCm":190,"weightKg":118,"isMasked":false,"bio":"A badass striker who doesn't need to talk — his fists do the talking.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1008},{"ringName":"Golden Kenji","realName":"Kenji Yamada","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":83,"entertainment":55,"starPower":72,"intimidation":60,"age":27,"heightCm":178,"weightKg":95,"isMasked":false,"bio":"A wholesome babyface who connects with the crowd through pure workrate.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":17,"id":1009},{"ringName":"Thunder Suzuki","realName":"Daisuke Suzuki","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":78,"entertainment":45,"starPower":60,"intimidation":65,"age":28,"heightCm":180,"weightKg":98,"isMasked":false,"bio":"A reliable midcard hand who always delivers solid matches.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1010},{"ringName":"Shadow Endo","realName":"Tomoaki Endo","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":76,"entertainment":50,"starPower":58,"intimidation":72,"age":30,"heightCm":182,"weightKg":108,"isMasked":false,"bio":"A brooding heel who uses underhanded tactics to win.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1011},{"ringName":"Kiba the Fang","realName":"Kenta Ishikawa","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":79,"entertainment":40,"starPower":55,"intimidation":78,"age":32,"heightCm":185,"weightKg":112,"isMasked":false,"bio":"A tough-as-nails brawler who never backs down from a fight. Known for his biting — both metaphorically and literally.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1012},{"ringName":"Zen Takahashi","realName":"Yusuke Takahashi","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":77,"entertainment":50,"starPower":58,"intimidation":55,"age":26,"heightCm":175,"weightKg":92,"isMasked":false,"bio":"A young technician with potential to move up the card.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1013},{"ringName":"Silent Goto","realName":"Shoichi Goto","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":70,"entertainment":35,"starPower":45,"intimidation":70,"age":33,"heightCm":188,"weightKg":110,"isMasked":false,"bio":"A silent enforcer who does the bidding of the main event heels.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":3,"id":1014},{"ringName":"Kohei Hase","realName":"Kohei Hase","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":72,"entertainment":40,"starPower":48,"intimidation":50,"age":24,"heightCm":178,"weightKg":96,"isMasked":false,"bio":"A promising young lion working his way up the Doragon roster.","gender":"Male","country":"Japan","region":"Tokyo","brand":1,"gimmickId":2,"id":1015},{"ringName":"Yuya Ueno","realName":"Yuya Ueno","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":84,"entertainment":55,"starPower":68,"intimidation":65,"age":28,"heightCm":180,"weightKg":98,"isMasked":false,"bio":"The ace of Fenikkusu. Rumored to be next in line for a Doragon call-up.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1016},{"ringName":"Eternal Shimizu","realName":"Hikaru Shimizu","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":82,"entertainment":45,"starPower":65,"intimidation":80,"age":30,"heightCm":186,"weightKg":114,"isMasked":false,"bio":"A dominant heel on the B-brand who's outgrown his competition.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":3,"id":1017},{"ringName":"Asahi Nakajima","realName":"Asahi Nakajima","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":81,"entertainment":50,"starPower":62,"intimidation":58,"age":25,"heightCm":176,"weightKg":94,"isMasked":false,"bio":"A high-flying technician who's the fan favorite of Fenikkusu.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1018},{"ringName":"Storm Nishimura","realName":"Riku Nishimura","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":75,"entertainment":45,"starPower":55,"intimidation":60,"age":27,"heightCm":178,"weightKg":100,"isMasked":false,"bio":"A solid midcarder who main-events Fenikkusu house shows.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1019},{"ringName":"Iron Fukuda","realName":"Takeshi Fukuda","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":74,"entertainment":40,"starPower":52,"intimidation":75,"age":31,"heightCm":184,"weightKg":110,"isMasked":false,"bio":"A rough brawler who uses shortcuts and weapons to win.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":3,"id":1020},{"ringName":"Sora Maeda","realName":"Sora Maeda","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":76,"entertainment":50,"starPower":55,"intimidation":50,"age":24,"heightCm":172,"weightKg":88,"isMasked":false,"bio":"A young high-flyer who's building a following on Fenikkusu.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1021},{"ringName":"Savage Fujita","realName":"Masato Fujita","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":73,"entertainment":45,"starPower":50,"intimidation":72,"age":29,"heightCm":182,"weightKg":106,"isMasked":false,"bio":"A wild, unpredictable brawler who lives up to his name.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":3,"id":1022},{"ringName":"Ren Okada","realName":"Ren Okada","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":75,"entertainment":40,"starPower":52,"intimidation":55,"age":26,"heightCm":180,"weightKg":97,"isMasked":false,"bio":"A clean-cut babyface who represents the future of Fenikkusu.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":17,"id":1023},{"ringName":"Kaito Abe","realName":"Kaito Abe","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":68,"entertainment":40,"starPower":42,"intimidation":48,"age":23,"heightCm":175,"weightKg":90,"isMasked":false,"bio":"A young lion still learning the ropes.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1024},{"ringName":"Blade Mori","realName":"Akira Mori","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":67,"entertainment":35,"starPower":40,"intimidation":68,"age":32,"heightCm":183,"weightKg":108,"isMasked":false,"bio":"A veteran gatekeeper who tests the young lions.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":3,"id":1025},{"ringName":"Daiki Ikeda","realName":"Daiki Ikeda","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":69,"entertainment":45,"starPower":44,"intimidation":45,"age":25,"heightCm":177,"weightKg":93,"isMasked":false,"bio":"A versatile worker who can fill any role on the card.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1026},{"ringName":"Wolf Hashimoto","realName":"Yuji Hashimoto","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":65,"entertainment":30,"starPower":38,"intimidation":82,"age":35,"heightCm":193,"weightKg":125,"isMasked":false,"bio":"A monster heel who squashes enhancement talent.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":10,"id":1027},{"ringName":"Haruto Kimura","realName":"Haruto Kimura","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":55,"entertainment":40,"starPower":30,"intimidation":40,"age":22,"heightCm":173,"weightKg":85,"isMasked":false,"bio":"A young enhancement talent who's just starting his career.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1028},{"ringName":"Hayato Hayashi","realName":"Hayato Hayashi","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":52,"entertainment":35,"starPower":28,"intimidation":38,"age":21,"heightCm":170,"weightKg":82,"isMasked":false,"bio":"A rookie who's paying his dues in the enhancement role.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":2,"id":1029},{"ringName":"Satoshi Sakurai","realName":"Satoshi Sakurai","promotion":"RAIBARAZU","promoId":4,"style":"Pure Wrestling","pushTier":4,"pushName":"Enhancement Talent","isHeel":true,"disposition":"Heel","wrestling":54,"entertainment":40,"starPower":32,"intimidation":55,"age":28,"heightCm":180,"weightKg":100,"isMasked":false,"bio":"A jobber heel who makes faces look good.","gender":"Male","country":"Japan","region":"Tokyo","brand":2,"gimmickId":3,"id":1030},{"ringName":"Max Thunderford","realName":"Marcus Thompson","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":80,"entertainment":88,"starPower":90,"intimidation":65,"age":34,"heightCm":193,"weightKg":115,"isMasked":false,"bio":"The franchise player of Chicago Show. A charismatic powerhouse who carries the promotion on his back.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":1,"id":2001},{"ringName":"Vincent Viceroy","realName":"Victor Vasquez","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":78,"entertainment":90,"starPower":88,"intimidation":70,"age":37,"heightCm":188,"weightKg":108,"isMasked":false,"bio":"An evil millionaire heel who buys his way to victory. The promotion's top villain.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":9,"id":2002},{"ringName":"Bronco Billiston","realName":"William Bradley","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":82,"entertainment":75,"starPower":85,"intimidation":80,"age":31,"heightCm":196,"weightKg":120,"isMasked":false,"bio":"A larger-than-life athlete with natural charisma. The fan favorite of Chicago.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":2,"id":2003},{"ringName":"Roxy Ravencroft","realName":"Rachel Reinhart","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":72,"entertainment":85,"starPower":82,"intimidation":60,"age":29,"heightCm":170,"weightKg":62,"isMasked":false,"bio":"A regal heel who commands respect. The top women's star on the roster.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":13,"id":2004},{"ringName":"Diamond Diane","realName":"Diana Dawson","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":70,"entertainment":80,"starPower":80,"intimidation":50,"age":27,"heightCm":165,"weightKg":58,"isMasked":false,"bio":"A cocky face who backs up her talk. The women's fan favorite.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":5,"id":2005},{"ringName":"The Showman Shelton","realName":"Samuel Scott","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":72,"entertainment":82,"starPower":70,"intimidation":55,"age":30,"heightCm":185,"weightKg":100,"isMasked":false,"bio":"An unstable entertainer who puts on a show every night. Unpredictable in the ring.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":15,"id":2006},{"ringName":"Hank Hellburner","realName":"Henry Harris","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":75,"entertainment":60,"starPower":68,"intimidation":78,"age":33,"heightCm":190,"weightKg":112,"isMasked":false,"bio":"A badass brawler who fights like his name suggests. The gatekeeper of the midcard.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":3,"id":2007},{"ringName":"Corporate Cole","realName":"Christopher Cross","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":68,"entertainment":78,"starPower":65,"intimidation":55,"age":35,"heightCm":180,"weightKg":95,"isMasked":false,"bio":"A corporate suit who uses legal loopholes to win matches. Hated by the crowd.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":9,"id":2008},{"ringName":"Vivian Vortex","realName":"Vanessa Vance","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":68,"entertainment":75,"starPower":62,"intimidation":45,"age":26,"heightCm":168,"weightKg":60,"isMasked":false,"bio":"A high-energy face with a gymnastics background. Known for her aerial offense.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":5,"id":2009},{"ringName":"Mistress Malice","realName":"Melissa Moore","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":65,"entertainment":78,"starPower":60,"intimidation":58,"age":32,"heightCm":172,"weightKg":65,"isMasked":false,"bio":"A cruel heel who uses psychological warfare. Roxy Ravencroft's enforcer.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":13,"id":2010},{"ringName":"Tommy Takedown","realName":"Thomas Turner","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":70,"entertainment":65,"starPower":55,"intimidation":60,"age":28,"heightCm":183,"weightKg":102,"isMasked":false,"bio":"A solid midcard hand with an athletic background. Reliable on weekly TV.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":2,"id":2011},{"ringName":"Rex Rampage","realName":"Ryan Roberts","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":68,"entertainment":60,"starPower":52,"intimidation":72,"age":30,"heightCm":187,"weightKg":110,"isMasked":false,"bio":"A powerhouse heel who throws people around. Limited but effective.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":3,"id":2012},{"ringName":"Flash Freddy","realName":"Frederick Flores","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":65,"entertainment":70,"starPower":50,"intimidation":40,"age":25,"heightCm":175,"weightKg":85,"isMasked":false,"bio":"A flashy entertainer who prioritizes style over substance. A fan favorite.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":15,"id":2013},{"ringName":"Grizzly Garrison","realName":"Gregory Green","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":62,"entertainment":55,"starPower":48,"intimidation":85,"age":36,"heightCm":195,"weightKg":130,"isMasked":false,"bio":"A monster face who the crowd loves. Limited in-ring but intimidating.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":10,"id":2014},{"ringName":"Doc Dynamite","realName":"Daniel Donovan","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":66,"entertainment":60,"starPower":50,"intimidation":55,"age":29,"heightCm":180,"weightKg":98,"isMasked":false,"bio":"A technical wrestler who's solid but unspectacular. The glue of the midcard.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":2,"id":2015},{"ringName":"Sapphire Stryker","realName":"Sofia Santos","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":62,"entertainment":65,"starPower":48,"intimidation":42,"age":24,"heightCm":163,"weightKg":55,"isMasked":false,"bio":"A patriotic face who connects with the crowd through her passion.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":12,"id":2016},{"ringName":"Crimson Carly","realName":"Carla Chen","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":60,"entertainment":65,"starPower":45,"intimidation":50,"age":28,"heightCm":170,"weightKg":62,"isMasked":false,"bio":"A supernatural heel with a dark persona. Gimmicky but effective.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":14,"id":2017},{"ringName":"Buster Brilliance","realName":"Benjamin Brooks","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":58,"entertainment":62,"starPower":40,"intimidation":45,"age":27,"heightCm":178,"weightKg":90,"isMasked":false,"bio":"A cocky lower-midcarder who thinks he's better than he is. Comic relief.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":5,"id":2018},{"ringName":"The Enumerator","realName":"Edward Evans","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":55,"entertainment":65,"starPower":38,"intimidation":50,"age":34,"heightCm":182,"weightKg":100,"isMasked":false,"bio":"An accountant-turned-wrestler heel who uses a calculator as a weapon. Pure sports entertainment.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":9,"id":2019},{"ringName":"Lumberjack Larry","realName":"Lawrence Lewis","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":56,"entertainment":50,"starPower":35,"intimidation":68,"age":32,"heightCm":188,"weightKg":115,"isMasked":false,"bio":"A lumberjack gimmick. Simple but effective with the Chicago crowd.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":2,"id":2020},{"ringName":"Kid Cascade","realName":"Kevin Kim","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":54,"entertainment":55,"starPower":32,"intimidation":40,"age":23,"heightCm":170,"weightKg":78,"isMasked":false,"bio":"A young high-flyer paying his dues. Potential to move up.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":2,"id":2021},{"ringName":"Padre Power","realName":"Patrick Petrov","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":52,"entertainment":60,"starPower":30,"intimidation":55,"age":38,"heightCm":185,"weightKg":105,"isMasked":false,"bio":"A patriotic priest gimmick. Bizarre but beloved by the crowd.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":12,"id":2022},{"ringName":"Jobber Jack","realName":"Jacob James","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":45,"entertainment":50,"starPower":25,"intimidation":35,"age":25,"heightCm":175,"weightKg":85,"isMasked":false,"bio":"The eternal enhancement talent. Makes everyone look good. Never wins.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":17,"id":2023},{"ringName":"Pinfall Pete","realName":"Peter Park","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":42,"entertainment":45,"starPower":22,"intimidation":30,"age":22,"heightCm":172,"weightKg":80,"isMasked":false,"bio":"A rookie enhancement talent. Future may be bright if he survives.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":17,"id":2024},{"ringName":"Losing Lily","realName":"Linda Lopez","promotion":"Chicago Show","promoId":1,"style":"Sports Entertainment","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":40,"entertainment":50,"starPower":20,"intimidation":25,"age":24,"heightCm":160,"weightKg":52,"isMasked":false,"bio":"A lovable loser who the crowd cheers despite her winless record.","gender":"Male","country":"United States","region":"Illinois","brand":"None","gimmickId":8,"id":2025},{"ringName":"La Reina Escarlata","realName":"Rosa Ramírez","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":85,"entertainment":70,"starPower":88,"intimidation":65,"age":30,"heightCm":168,"weightKg":60,"isMasked":true,"bio":"The queen of Lucha Bellas. A masked heel who rules with an iron fist. The top ruda.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":13,"id":3001},{"ringName":"Mariposa Dorada","realName":"María Mendoza","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":88,"entertainment":65,"starPower":90,"intimidation":55,"age":28,"heightCm":165,"weightKg":58,"isMasked":true,"bio":"The golden butterfly. The top technica and the soul of Lucha Bellas. Her mask is sacred.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":3002},{"ringName":"Valkiria Negra","realName":"Valeria Vega","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":82,"entertainment":60,"starPower":82,"intimidation":88,"age":32,"heightCm":175,"weightKg":70,"isMasked":true,"bio":"A towering behemoth of a woman. The most intimidating ruda in the promotion.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":10,"id":3003},{"ringName":"Estrella Solitaria","realName":"Elena Estrada","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":80,"entertainment":55,"starPower":72,"intimidation":50,"age":26,"heightCm":163,"weightKg":55,"isMasked":true,"bio":"The lone star. A masked technica known for her breathtaking aerial offense.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3004},{"ringName":"La Sombra Cruel","realName":"Sofía Sánchez","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":78,"entertainment":60,"starPower":70,"intimidation":68,"age":29,"heightCm":170,"weightKg":62,"isMasked":true,"bio":"The cruel shadow. A sadistic ruda who takes pleasure in destroying technicas.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3005},{"ringName":"Rayo de Luna","realName":"Lucía López","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":76,"entertainment":55,"starPower":68,"intimidation":45,"age":24,"heightCm":162,"weightKg":54,"isMasked":true,"bio":"Moon beam. A young high-flyer with unlimited potential. The future of the promotion.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3006},{"ringName":"Gata Salvaje","realName":"Gabriela García","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":75,"entertainment":50,"starPower":65,"intimidation":72,"age":31,"heightCm":168,"weightKg":65,"isMasked":false,"bio":"The wild cat. A ferocious brawler who fights like an animal. Unmasked ruda.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3007},{"ringName":"Flor de Loto","realName":"Fernanda Flores","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":72,"entertainment":50,"starPower":55,"intimidation":40,"age":27,"heightCm":160,"weightKg":52,"isMasked":true,"bio":"Lotus flower. A graceful masked technica with a beautiful wrestling style.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":3008},{"ringName":"Veneno Verde","realName":"Verónica Vargas","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":70,"entertainment":55,"starPower":52,"intimidation":48,"age":33,"heightCm":166,"weightKg":58,"isMasked":false,"bio":"Green poison. A foreign ruda who uses underhanded tactics. Hated by the crowd.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":7,"id":3009},{"ringName":"Águila Azul","realName":"Andrea Aguilar","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":71,"entertainment":45,"starPower":50,"intimidation":42,"age":25,"heightCm":165,"weightKg":56,"isMasked":true,"bio":"Blue eagle. A masked technica with a high-flying style.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3010},{"ringName":"Espina Mortal","realName":"Esperanza Muñoz","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":68,"entertainment":50,"starPower":48,"intimidation":65,"age":30,"heightCm":172,"weightKg":63,"isMasked":true,"bio":"Mortal thorn. A dangerous masked ruda who's known for her submission holds.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3011},{"ringName":"Brisa Marina","realName":"Beatriz Bravo","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":69,"entertainment":48,"starPower":45,"intimidation":38,"age":23,"heightCm":158,"weightKg":50,"isMasked":false,"bio":"Sea breeze. A young unmasked technica who's building a following.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3012},{"ringName":"Chispita","realName":"Carla Castillo","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":62,"entertainment":55,"starPower":38,"intimidation":35,"age":22,"heightCm":155,"weightKg":48,"isMasked":true,"bio":"Little spark. A masked comedy character who's loved by the crowd despite her size.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":8,"id":3013},{"ringName":"Dama de Hierro","realName":"Diana Delgado","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":60,"entertainment":40,"starPower":35,"intimidation":60,"age":34,"heightCm":170,"weightKg":68,"isMasked":false,"bio":"Iron lady. A veteran ruda who tests the young technicas.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3014},{"ringName":"Princesa Plata","realName":"Patricia Paredes","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":58,"entertainment":45,"starPower":32,"intimidation":35,"age":25,"heightCm":160,"weightKg":52,"isMasked":true,"bio":"Silver princess. A masked technica with technical skills.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3015},{"ringName":"Tormenta Tropical","realName":"Teresa Torres","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":56,"entertainment":45,"starPower":30,"intimidation":50,"age":28,"heightCm":165,"weightKg":60,"isMasked":false,"bio":"Tropical storm. An unpredictable ruda who brings chaos to every match.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3016},{"ringName":"Mariposa Pequeña","realName":"Mónica Morales","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":48,"entertainment":40,"starPower":22,"intimidation":28,"age":21,"heightCm":158,"weightKg":49,"isMasked":true,"bio":"Little butterfly. A young masked enhancement talent. Pays her dues.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":3017},{"ringName":"Sombra Gris","realName":"Silvia Soto","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":4,"pushName":"Enhancement Talent","isHeel":true,"disposition":"Heel","wrestling":45,"entertainment":40,"starPower":20,"intimidation":35,"age":26,"heightCm":162,"weightKg":55,"isMasked":false,"bio":"Gray shadow. A jobber ruda who makes technicas look good.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":3018},{"ringName":"Estrellita","realName":"Erika Espinoza","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":42,"entertainment":45,"starPower":18,"intimidation":25,"age":20,"heightCm":155,"weightKg":47,"isMasked":true,"bio":"Little star. The smallest worker on the roster. A lovable underdog.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":8,"id":3019},{"ringName":"Lluvia de Plata","realName":"Lorena Leyva","promotion":"Lucha Bellas","promoId":2,"style":"Lucha Libre","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":44,"entertainment":38,"starPower":18,"intimidation":22,"age":23,"heightCm":157,"weightKg":50,"isMasked":true,"bio":"Silver rain. A masked enhancement talent with potential.","gender":"Female","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":3020},{"ringName":"El Toro Bravo","realName":"Tomás Treviño","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":88,"entertainment":55,"starPower":85,"intimidation":90,"age":34,"heightCm":190,"weightKg":120,"isMasked":false,"bio":"The brave bull. The ace of Lucha MEX. A powerful brawler who embodies Mexican wrestling tradition.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":10,"id":4001},{"ringName":"El Diablo Rojo","realName":"Diego Domínguez","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":85,"entertainment":50,"starPower":82,"intimidation":85,"age":36,"heightCm":188,"weightKg":115,"isMasked":true,"bio":"The red devil. A masked heel who terrorizes the roster. The top rudo of Lucha MEX.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":4,"id":4002},{"ringName":"Caballero Blanco","realName":"Carlos Cabrera","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":86,"entertainment":60,"starPower":80,"intimidation":55,"age":33,"heightCm":185,"weightKg":108,"isMasked":false,"bio":"The white knight. A classic babyface with old-school values. The moral compass of the promotion.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":4003},{"ringName":"La Pantera Negra","realName":"Pablo Padilla","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":83,"entertainment":55,"starPower":78,"intimidation":80,"age":31,"heightCm":183,"weightKg":105,"isMasked":true,"bio":"The black panther. A mysterious masked heel with supernatural aura.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":14,"id":4004},{"ringName":"Rayo Mexicano","realName":"Rafael Reyes","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":80,"entertainment":50,"starPower":68,"intimidation":55,"age":28,"heightCm":178,"weightKg":95,"isMasked":false,"bio":"Mexican lightning. A technical wrestler with lightning-fast offense.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4005},{"ringName":"El Verdugo","realName":"Víctor Villegas","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":78,"entertainment":48,"starPower":65,"intimidation":75,"age":32,"heightCm":185,"weightKg":110,"isMasked":false,"bio":"The executioner. A brutal heel who finishes opponents with devastating power moves.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":4006},{"ringName":"Tigre Azteca","realName":"Arturo Ávila","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":77,"entertainment":55,"starPower":62,"intimidation":60,"age":26,"heightCm":180,"weightKg":100,"isMasked":true,"bio":"Aztec tiger. A masked technico with a high-flying style and cultural pride.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4007},{"ringName":"El Patriota","realName":"Pedro Pérez","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":75,"entertainment":60,"starPower":60,"intimidation":55,"age":35,"heightCm":183,"weightKg":105,"isMasked":false,"bio":"The patriot. A face who wears the Mexican flag with pride. Beloved by the crowd.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":12,"id":4008},{"ringName":"Sombra del Pasado","realName":"Sergio Sandoval","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":76,"entertainment":50,"starPower":58,"intimidation":65,"age":38,"heightCm":186,"weightKg":112,"isMasked":false,"bio":"Shadow of the past. A veteran heel who uses experience to outsmart younger opponents.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":4,"id":4009},{"ringName":"Fuego Lento","realName":"Felipe Fuentes","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":72,"entertainment":48,"starPower":50,"intimidation":45,"age":27,"heightCm":175,"weightKg":92,"isMasked":false,"bio":"Slow fire. A methodical wrestler who builds momentum throughout a match.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4010},{"ringName":"El Búho","realName":"Bruno Bermúdez","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":70,"entertainment":50,"starPower":48,"intimidation":42,"age":29,"heightCm":178,"weightKg":98,"isMasked":true,"bio":"The owl. A masked technico known for his wisdom and strategic wrestling.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4011},{"ringName":"Machete Morales","realName":"Manuel Maldonado","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":68,"entertainment":45,"starPower":45,"intimidation":78,"age":31,"heightCm":182,"weightKg":108,"isMasked":false,"bio":"A rough brawler who fights like his name suggests. Dangerous in and out of the ring.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":4012},{"ringName":"Relámpago Verde","realName":"Roberto Ruiz","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":71,"entertainment":45,"starPower":42,"intimidation":40,"age":24,"heightCm":172,"weightKg":85,"isMasked":true,"bio":"Green lightning. A young masked high-flyer with potential.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4013},{"ringName":"El Alquimista","realName":"Alejandro Aguirre","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":66,"entertainment":55,"starPower":40,"intimidation":55,"age":30,"heightCm":180,"weightKg":100,"isMasked":true,"bio":"The alchemist. A mysterious masked heel who uses 'supernatural' chemistry to win.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":14,"id":4014},{"ringName":"Viento del Norte","realName":"Nicolás Núñez","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":67,"entertainment":40,"starPower":38,"intimidation":48,"age":33,"heightCm":185,"weightKg":105,"isMasked":false,"bio":"North wind. A steady midcarder who's reliable but unspectacular.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4015},{"ringName":"Doña Destructora","realName":"Daniela Duarte","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":65,"entertainment":50,"starPower":42,"intimidation":68,"age":29,"heightCm":175,"weightKg":70,"isMasked":false,"bio":"The destroyer woman. A powerful ruda who can hang with the men.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":4016},{"ringName":"La Centinela","realName":"Claudia Cruz","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":63,"entertainment":45,"starPower":38,"intimidation":40,"age":25,"heightCm":165,"weightKg":58,"isMasked":true,"bio":"The sentinel. A masked technica who's solid and dependable.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":4017},{"ringName":"Piedra Grande","realName":"Pablo Ponce","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":58,"entertainment":40,"starPower":32,"intimidation":80,"age":35,"heightCm":192,"weightKg":125,"isMasked":false,"bio":"Big rock. A giant face who squashes smaller opponents. Limited but effective.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":10,"id":4018},{"ringName":"El Duende","realName":"Eduardo Escobar","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":55,"entertainment":50,"starPower":30,"intimidation":35,"age":27,"heightCm":168,"weightKg":75,"isMasked":true,"bio":"The goblin. A masked comedy character who's surprisingly effective in the ring.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":8,"id":4019},{"ringName":"Cuerno de Plata","realName":"Cristóbal Cano","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":57,"entertainment":42,"starPower":28,"intimidation":45,"age":24,"heightCm":178,"weightKg":92,"isMasked":true,"bio":"Silver horn. A masked technico still developing his skills.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4020},{"ringName":"Espanto Jr.","realName":"Ernesto Espinoza","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":54,"entertainment":45,"starPower":25,"intimidation":55,"age":30,"heightCm":180,"weightKg":98,"isMasked":true,"bio":"Fright Jr. A second-generation masked heel carrying on his father's legacy.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":4,"id":4021},{"ringName":"Chispas","realName":"César Campos","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":45,"entertainment":40,"starPower":18,"intimidation":30,"age":22,"heightCm":170,"weightKg":78,"isMasked":true,"bio":"Sparks. A young masked enhancement talent with potential.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":2,"id":4022},{"ringName":"El Novato","realName":"Néstor Navarro","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":42,"entertainment":35,"starPower":15,"intimidation":25,"age":20,"heightCm":172,"weightKg":80,"isMasked":false,"bio":"The rookie. An unmasked enhancement talent just starting his career.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":17,"id":4023},{"ringName":"Pobre Pablo","realName":"Pablo Prieto","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":40,"entertainment":45,"starPower":12,"intimidation":22,"age":25,"heightCm":168,"weightKg":75,"isMasked":false,"bio":"Poor Pablo. A lovable loser who's never won a match.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":8,"id":4024},{"ringName":"El Saco","realName":"Salvador Saco","promotion":"Lucha MEX","promoId":3,"style":"Traditional","pushTier":4,"pushName":"Enhancement Talent","isHeel":true,"disposition":"Heel","wrestling":43,"entertainment":38,"starPower":14,"intimidation":40,"age":28,"heightCm":175,"weightKg":88,"isMasked":true,"bio":"The sack. A jobber heel who's carried by everyone. The lowest man on the totem pole.","gender":"Male","country":"Mexico","region":"México","brand":"None","gimmickId":3,"id":4025},{"ringName":"Haruka Honjou","realName":"Haruka Honjou","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":0,"pushName":"Main Event","isHeel":false,"disposition":"Face","wrestling":92,"entertainment":70,"starPower":90,"intimidation":60,"age":28,"heightCm":168,"weightKg":60,"isMasked":false,"bio":"The ace of Osaka Joshi. A generational talent who blends world-class wrestling with natural charisma. The face of the promotion.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5001},{"ringName":"Miyako Tsujimoto","realName":"Miyako Tsujimoto","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":90,"entertainment":65,"starPower":88,"intimidation":65,"age":30,"heightCm":170,"weightKg":62,"isMasked":false,"bio":"The queen of Osaka Joshi. A regal heel who commands respect. The top villain of the promotion.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":13,"id":5002},{"ringName":"Rina Kurosawa","realName":"Rina Kurosawa","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":0,"pushName":"Main Event","isHeel":true,"disposition":"Heel","wrestling":88,"entertainment":55,"starPower":85,"intimidation":82,"age":32,"heightCm":175,"weightKg":68,"isMasked":false,"bio":"The black beast. A dominant monster heel who's been terrorizing the roster for years.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":10,"id":5003},{"ringName":"Aoi Misaki","realName":"Aoi Misaki","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":85,"entertainment":60,"starPower":75,"intimidation":50,"age":26,"heightCm":165,"weightKg":56,"isMasked":false,"bio":"A technical specialist with a beautiful wrestling style. The future ace of the promotion.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5004},{"ringName":"Yuki Kashiwagi","realName":"Yuki Kashiwagi","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":83,"entertainment":55,"starPower":72,"intimidation":68,"age":29,"heightCm":172,"weightKg":64,"isMasked":false,"bio":"A badass heel who fights with intensity. Known for her devastating kicks.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":3,"id":5005},{"ringName":"Sakura Nakamura","realName":"Sakura Nakamura","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":82,"entertainment":58,"starPower":70,"intimidation":48,"age":24,"heightCm":163,"weightKg":55,"isMasked":false,"bio":"A high-flying face with a bright future. The crowd's favorite underdog.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5006},{"ringName":"Reika Shimizu","realName":"Reika Shimizu","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":80,"entertainment":65,"starPower":68,"intimidation":55,"age":31,"heightCm":168,"weightKg":60,"isMasked":false,"bio":"A cocky veteran who's been with the promotion since its founding. Talks a big game.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":5,"id":5007},{"ringName":"Hinata Watanabe","realName":"Hinata Watanabe","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":76,"entertainment":50,"starPower":55,"intimidation":45,"age":25,"heightCm":166,"weightKg":57,"isMasked":false,"bio":"A solid midcarder who always delivers. The workhorse of Osaka Joshi.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5008},{"ringName":"Kaede Yoshida","realName":"Kaede Yoshida","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":74,"entertainment":48,"starPower":52,"intimidation":62,"age":28,"heightCm":170,"weightKg":62,"isMasked":false,"bio":"A brooding heel who uses underhanded tactics. Known for her eye rakes.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":3,"id":5009},{"ringName":"Momo Aida","realName":"Momo Aida","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":75,"entertainment":55,"starPower":50,"intimidation":40,"age":23,"heightCm":162,"weightKg":54,"isMasked":false,"bio":"A young technician with potential. Trains under Haruka Honjou.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5010},{"ringName":"Natsuki Endo","realName":"Natsuki Endo","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":73,"entertainment":50,"starPower":48,"intimidation":38,"age":27,"heightCm":168,"weightKg":58,"isMasked":false,"bio":"A wholesome babyface who connects with the crowd. The underdog of the midcard.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":17,"id":5011},{"ringName":"Chihiro Fujita","realName":"Chihiro Fujita","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":72,"entertainment":45,"starPower":45,"intimidation":58,"age":30,"heightCm":173,"weightKg":65,"isMasked":false,"bio":"A tough heel who uses power moves. The gatekeeper of the midcard.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":3,"id":5012},{"ringName":"Riko Maeda","realName":"Riko Maeda","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":66,"entertainment":45,"starPower":38,"intimidation":42,"age":22,"heightCm":160,"weightKg":52,"isMasked":false,"bio":"A young lion with potential. Still developing her skills.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5013},{"ringName":"Tsubame Ogawa","realName":"Tsubame Ogawa","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":64,"entertainment":48,"starPower":35,"intimidation":50,"age":33,"heightCm":168,"weightKg":60,"isMasked":false,"bio":"A veteran heel who tests the young lions. Has been with the promotion since 2005.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":4,"id":5014},{"ringName":"Ayane Kato","realName":"Ayane Kato","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":68,"entertainment":42,"starPower":35,"intimidation":38,"age":25,"heightCm":165,"weightKg":55,"isMasked":false,"bio":"A versatile worker who can fill any role. The utility player.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5015},{"ringName":"Eri Takahashi","realName":"Eri Takahashi","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":62,"entertainment":38,"starPower":32,"intimidation":72,"age":29,"heightCm":178,"weightKg":72,"isMasked":false,"bio":"A monster heel who squashes enhancement talent. Intimidating presence.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":10,"id":5016},{"ringName":"Mai Inoue","realName":"Mai Inoue","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":52,"entertainment":40,"starPower":22,"intimidation":30,"age":21,"heightCm":158,"weightKg":48,"isMasked":false,"bio":"A young enhancement talent just starting her career. Pays her dues.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5017},{"ringName":"Yua Kobayashi","realName":"Yua Kobayashi","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":48,"entertainment":38,"starPower":18,"intimidation":25,"age":20,"heightCm":155,"weightKg":46,"isMasked":false,"bio":"A rookie enhancement talent. The lowest woman on the totem pole.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":17,"id":5018},{"ringName":"Shiori Nishida","realName":"Shiori Nishida","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":true,"disposition":"Heel","wrestling":50,"entertainment":42,"starPower":20,"intimidation":35,"age":24,"heightCm":162,"weightKg":55,"isMasked":false,"bio":"A jobber heel who makes faces look good. Reliable enhancement.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":3,"id":5019},{"ringName":"Kana Murakami","realName":"Kana Murakami","promotion":"Osaka Joshi","promoId":5,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":46,"entertainment":35,"starPower":15,"intimidation":22,"age":19,"heightCm":157,"weightKg":45,"isMasked":false,"bio":"The youngest worker on the roster. A project for the future.","gender":"Female","country":"Japan","region":"Osaka","brand":"None","gimmickId":2,"id":5020},{"ringName":"Freya Asagiri","realName":"Fumiko Asagiri","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":82,"entertainment":55,"starPower":68,"intimidation":60,"age":27,"heightCm":170,"weightKg":60,"isMasked":false,"bio":"The rising star of Valkyrie Project. A technical wrestler with AEGIS LEAGUE title aspirations.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6001},{"ringName":"Skull Valkyrie","realName":"Saki Volkov","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":true,"disposition":"Heel","wrestling":80,"entertainment":50,"starPower":65,"intimidation":85,"age":30,"heightCm":178,"weightKg":72,"isMasked":false,"bio":"A dominant monster heel. Half-Japanese, half-Russian. The most intimidating woman in the promotion.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":10,"id":6002},{"ringName":"Hikari Tonegawa","realName":"Hikari Tonegawa","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":1,"pushName":"Upper Midcard","isHeel":false,"disposition":"Face","wrestling":81,"entertainment":50,"starPower":62,"intimidation":48,"age":25,"heightCm":165,"weightKg":55,"isMasked":false,"bio":"A pure technician who embodies the 'realSportsFeel' of Valkyrie Project. No flash, all substance.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6003},{"ringName":"Mjolnir Mitsuki","realName":"Mitsuki Maeda","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":74,"entertainment":45,"starPower":52,"intimidation":68,"age":28,"heightCm":172,"weightKg":64,"isMasked":false,"bio":"A powerhouse heel who hits like a hammer. Named after Thor's weapon.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":3,"id":6004},{"ringName":"Aurora Asakura","realName":"Aoi Asakura","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":73,"entertainment":48,"starPower":50,"intimidation":42,"age":24,"heightCm":163,"weightKg":53,"isMasked":false,"bio":"A bright face who brings energy to every show. The fan favorite.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6005},{"ringName":"Ragna Shiranui","realName":"Rena Shiranui","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":true,"disposition":"Heel","wrestling":72,"entertainment":42,"starPower":48,"intimidation":65,"age":29,"heightCm":170,"weightKg":62,"isMasked":false,"bio":"A destructive heel who lives up to her name (Ragnarök). Brings chaos.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":3,"id":6006},{"ringName":"Sigrún the Shieldmaiden","realName":"Shiori Sigrid","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":71,"entertainment":45,"starPower":45,"intimidation":50,"age":26,"heightCm":168,"weightKg":58,"isMasked":false,"bio":"A wholesome face with a Nordic warrior gimmick. A unique character in joshi wrestling.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":17,"id":6007},{"ringName":"Idun Kohinata","realName":"Izumi Kohinata","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":2,"pushName":"Midcard","isHeel":false,"disposition":"Face","wrestling":70,"entertainment":40,"starPower":42,"intimidation":38,"age":23,"heightCm":160,"weightKg":50,"isMasked":false,"bio":"A young technician still developing. Named after the Norse goddess of youth.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6008},{"ringName":"Brunhilde Bakugo","realName":"Bara Bakudo","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":64,"entertainment":38,"starPower":35,"intimidation":75,"age":31,"heightCm":175,"weightKg":68,"isMasked":false,"bio":"A towering monster heel. The enforcer of the Valkyrie Project roster.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":10,"id":6009},{"ringName":"Gondul Gotō","realName":"Goro Goto","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":true,"disposition":"Heel","wrestling":62,"entertainment":40,"starPower":32,"intimidation":55,"age":33,"heightCm":168,"weightKg":60,"isMasked":false,"bio":"A veteran heel who's been with the promotion since the beginning. A gatekeeper.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":4,"id":6010},{"ringName":"Kára Kanazawa","realName":"Kana Kanazawa","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":66,"entertainment":42,"starPower":35,"intimidation":40,"age":22,"heightCm":162,"weightKg":52,"isMasked":false,"bio":"A young face with potential. Named after a Valkyrie of Norse myth.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6011},{"ringName":"Eir Echizen","realName":"Eri Echizen","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":3,"pushName":"Lower Midcard","isHeel":false,"disposition":"Face","wrestling":63,"entertainment":38,"starPower":30,"intimidation":35,"age":25,"heightCm":165,"weightKg":55,"isMasked":false,"bio":"A steady worker who fills out the card. Named after the Norse goddess of healing.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6012},{"ringName":"Hrist Hasegawa","realName":"Hana Hasegawa","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":50,"entertainment":35,"starPower":18,"intimidation":25,"age":20,"heightCm":158,"weightKg":47,"isMasked":false,"bio":"A young enhancement talent named after a Valkyrie. Just starting her career.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":2,"id":6013},{"ringName":"Mist Mikage","realName":"Mika Mikage","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":false,"disposition":"Face","wrestling":46,"entertainment":32,"starPower":15,"intimidation":20,"age":19,"heightCm":155,"weightKg":45,"isMasked":false,"bio":"The youngest worker on the roster. A project for the future.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":17,"id":6014},{"ringName":"Geiravör Gima","realName":"Gima Goto","promotion":"Valkyrie Project","promoId":6,"style":"Kings Road","pushTier":4,"pushName":"Enhancement Talent","isHeel":true,"disposition":"Heel","wrestling":48,"entertainment":38,"starPower":17,"intimidation":32,"age":24,"heightCm":162,"weightKg":55,"isMasked":false,"bio":"A jobber heel who makes faces look good. Named after a lesser-known Valkyrie.","gender":"Female","country":"Japan","region":"Saga","brand":"None","gimmickId":3,"id":6015}];
+
+// Gimmick names lookup
+const GIMMICKS = {
+  1: "Arrogant", 2: "Athlete", 3: "Badass", 4: "Classic Heel", 5: "Cocky",
+  6: "Comedy Character", 7: "Evil Foreigner", 8: "Lovable Loser", 9: "Millionaire",
+  10: "Monster", 11: "Musical Performer", 12: "Patriot", 13: "Royalty",
+  14: "Supernatural", 15: "Unstable", 16: "Underdog", 17: "Wholesome Face"
+};
+
+// Render the browse grid
+function renderBrowseGrid(filter) {
+  const grid = document.getElementById('workerBrowseGrid');
+  if (!grid) return;
+  const filtered = filter === 'all' ? WORKERS : WORKERS.filter(w => w.promotion === filter);
+  grid.innerHTML = filtered.map(w => `
+    <div class="worker-browse-card" onclick="showWorkerDetail(${w.id})">
+      <div class="worker-browse-card-name">${w.ringName}</div>
+      <div class="worker-browse-card-meta">${w.promotion} · ${w.pushName} · ${w.disposition}</div>
+      <div class="worker-browse-card-stats">
+        <span class="worker-browse-card-stat">WRS ${w.wrestling}</span>
+        <span class="worker-browse-card-stat">STAR ${w.starPower}</span>
+        ${w.isMasked ? '<span class="worker-browse-card-stat" style="color:var(--rb-tertiary);">MASKED</span>' : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// Show worker detail
+function showWorkerDetail(id) {
+  const w = WORKERS.find(x => x.id === id);
+  if (!w) return;
+
+  const overlay = document.getElementById('workerOverlay');
+  const detail = document.getElementById('workerDetail');
+
+  // Stat color helper
+  function sc(val) {
+    if (val >= 80) return 'high';
+    if (val >= 65) return 'mid';
+    return 'low';
+  }
+
+  // Gimmick name
+  const gimmickName = GIMMICKS[w.gimmickId] || 'Unknown';
+
+  // Avatar initials
+  const initials = w.ringName.split(' ').map(s => s[0]).join('').slice(0, 2).toUpperCase();
+
+  // Promotion color
+  const promoColors = {
+    'RAIBARAZU': 'var(--rb-primary)',
+    'Chicago Show': 'var(--cs-primary)',
+    'Lucha Bellas': 'var(--lb-primary)',
+    'Lucha MEX': 'var(--lm-tertiary)',
+    'Osaka Joshi': 'var(--oj-primary)',
+    'Valkyrie Project': 'var(--vp-tertiary)'
+  };
+  const promoColor = promoColors[w.promotion] || 'var(--accent)';
+
+  detail.innerHTML = `
+    <div class="worker-detail-close" onclick="closeWorkerDetail()">×</div>
+    <div class="worker-detail-header">
+      <div class="worker-detail-avatar" style="border-color:${promoColor};color:${promoColor};">${initials}</div>
+      <div class="worker-detail-titles">
+        <div class="worker-detail-ringname">${w.ringName}</div>
+        <div class="worker-detail-realname">${w.realName} · ID #${w.id}</div>
+        <div class="worker-detail-badges">
+          <span class="badge ${w.isHeel ? 'heel' : 'face'}">${w.disposition}</span>
+          <span class="badge">${w.promotion}</span>
+          <span class="badge annual">${w.pushName}</span>
+          <span class="badge neutral">${w.style}</span>
+          ${w.isMasked ? '<span class="badge" style="color:var(--rb-tertiary);border-color:var(--rb-tertiary);">Masked</span>' : ''}
+          ${w.brand !== 'None' ? `<span class="badge">${w.brand}</span>` : ''}
+        </div>
+      </div>
+    </div>
+
+    <div class="worker-detail-section">
+      <div class="worker-detail-section-title">Biography</div>
+      <div class="worker-detail-bio">${w.bio}</div>
+    </div>
+
+    <div class="worker-detail-section">
+      <div class="worker-detail-section-title">Core Stats</div>
+      <div class="worker-detail-stats">
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Wrestling Skill</span><span class="worker-detail-stat-value ${sc(w.wrestling)}">${w.wrestling}/100</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Entertainment</span><span class="worker-detail-stat-value ${sc(w.entertainment)}">${w.entertainment}/100</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Star Power</span><span class="worker-detail-stat-value ${sc(w.starPower)}">${w.starPower}/100</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Intimidation</span><span class="worker-detail-stat-value ${sc(w.intimidation)}">${w.intimidation}/100</span></div>
+      </div>
+    </div>
+
+    <div class="worker-detail-section">
+      <div class="worker-detail-section-title">Physical &amp; Personal</div>
+      <div class="worker-detail-stats">
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Age</span><span class="worker-detail-stat-value">${w.age}</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Gender</span><span class="worker-detail-stat-value">${w.gender}</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Height</span><span class="worker-detail-stat-value">${w.heightCm} cm</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Weight</span><span class="worker-detail-stat-value">${w.weightKg} kg</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Country</span><span class="worker-detail-stat-value">${w.country}</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Region</span><span class="worker-detail-stat-value">${w.region}</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Gimmick</span><span class="worker-detail-stat-value">${gimmickName}</span></div>
+        <div class="worker-detail-stat"><span class="worker-detail-stat-label">Masked</span><span class="worker-detail-stat-value">${w.isMasked ? 'Yes' : 'No'}</span></div>
+      </div>
+    </div>
+  `;
+
+  overlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+// Close worker detail
+function closeWorkerDetail() {
+  const overlay = document.getElementById('workerOverlay');
+  overlay.classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+// Filter buttons
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('worker-filter-btn')) {
+    document.querySelectorAll('.worker-filter-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    renderBrowseGrid(e.target.dataset.filter);
+  }
+});
+
+// Make worker table names clickable
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('name') && e.target.closest('.worker-table')) {
+    const row = e.target.closest('tr');
+    const idCell = row.querySelector('.id');
+    if (idCell) {
+      const id = parseInt(idCell.textContent.trim());
+      showWorkerDetail(id);
+    }
+  }
+});
+
+// Keyboard: ESC to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeWorkerDetail();
+});
+
+// Initialize the browse grid on load
+window.addEventListener('load', () => {
+  renderBrowseGrid('all');
+});
