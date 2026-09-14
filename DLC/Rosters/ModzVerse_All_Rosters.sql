@@ -508,28 +508,28 @@ INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagSt
 
 -- Stable #201: The Iron Court
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (201, 'The Iron Court', 50, 4, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 'No' FROM contracts WHERE workerID=1007 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 'No' FROM contracts WHERE workerID=1008 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 'No' FROM contracts WHERE workerID=1011 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 'No' FROM contracts WHERE workerID=1014 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 1 FROM contracts WHERE workerID=1007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 0 FROM contracts WHERE workerID=1008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 0 FROM contracts WHERE workerID=1011 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 201, contractID, 0 FROM contracts WHERE workerID=1014 LIMIT 1;
 
 -- Stable #202: The Phoenix Academy
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (202, 'The Phoenix Academy', 50, 4, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 'No' FROM contracts WHERE workerID=1013 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 'No' FROM contracts WHERE workerID=1015 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 'No' FROM contracts WHERE workerID=1018 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 1 FROM contracts WHERE workerID=1013 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 0 FROM contracts WHERE workerID=1015 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 202, contractID, 0 FROM contracts WHERE workerID=1018 LIMIT 1;
 
 -- Stable #203: The Fenikkusu Vanguard
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (203, 'The Fenikkusu Vanguard', 50, 4, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 'No' FROM contracts WHERE workerID=1019 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 'No' FROM contracts WHERE workerID=1021 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 'No' FROM contracts WHERE workerID=1023 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 1 FROM contracts WHERE workerID=1019 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 0 FROM contracts WHERE workerID=1021 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 203, contractID, 0 FROM contracts WHERE workerID=1023 LIMIT 1;
 
 -- Stable #204: The Monster Pack
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (204, 'The Monster Pack', 50, 4, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 'No' FROM contracts WHERE workerID=1022 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 'No' FROM contracts WHERE workerID=1025 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 'No' FROM contracts WHERE workerID=1030 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 1 FROM contracts WHERE workerID=1022 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 0 FROM contracts WHERE workerID=1025 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 204, contractID, 0 FROM contracts WHERE workerID=1030 LIMIT 1;
 
 
 -- ============================================================

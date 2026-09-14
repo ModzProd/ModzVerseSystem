@@ -83,70 +83,70 @@ INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagSt
 
 -- Stable #301: The Viceroy Syndicate (promotionID=1)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (301, 'The Viceroy Syndicate', 50, 1, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2010 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2011 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 'No' FROM contracts WHERE workerID=2012 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 1 FROM contracts WHERE workerID=2010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 0 FROM contracts WHERE workerID=2011 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 301, contractID, 0 FROM contracts WHERE workerID=2012 LIMIT 1;
 
 -- Stable #302: The Chicago Heart (promotionID=1)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (302, 'The Chicago Heart', 50, 1, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2003 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2005 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 'No' FROM contracts WHERE workerID=2013 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 1 FROM contracts WHERE workerID=2003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 0 FROM contracts WHERE workerID=2005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 302, contractID, 0 FROM contracts WHERE workerID=2013 LIMIT 1;
 
 -- Stable #303: El Consejo Escarlata (promotionID=2)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (303, 'El Consejo Escarlata', 50, 2, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3005 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3003 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 'No' FROM contracts WHERE workerID=3007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 1 FROM contracts WHERE workerID=3005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 0 FROM contracts WHERE workerID=3003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 303, contractID, 0 FROM contracts WHERE workerID=3007 LIMIT 1;
 
 -- Stable #304: Las Técnicas Puras (promotionID=2)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (304, 'Las Técnicas Puras', 50, 2, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3004 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3006 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3010 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 'No' FROM contracts WHERE workerID=3008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 1 FROM contracts WHERE workerID=3004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 0 FROM contracts WHERE workerID=3006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 0 FROM contracts WHERE workerID=3010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 304, contractID, 0 FROM contracts WHERE workerID=3008 LIMIT 1;
 
 -- Stable #305: La Oscuridad (promotionID=3)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (305, 'La Oscuridad', 50, 3, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4004 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4006 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4010 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 'No' FROM contracts WHERE workerID=4009 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 1 FROM contracts WHERE workerID=4004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 0 FROM contracts WHERE workerID=4006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 0 FROM contracts WHERE workerID=4010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 305, contractID, 0 FROM contracts WHERE workerID=4009 LIMIT 1;
 
 -- Stable #306: La Tradición (promotionID=3)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (306, 'La Tradición', 50, 3, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4003 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4005 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4008 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 'No' FROM contracts WHERE workerID=4012 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 1 FROM contracts WHERE workerID=4003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 0 FROM contracts WHERE workerID=4005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 0 FROM contracts WHERE workerID=4008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 306, contractID, 0 FROM contracts WHERE workerID=4012 LIMIT 1;
 
 -- Stable #307: The Royal Court (promotionID=5)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (307, 'The Royal Court', 50, 5, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5003 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5007 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5012 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 'No' FROM contracts WHERE workerID=5009 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 1 FROM contracts WHERE workerID=5003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 0 FROM contracts WHERE workerID=5007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 0 FROM contracts WHERE workerID=5012 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 307, contractID, 0 FROM contracts WHERE workerID=5009 LIMIT 1;
 
 -- Stable #308: The Future (promotionID=5)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (308, 'The Future', 50, 5, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5004 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5006 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5008 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 'No' FROM contracts WHERE workerID=5010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 1 FROM contracts WHERE workerID=5004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 0 FROM contracts WHERE workerID=5006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 0 FROM contracts WHERE workerID=5008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 308, contractID, 0 FROM contracts WHERE workerID=5010 LIMIT 1;
 
 -- Stable #309: The Wild Hunt (promotionID=6)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (309, 'The Wild Hunt', 50, 6, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6004 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6006 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6009 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 'No' FROM contracts WHERE workerID=6010 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 1 FROM contracts WHERE workerID=6004 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 0 FROM contracts WHERE workerID=6006 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 0 FROM contracts WHERE workerID=6009 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 309, contractID, 0 FROM contracts WHERE workerID=6010 LIMIT 1;
 
 -- Stable #310: Valhalla's Chosen (promotionID=6)
 INSERT INTO stables (stableID, stableName, stableHeat, promotionID, stableImage) VALUES (310, 'Valhalla''s Chosen', 50, 6, '');
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6003 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6005 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6007 LIMIT 1;
-INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 'No' FROM contracts WHERE workerID=6008 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 1 FROM contracts WHERE workerID=6003 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 0 FROM contracts WHERE workerID=6005 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 0 FROM contracts WHERE workerID=6007 LIMIT 1;
+INSERT INTO stableworkers (stableID, contractID, isLeader) SELECT 310, contractID, 0 FROM contracts WHERE workerID=6008 LIMIT 1;
 
 -- ============================================================
 -- ANNOUNCE TEAMS (20 announcers across 5 promotions)
