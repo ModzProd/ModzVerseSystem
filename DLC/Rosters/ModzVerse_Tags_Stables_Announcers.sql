@@ -54,7 +54,7 @@ INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagSt
 INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (215, 5004, 50.0, 50.0, 5001, 1);
 
 -- Tag Team #216: Queen's Guard (promotionID=5)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (216, 'Queen's Guard', 5002, 5007, 5, 1, 'The queen''s enforcers. Miyako Tsujimoto and Reika Shimizu — the regal heel and her cocky lieutenant. A veteran heel duo.');
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (216, 5002, 5007, 50.0, 'Queen''s Guard', 1);
 
 -- Tag Team #217: The Destroyers (promotionID=5)
 INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (217, 5012, 50.0, 50.0, 5003, 1);
