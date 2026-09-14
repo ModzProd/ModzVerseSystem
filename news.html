@@ -282,6 +282,15 @@
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
       <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD · AUDIT</span><span>v1.1.0 · PWS-compatible save</span></div>
+        <div class="news-body">Audited every DLC SQL file against the actual Pro Wrestling Sim source code (PWS source files were uploaded and inspected for the first time). Three in-game-breaking bugs were found and fixed. <strong>(1)</strong> The previous <code>UPDATE promotions SET announcerN=&lt;workerID&gt;</code> statements referenced <code>workerID</code> instead of <code>contractID</code> — PWS's <code>Announcers.cleanAnnouncers()</code> auto-nulls any slot whose value isn't a finalised, non-expired contract belonging to the same promotion, so all 24 announcer slots would have been wiped the moment the player opened the Announcers page. Fixed by inserting 24 new announcer contracts (IDs 1001-1024, <code>push='Announcer'</code>, <code>finalised=1</code>, <code>expired=0</code>, <code>contractStarted=1</code>) and updating the slots to reference those contractIDs. <strong>(2)</strong> All 86 <code>stableworkers.isLeader</code> values were string literals <code>'No'</code>/<code>'Yes'</code> — PWS only auto-converts the literal <code>'true'</code> to <code>1</code>, so our string values would never render as leaders in-game. Worse, 14 of 26 stables had ALL members set to <code>'No'</code> (no designated leader at all). Fixed by converting strings to integers and promoting the first-listed member of each of the 14 leaderless stables to <code>isLeader=1</code> based on stable lore (e.g. <em>The Viceroy Syndicate</em> → Mistress Malice, <em>Valhalla's Chosen</em> → Hikari Tonegawa). <strong>(3)</strong> The 21 storylines in <code>ModzVerse_Storylines_Content.sql</code> had <strong>zero</strong> <code>storylineworkers</code> rows — meaning every storyline would appear in-game with 0 participants, making them completely inert. PWS's <code>Storylines.cleanupStorylines()</code> would also auto-deactivate any storyline whose workers include a contract not in <code>vw_contracts_active</code>. Fixed by generating 42 <code>storylineworkers</code> rows (2 participants × 21 storylines), each matching the workers named in the storyline's overview text and verified to be in <code>vw_contracts_active</code> so they survive PWS's auto-cleanup. The complete ready-to-play save file is rebuilt and verified — all 9 DLC SQL files load cleanly, <code>PRAGMA integrity_check</code> returns <code>ok</code>, all 24 announcer slots survive <code>cleanAnnouncers()</code>, all 98 stableworkers survive PWS auto-cleanup, all 42 storylineworkers survive <code>cleanupStorylines()</code>, all 26 stables have exactly 1 leader with integer <code>isLeader=1</code>. See <a href="beta-status.html">BETA Status</a> for the updated roadmap.</div>
+      </div>
+
+      <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD</span><span>v1.0.0 · Storylines &amp; Booking Content</span></div>
+        <div class="news-body">Added a new <strong>Storylines &amp; Booking Content</strong> section documenting 21 active storylines across all 6 promotions, 8 match stories (Standard Singles, Hardcore Brawl, Tag Team Showcase, Triple Threat, Fatal 4-Way, Ladder Match, Cage Match, Battle Royal), 15 angle templates with multi-beat flows, and 29 template beats. Every promotion has at least 2 storylines documented — RAIBARAZU leads with 5 (the Ace vs Iron Fist main event, the brand supremacy war, the call-up quest, the Monster Pack rampage, and the tag tournament). All storylines are active as of canon date 2025-01-01. See <a href="storylines.html">Storylines &amp; Booking Content</a>.</div>
+      </div>
+      <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD</span><span>v0.9.6 · Worker Rosters section</span></div>
         <div class="news-body">Added a new <strong>Worker Rosters</strong> section documenting the RAIBARAZU roster — 30 fictional workers across Doragon (15) and Fenikkusu (15) brands, with full worker tables by push tier, contract summary, how-to-load instructions, file tree, and the 'Doragon-Fenikkusu Dream Match' lore callout. Updated portal KPIs (workers 0→30), System Status (worker roster now ✓), BETA Status roadmap (workers + contracts moved from 0% to 20%), top nav, sidebar, sitemap, A-Z index, footer, and version to v0.9.6.</div>
       </div>
@@ -344,11 +353,11 @@
      SHARED FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.0.0 · CONTENT COMPLETE · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.1.0 · PWS-COMPATIBLE SAVE · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
   <p>Fully offline · 19 pages · shared styles.css + script.js · 195 workers · 31 tag teams · 14 stables · 24 announcers · 21 storylines · 7 training schools</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v1.0.0 · Last updated: <span id="lastUpdated"></span></p>
+  <p>Maintained by the ModzVerse project · Build v1.1.0 · Last updated: <span id="lastUpdated"></span></p>
 </footer>
 
 <script src="script.js"></script>
