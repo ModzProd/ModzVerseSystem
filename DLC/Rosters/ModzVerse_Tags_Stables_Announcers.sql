@@ -9,73 +9,73 @@
 -- ============================================================
 
 -- Tag Team #201: The Windy City Wrecking Crew (promotionID=1)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (201, 2003, 50.0, 50.0, 2001, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (201, 2003, 2001, 50.0, 'The Windy City Wrecking Crew', 1);
 
 -- Tag Team #202: The Boardroom (promotionID=1)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (202, 2010, 50.0, 50.0, 2002, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (202, 2010, 2002, 50.0, 'The Boardroom', 1);
 
 -- Tag Team #203: Diamond & Ravencroft (promotionID=1)
 INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (203, 2004, 2005, 50.0, 'Diamond & Ravencroft', 1);
 
 -- Tag Team #204: The Entertainers (promotionID=1)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (204, 2013, 50.0, 50.0, 2006, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (204, 2013, 2006, 50.0, 'The Entertainers', 1);
 
 -- Tag Team #205: Hellfire & Rampage (promotionID=1)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (205, 2012, 50.0, 50.0, 2007, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (205, 2012, 2007, 50.0, 'Hellfire & Rampage', 1);
 
 -- Tag Team #206: Las Mariposas Estelares (promotionID=2)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (206, 3004, 50.0, 50.0, 3002, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (206, 3004, 3002, 50.0, 'Las Mariposas Estelares', 1);
 
 -- Tag Team #207: El Trono Escarlata (promotionID=2)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (207, 3005, 50.0, 50.0, 3001, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (207, 3005, 3001, 50.0, 'El Trono Escarlata', 1);
 
 -- Tag Team #208: Las Bestias (promotionID=2)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (208, 3007, 50.0, 50.0, 3003, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (208, 3007, 3003, 50.0, 'Las Gatas Salvajes', 1);
 
 -- Tag Team #209: Rayo y Águila (promotionID=2)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (209, 3010, 50.0, 50.0, 3006, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (209, 3010, 3006, 50.0, 'Las Águilas Reales', 1);
 
 -- Tag Team #210: Los Honorables (promotionID=3)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (210, 4003, 50.0, 50.0, 4001, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (210, 4003, 4001, 50.0, 'Los Caballeros del Ring', 1);
 
 -- Tag Team #211: Los Malditos (promotionID=3)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (211, 4004, 50.0, 50.0, 4002, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (211, 4004, 4002, 50.0, 'La Pantera y El Diablo', 1);
 
 -- Tag Team #212: Los Rayos (promotionID=3)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (212, 4012, 50.0, 50.0, 4005, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (212, 4012, 4005, 50.0, 'Los Macheteros', 1);
 
 -- Tag Team #213: Los Verdugos (promotionID=3)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (213, 4009, 50.0, 50.0, 4006, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (213, 4009, 4006, 50.0, 'Sombra y Verdugo', 1);
 
 -- Tag Team #214: Las Centinelas (promotionID=3)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (214, 4018, 50.0, 50.0, 4017, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (214, 4018, 4017, 50.0, 'Piedra y Roca', 1);
 
 -- Tag Team #215: Ace & Apprentice (promotionID=5)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (215, 5004, 50.0, 50.0, 5001, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (215, 5004, 5001, 50.0, 'Aoi & Hinata', 1);
 
 -- Tag Team #216: Queen's Guard (promotionID=5)
 INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (216, 5002, 5007, 50.0, 'Queen''s Guard', 1);
 
 -- Tag Team #217: The Destroyers (promotionID=5)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (217, 5012, 50.0, 50.0, 5003, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (217, 5012, 5003, 50.0, 'Momo & Natsuki', 1);
 
 -- Tag Team #218: Sakura Storm (promotionID=5)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (218, 5010, 50.0, 50.0, 5006, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (218, 5010, 5006, 50.0, 'Endo & Aida', 1);
 
 -- Tag Team #219: Sunshine Duo (promotionID=5)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (219, 5011, 50.0, 50.0, 5008, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (219, 5011, 5008, 50.0, 'The Storm Sisters', 1);
 
 -- Tag Team #220: The Shieldmaidens (promotionID=6)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (220, 6003, 50.0, 50.0, 6001, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (220, 6003, 6001, 50.0, 'The Crimson Phoenix', 1);
 
 -- Tag Team #221: Hammer & Skull (promotionID=6)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (221, 6004, 50.0, 50.0, 6002, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (221, 6004, 6002, 50.0, 'The Dragon Riders', 1);
 
 -- Tag Team #222: Aurora & Kára (promotionID=6)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (222, 6012, 50.0, 50.0, 6005, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (222, 6012, 6005, 50.0, 'Kiba & Kiba', 1);
 
 -- Tag Team #223: Ragnarök (promotionID=6)
-INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (223, 6009, 50.0, 50.0, 6006, 1);
+INSERT INTO tagteams (tagID, worker1, worker2, tagExperience, defaultName, tagStatus) VALUES (223, 6009, 6006, 50.0, 'The Savage Blades', 1);
 
 -- ============================================================
 -- STABLES (10 stables across 5 promotions)
