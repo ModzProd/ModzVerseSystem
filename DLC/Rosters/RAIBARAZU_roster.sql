@@ -108,7 +108,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1001, 6, 'Written', 26250, 50000,
+        1001, 4, 'Written', 26250, 50000,
         8, 15, '2025-01-01', '2028-04-10',
         0, 1, 0,
         1, 1
@@ -120,7 +120,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1002, 6, 'Written', 25950, 50000,
+        1002, 4, 'Written', 25950, 50000,
         8, 15, '2025-01-01', '2028-02-21',
         0, 1, 0,
         1, 1
@@ -132,7 +132,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1003, 6, 'Written', 25500, 50000,
+        1003, 4, 'Written', 25500, 50000,
         8, 15, '2025-01-01', '2028-01-03',
         0, 1, 0,
         1, 1
@@ -144,7 +144,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1004, 6, 'Written', 25800, 50000,
+        1004, 4, 'Written', 25800, 50000,
         8, 15, '2025-01-01', '2027-07-13',
         0, 1, 0,
         1, 1
@@ -156,7 +156,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1005, 6, 'Written', 13200, 20000,
+        1005, 4, 'Written', 13200, 20000,
         10, 10, '2025-01-01', '2028-08-02',
         0, 1, 0,
         1, 1
@@ -168,7 +168,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1006, 6, 'Written', 13360, 20000,
+        1006, 4, 'Written', 13360, 20000,
         10, 10, '2025-01-01', '2028-01-23',
         0, 1, 0,
         1, 1
@@ -180,7 +180,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1007, 6, 'Written', 12960, 20000,
+        1007, 4, 'Written', 12960, 20000,
         10, 10, '2025-01-01', '2026-02-16',
         0, 1, 0,
         1, 1
@@ -192,7 +192,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1008, 6, 'Written', 13120, 20000,
+        1008, 4, 'Written', 13120, 20000,
         10, 10, '2025-01-01', '2027-11-26',
         0, 1, 0,
         1, 1
@@ -204,7 +204,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1009, 6, 'Written', 13040, 20000,
+        1009, 4, 'Written', 13040, 20000,
         10, 10, '2025-01-01', '2027-10-28',
         0, 1, 0,
         1, 1
@@ -216,7 +216,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1010, 6, 'Written', 6320, 5000,
+        1010, 4, 'Written', 6320, 5000,
         12, 8, '2025-01-01', '2026-09-02',
         0, 0, 0,
         1, 1
@@ -228,7 +228,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1011, 6, 'Written', 6240, 5000,
+        1011, 4, 'Written', 6240, 5000,
         12, 8, '2025-01-01', '2026-04-28',
         0, 0, 0,
         1, 1
@@ -240,7 +240,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1012, 6, 'Written', 6360, 5000,
+        1012, 4, 'Written', 6360, 5000,
         12, 8, '2025-01-01', '2028-10-16',
         0, 0, 0,
         1, 1
@@ -252,7 +252,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1013, 6, 'Written', 6280, 5000,
+        1013, 4, 'Written', 6280, 5000,
         12, 8, '2025-01-01', '2027-01-03',
         0, 0, 0,
         1, 1
@@ -264,7 +264,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1014, 6, 'PPA', 2250, 0,
+        1014, 4, 'PPA', 2250, 0,
         15, 5, '2025-01-01', '2028-05-18',
         1, 0, 0,
         1, 1
@@ -276,7 +276,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1015, 6, 'PPA', 2280, 0,
+        1015, 4, 'PPA', 2280, 0,
         15, 5, '2025-01-01', '2028-11-02',
         1, 0, 0,
         1, 1
@@ -288,7 +288,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1016, 6, 'Written', 13120, 20000,
+        1016, 4, 'Written', 13120, 20000,
         10, 10, '2025-01-01', '2026-06-01',
         0, 1, 0,
         2, 1
@@ -300,7 +300,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1017, 6, 'Written', 12960, 20000,
+        1017, 4, 'Written', 12960, 20000,
         10, 10, '2025-01-01', '2026-10-05',
         0, 1, 0,
         2, 1
@@ -312,7 +312,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1018, 6, 'Written', 12880, 20000,
+        1018, 4, 'Written', 12880, 20000,
         10, 10, '2025-01-01', '2028-07-03',
         0, 1, 0,
         2, 1
@@ -324,7 +324,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1019, 6, 'Written', 6200, 5000,
+        1019, 4, 'Written', 6200, 5000,
         12, 8, '2025-01-01', '2027-03-19',
         0, 0, 0,
         2, 1
@@ -336,7 +336,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1020, 6, 'Written', 6160, 5000,
+        1020, 4, 'Written', 6160, 5000,
         12, 8, '2025-01-01', '2026-10-27',
         0, 0, 0,
         2, 1
@@ -348,7 +348,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1021, 6, 'Written', 6240, 5000,
+        1021, 4, 'Written', 6240, 5000,
         12, 8, '2025-01-01', '2027-11-18',
         0, 0, 0,
         2, 1
@@ -360,7 +360,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1022, 6, 'Written', 6120, 5000,
+        1022, 4, 'Written', 6120, 5000,
         12, 8, '2025-01-01', '2027-07-25',
         0, 0, 0,
         2, 1
@@ -372,7 +372,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1023, 6, 'Written', 6200, 5000,
+        1023, 4, 'Written', 6200, 5000,
         12, 8, '2025-01-01', '2028-03-26',
         0, 0, 0,
         2, 1
@@ -384,7 +384,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1024, 6, 'PPA', 2220, 0,
+        1024, 4, 'PPA', 2220, 0,
         15, 5, '2025-01-01', '2028-12-03',
         1, 0, 0,
         2, 1
@@ -396,7 +396,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1025, 6, 'PPA', 2205, 0,
+        1025, 4, 'PPA', 2205, 0,
         15, 5, '2025-01-01', '2028-12-12',
         1, 0, 0,
         2, 1
@@ -408,7 +408,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1026, 6, 'PPA', 2235, 0,
+        1026, 4, 'PPA', 2235, 0,
         15, 5, '2025-01-01', '2026-02-14',
         1, 0, 0,
         2, 1
@@ -420,7 +420,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1027, 6, 'PPA', 2175, 0,
+        1027, 4, 'PPA', 2175, 0,
         15, 5, '2025-01-01', '2026-02-11',
         1, 0, 0,
         2, 1
@@ -432,7 +432,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1028, 6, 'PPA', 675, 0,
+        1028, 4, 'PPA', 675, 0,
         20, 3, '2025-01-01', '2028-10-20',
         1, 0, 0,
         2, 1
@@ -444,7 +444,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1029, 6, 'PPA', 660, 0,
+        1029, 4, 'PPA', 660, 0,
         20, 3, '2025-01-01', '2027-06-01',
         1, 0, 0,
         2, 1
@@ -456,7 +456,7 @@ INSERT INTO contracts (
         maxAppearancesPerYear, merchPercentPerAppearance, contractStartDate, expiryDate,
         allowIndyBookings, ironCladContract, noHouseShows, brand, finalised
     ) VALUES (
-        1030, 6, 'PPA', 670, 0,
+        1030, 4, 'PPA', 670, 0,
         20, 3, '2025-01-01', '2028-05-26',
         1, 0, 0,
         2, 1

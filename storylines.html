@@ -111,7 +111,7 @@
     <ul>
       <li><a href="rosters.html" class="sub">Roster Overview</a></li>
       <li><a href="rosters.html#raibarazu-roster" class="sub">RAIBARAZU (30 workers)</a></li>
-      <li><a href="rosters.html#all-rosters" class="sub">All 6 Promos (195 workers)</a></li>
+      <li><a href="rosters.html#all-rosters" class="sub">All 10 Promos (335 workers)</a></li>
       <li><a href="rosters.html#all-tagteams" class="sub">All Tag Teams (31)</a></li>
       <li><a href="rosters.html#all-stables" class="sub">All Stables (14)</a></li>
       <li><a href="rosters.html#all-announcers" class="sub">All Announcers (24)</a></li>
@@ -167,18 +167,18 @@
     <div class="roster-hero">
       <span class="roster-hero-eyebrow">★ NEW · v1.0.0 — Storylines &amp; Booking Content · ★ v1.1.0 — PWS-compatible storylineworkers</span>
       <h1>STORYLINES &amp; BOOKING</h1>
-      <div class="roster-hero-sub">21 storylines · 42 storylineworkers · 8 match stories · 15 angle templates · 29 template beats · 7 training schools</div>
+      <div class="roster-hero-sub">29 storylines · 58 storylineworkers · 8 match stories · 15 angle templates · 29 template beats · 7 training schools</div>
 
       <div class="roster-hero-stats">
         <div class="roster-hero-stat">
-          <div class="roster-hero-stat-num">21</div>
+          <div class="roster-hero-stat-num">29</div>
           <div class="roster-hero-stat-label">Storylines</div>
-          <div class="roster-hero-stat-delta">across all 6 promotions</div>
+          <div class="roster-hero-stat-delta">across all 10 promotions</div>
         </div>
         <div class="roster-hero-stat">
-          <div class="roster-hero-stat-num">42</div>
+          <div class="roster-hero-stat-num">58</div>
           <div class="roster-hero-stat-label">Storylineworkers</div>
-          <div class="roster-hero-stat-delta">2 participants per storyline</div>
+          <div class="roster-hero-stat-delta">2 participants per storyline × 29</div>
         </div>
         <div class="roster-hero-stat">
           <div class="roster-hero-stat-num">8</div>
@@ -201,7 +201,7 @@
           <div class="roster-hero-stat-delta">one per promotion (RAIBARAZU has 2)</div>
         </div>
         <div class="roster-hero-stat">
-          <div class="roster-hero-stat-num">122</div>
+          <div class="roster-hero-stat-num">139</div>
           <div class="roster-hero-stat-label">Total Entries</div>
           <div class="roster-hero-stat-delta">across 5 content tables</div>
         </div>
@@ -210,7 +210,7 @@
 
     <p>The ModzVerse now has complete booking content — storylines, match stories, angle templates, template beats, and training schools. Every promotion has at least 3 storylines including a headline feud, a stable war, and a unique narrative arc. All content is fully fictional and designed to give booking players months of storyline material from day one.</p>
 
-    <h2 id="storylines-list">Storylines (21 across 6 promotions)</h2>
+    <h2 id="storylines-list">Storylines (29 across 10 promotions)</h2>
     <p>Every promotion has at least 3 storylines, each with a type classification (Feud, Title, Stable War, Mentorship, Betrayal) and a description of the narrative arc. These storylines provide the structural foundation for the first canon year of booking.</p>
 
     <table class="wiki-table">
@@ -306,7 +306,7 @@
         <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/ModzVerse_Tags_Stables_Announcers.sql<br>
         <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/ModzVerse_Storylines_Content.sql<br>
         <span class="prompt">$</span>sqlite3 ModzVerse(BETA).db &lt; DLC/Rosters/ModzVerse_TrainingSchools.sql<br><br>
-        <span class="comment"># Total: 199 workers + 195 contracts + 31 tag teams + 14 stables + 24 announcers + 21 storylines + 8 match stories + 15 angle templates + 29 template beats + 7 training schools</span>
+        <span class="comment"># Total: 335 workers + 335 contracts + 61 tag teams + 34 stables + 40 announcers + 29 storylines + 8 match stories + 15 angle templates + 29 template beats + 7 training schools</span>
       </div>
     </div>
 
@@ -317,13 +317,13 @@
         <tr><td><code>DLC/Rosters/RAIBARAZU_roster.sql</code></td><td>128 KB</td><td>30 workers + 30 contracts</td><td><span class="badge face">✓ Loads</span></td></tr>
         <tr><td><code>DLC/Rosters/ModzVerse_All_Rosters.sql</code></td><td>336 KB</td><td>105 workers + 109 contracts + 4 announcers + 8 tag teams + 4 stables</td><td><span class="badge face">✓ Loads</span></td></tr>
         <tr><td><code>DLC/Rosters/ModzVerse_Tags_Stables_Announcers.sql</code></td><td>46 KB</td><td>23 tag teams + 10 stables + 20 announcers</td><td><span class="badge face">✓ Loads</span></td></tr>
-        <tr><td><code>DLC/Rosters/ModzVerse_Storylines_Content.sql</code></td><td>32 KB</td><td>21 storylines + 8 match stories + 15 angle templates + 29 template beats</td><td><span class="badge face">✓ Loads</span></td></tr>
+        <tr><td><code>DLC/Rosters/ModzVerse_Storylines_Content.sql</code></td><td>32 KB</td><td>21 storylines (v1.0.0) + 8 match stories + 15 angle templates + 29 template beats</td><td><span class="badge face">✓ Loads</span></td></tr>
         <tr><td><code>DLC/Rosters/ModzVerse_TrainingSchools.sql</code></td><td>4 KB</td><td>7 training schools</td><td><span class="badge face">✓ Loads</span></td></tr>
       </tbody>
       <tfoot>
         <tr style="background:var(--bg-elev-3);font-weight:700;">
           <td colspan="2">TOTAL</td>
-          <td>546 KB · 199 workers · 31 tag teams · 14 stables · 24 announcers · 21 storylines · 8 match stories · 15 angle templates · 29 beats · 7 schools</td>
+          <td>~ 650 KB · 335 workers · 61 tag teams · 34 stables · 40 announcers · 29 storylines · 8 match stories · 15 angle templates · 29 beats · 7 schools</td>
           <td><span class="badge face">✓ All tested</span></td>
         </tr>
       </tfoot>
@@ -331,7 +331,7 @@
 
     <div class="callout lore">
       <div class="callout-title">★ The Storyline Architecture</div>
-      With 21 storylines across 6 promotions, the ModzVerse provides a booking player with months of narrative material from day one. Every promotion has a <strong>headline feud</strong> (the ace vs the top heel), a <strong>stable war</strong> (the heel faction vs the face faction), and a <strong>unique narrative arc</strong> — from RAIBARAZU's call-up quest (a B-brand worker fighting for promotion to the A-brand) to Lucha MEX's mask collection (a heel systematically unmasking technicos) to Valkyrie Project's AEGIS LEAGUE tournament (friendship tested by competition). Combined with 8 match story templates and 15 angle templates, a booking player has everything needed to run a full year of shows without generating any content from scratch.
+      With 29 storylines across 10 promotions, the ModzVerse provides a booking player with months of narrative material from day one. Every promotion has a <strong>headline feud</strong> (the ace vs the top heel), a <strong>stable war</strong> (the heel faction vs the face faction), and a <strong>unique narrative arc</strong> — from RAIBARAZU's call-up quest (a B-brand worker fighting for promotion to the A-brand) to Lucha MEX's mask collection (a heel systematically unmasking technicos) to Valkyrie Project's AEGIS LEAGUE tournament (friendship tested by competition). Combined with 8 match story templates and 15 angle templates, a booking player has everything needed to run a full year of shows without generating any content from scratch.
     </div>
 
   
@@ -359,7 +359,7 @@
 <footer class="wiki-footer">
   <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.2.0 · CONTINENTAL VACUUM FILLED · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
-  <p>Fully offline · 19 pages · shared styles.css + script.js · 199 workers · 31 tag teams · 14 stables · 24 announcers · 21 storylines · 7 training schools</p>
+  <p>Fully offline · 19 pages · shared styles.css + script.js · 335 workers · 61 tag teams · 34 stables · 40 announcers · 29 storylines · 7 training schools</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
   <p>Maintained by the ModzVerse project · Build v1.2.0 · Last updated: <span id="lastUpdated"></span></p>
 </footer>

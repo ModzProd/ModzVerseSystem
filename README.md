@@ -123,7 +123,7 @@ Documentation for all **18 venue packs** totaling **36,000 venue records**:
 
 ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-player booking/management simulation game where the player runs a pro wrestling promotion. The world features:
 
-- **6 promotions** across 3 continents (Japan, Mexico, USA)
+- **10 promotions** across 6 continents (Japan, Mexico, USA, UK, Brazil, Nigeria, Australia)
 - **13 signature events** including the January Week 5 supershow bottleneck
 - **1 championship** (the AEGIS LEAGUE, currently vacant)
 - **2 brands** (RAIBARAZU's Doragon and Fenikkusu)
@@ -150,7 +150,7 @@ The world is currently in **BETA** — the structural foundation (promotions, ev
 
 The ModzVerse is a community world — contributions are welcome. The most valuable contributions, in priority order:
 
-1. **Worker rosters** — fully-spec'd worker entries (149 columns each) for any of the 6 promotions
+1. **Worker rosters** — fully-spec'd worker entries (149 columns each) for any of the 10 promotions
 2. **Venue data** — real-world venue entries for Chicago, Mexico City, Tokyo, Osaka, Saga
 3. **Match gimmicks and stories** — match type definitions and play-by-play text beats
 4. **Angle templates** — pre-built angle scenes that fit the world's in-universe tone
