@@ -73,6 +73,10 @@
       <li><a href="promotions.html#promo-raibarazu" class="sub">RAIBARAZU</a></li>
       <li><a href="promotions.html#promo-osaka-joshi" class="sub">Osaka Joshi</a></li>
       <li><a href="promotions.html#promo-valkyrie-project" class="sub">Valkyrie Project</a></li>
+      <li><a href="promotions.html#promo-ewa" class="sub">★ European Wrestling Alliance</a></li>
+      <li><a href="promotions.html#promo-samba-luta" class="sub">★ Samba Luta</a></li>
+      <li><a href="promotions.html#promo-akw" class="sub">★ African Kings Wrestling</a></li>
+      <li><a href="promotions.html#promo-prw" class="sub">★ Pacific Rim Wrestling</a></li>
     </ul>
   </div>
   <div class="sidebar-group">
@@ -282,6 +286,11 @@
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
       <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD · EXPANSION</span><span>v1.2.0 · Continental Vacuum filled</span></div>
+        <div class="news-body">The ModzVerse expands from 6 to <strong>10 promotions</strong> with the addition of 4 new region-coded promotions, finally filling the Continental Vacuum identified in the world lore. <strong>#7 European Wrestling Alliance (EWA)</strong> — London-based, Hardcore style, founded 2002-04-15, 29 workers (Jack Ripper as the ace, 4 announcers led by Stewart 'The Voice' Vance). <strong>#8 Samba Luta (SL)</strong> — São Paulo, Brazil, Traditional style, founded 2008-09-07, 29 workers (Rafael Silva as the ace, 4 announcers led by Carlos 'A Voz' Cardoso). <strong>#9 African Kings Wrestling (AKW)</strong> — Lagos, Nigeria, Kings Road style, founded 2010-11-20, 29 workers (Kwame Adebayo as the ace, 4 announcers led by Emeka 'The Echo' Eze). <strong>#10 Pacific Rim Wrestling (PRW)</strong> — Sydney, Australia, Sports Entertainment style, founded 2005-03-01, 29 workers (Jake Morrison as the ace, 4 announcers led by Brett 'The Boomer' Bennett). Each promotion ships with: 1 promotion row, 25 wrestlers across push tiers (4 Main Event, 4 Upper Midcard, 6 Midcard, 5 Lower Midcard, 3 Enhancement Talent, 3 Personality), 4 announcer contracts (using contractIDs, PWS-compatible), 3 tag teams, 2 stables (4 members each with a designated leader, isLeader=1 integer), 2 storylines (2 participants each). Total new content: <strong>4 promotions + 116 workers + 116 contracts + 12 tag teams + 8 stables + 8 storylines + 16 storylineworkers rows</strong>. Worker IDs use the new 7xxx series (7001-7344). Contract IDs use 1101-1216. Style distribution now covers 5 of 7 canonical styles (Hardcore is finally represented!). The save file now totals <strong>335 workers, 335 contracts, 40 announcer slots (all valid), 34 stables, 29 storylines</strong>. See <a href="promotions.html">Promotions</a> and <a href="beta-status.html">BETA Status</a>.</div>
+      </div>
+
+      <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD · AUDIT</span><span>v1.1.0 · PWS-compatible save</span></div>
         <div class="news-body">Audited every DLC SQL file against the actual Pro Wrestling Sim source code (PWS source files were uploaded and inspected for the first time). Three in-game-breaking bugs were found and fixed. <strong>(1)</strong> The previous <code>UPDATE promotions SET announcerN=&lt;workerID&gt;</code> statements referenced <code>workerID</code> instead of <code>contractID</code> — PWS's <code>Announcers.cleanAnnouncers()</code> auto-nulls any slot whose value isn't a finalised, non-expired contract belonging to the same promotion, so all 24 announcer slots would have been wiped the moment the player opened the Announcers page. Fixed by inserting 24 new announcer contracts (IDs 1001-1024, <code>push='Announcer'</code>, <code>finalised=1</code>, <code>expired=0</code>, <code>contractStarted=1</code>) and updating the slots to reference those contractIDs. <strong>(2)</strong> All 86 <code>stableworkers.isLeader</code> values were string literals <code>'No'</code>/<code>'Yes'</code> — PWS only auto-converts the literal <code>'true'</code> to <code>1</code>, so our string values would never render as leaders in-game. Worse, 14 of 26 stables had ALL members set to <code>'No'</code> (no designated leader at all). Fixed by converting strings to integers and promoting the first-listed member of each of the 14 leaderless stables to <code>isLeader=1</code> based on stable lore (e.g. <em>The Viceroy Syndicate</em> → Mistress Malice, <em>Valhalla's Chosen</em> → Hikari Tonegawa). <strong>(3)</strong> The 21 storylines in <code>ModzVerse_Storylines_Content.sql</code> had <strong>zero</strong> <code>storylineworkers</code> rows — meaning every storyline would appear in-game with 0 participants, making them completely inert. PWS's <code>Storylines.cleanupStorylines()</code> would also auto-deactivate any storyline whose workers include a contract not in <code>vw_contracts_active</code>. Fixed by generating 42 <code>storylineworkers</code> rows (2 participants × 21 storylines), each matching the workers named in the storyline's overview text and verified to be in <code>vw_contracts_active</code> so they survive PWS's auto-cleanup. The complete ready-to-play save file is rebuilt and verified — all 9 DLC SQL files load cleanly, <code>PRAGMA integrity_check</code> returns <code>ok</code>, all 24 announcer slots survive <code>cleanAnnouncers()</code>, all 98 stableworkers survive PWS auto-cleanup, all 42 storylineworkers survive <code>cleanupStorylines()</code>, all 26 stables have exactly 1 leader with integer <code>isLeader=1</code>. See <a href="beta-status.html">BETA Status</a> for the updated roadmap.</div>
       </div>
@@ -353,11 +362,11 @@
      SHARED FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.1.0 · PWS-COMPATIBLE SAVE · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.2.0 · CONTINENTAL VACUUM FILLED · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
   <p>Fully offline · 19 pages · shared styles.css + script.js · 195 workers · 31 tag teams · 14 stables · 24 announcers · 21 storylines · 7 training schools</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v1.1.0 · Last updated: <span id="lastUpdated"></span></p>
+  <p>Maintained by the ModzVerse project · Build v1.2.0 · Last updated: <span id="lastUpdated"></span></p>
 </footer>
 
 <script src="script.js"></script>
