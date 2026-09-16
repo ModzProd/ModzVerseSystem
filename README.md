@@ -124,6 +124,13 @@ Documentation for all **18 venue packs** totaling **36,000 venue records**:
 ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-player booking/management simulation game where the player runs a pro wrestling promotion. The world features:
 
 - **10 promotions** across 6 continents (Japan, Mexico, USA, UK, Brazil, Nigeria, Australia)
+- **335 workers** (295 wrestlers + 40 announcers) with unique bios, style-appropriate movesets, and normalized traits
+- **335 contracts** (all finalised, all PWS-compatible — using contractIDs not workerIDs for announcer slots)
+- **61 tag teams** across all 10 promotions
+- **34 stables** with 130 members, all with designated leaders (isLeader=1 integer)
+- **29 storylines** with 58 storylineworkers rows (2 participants per storyline)
+- **7 training schools** (1 per original 6 promotions + 1 extra for RAIBARAZU)
+- **8 match stories + 15 angle templates + 29 template beats** for booking content
 - **13 signature events** including the January Week 5 supershow bottleneck
 - **1 championship** (the AEGIS LEAGUE, currently vacant)
 - **2 brands** (RAIBARAZU's Doragon and Fenikkusu)
@@ -131,7 +138,7 @@ ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-play
 - **190 countries and 3,218 regions** with full wrestling popularity data
 - **18 venue database packs** totaling 36,000 venues
 
-The world is currently in **BETA** — the structural foundation (promotions, events, titles, brands, gimmicks, geography, venues) is complete, but the human layer (workers, contracts, networks, storylines) has not yet been populated.
+The world is currently in **v1.3.0 BETA** — the structural foundation (promotions, events, titles, brands, gimmicks, geography, venues) AND the human layer (workers, contracts, announcers, tag teams, stables, storylines, training schools, bios, traits, movesets) are complete. All worker fields have been audited against the actual PWS source code and normalized to PWS-expected categorical values (height, weight, race, build, drive, style, push, role, womensDivision).
 
 ---
 
@@ -143,6 +150,14 @@ The world is currently in **BETA** — the structural foundation (promotions, ev
 | v0.9.1 | 2025-01-01 | Intranet portal, news feed, sitemap, A-Z index, full-text search, offline badge, print stylesheet |
 | v0.9.2 | 2025-01-01 | Venue Packs section added — 10 packs, 16,859 venues |
 | v0.9.3 | 2025-01-01 | 8 new venue packs added — total 18 packs, 36,000 venues; "Australia Surprise" expanded to 4 styles |
+| v0.9.4 | 2025-01-01 | GitHub repo live + GitHub Pages hosted |
+| v0.9.5 | 2025-01-01 | 75 MatchGimmicks DLC + 12 TVNetworks DLC + 4 Excel spreadsheets |
+| v0.9.6 | 2025-01-01 | RAIBARAZU worker roster (30 workers + 30 contracts) |
+| v0.9.7 | 2025-01-01 | All 6 promotion rosters populated (195 workers + 109 contracts) |
+| v1.0.0 | 2025-01-01 | Tag teams + stables + announcers for all 6 promotions; Storylines & Booking Content section |
+| v1.1.0 | 2025-01-01 | PWS-source audit — fixed 24 announcer contractIDs + isLeader integers + 42 storylineworkers rows |
+| v1.2.0 | 2025-01-01 | Continental Vacuum filled — 4 new promotions (EWA, Samba Luta, AKW, PRW) + 116 workers + 116 contracts |
+| v1.3.0 | 2025-01-01 | Worker data normalization — height/weight/race/build/drive/style categorical labels + unique bios + NULL traits filled + trait conflicts resolved + 295 movesets populated |
 
 ---
 
