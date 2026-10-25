@@ -111,7 +111,7 @@
     <ul>
       <li><a href="rosters.html" class="sub">Roster Overview</a></li>
       <li><a href="rosters.html#raibarazu-roster" class="sub">RAIBARAZU (30 workers)</a></li>
-      <li><a href="rosters.html#all-rosters" class="sub">All 10 Promos (335 workers)</a></li>
+      <li><a href="rosters.html#all-rosters" class="sub">All 11 Promos (347 workers)</a></li>
       <li><a href="rosters.html#all-tagteams" class="sub">All Tag Teams (31)</a></li>
       <li><a href="rosters.html#all-stables" class="sub">All Stables (14)</a></li>
       <li><a href="rosters.html#all-announcers" class="sub">All Announcers (24)</a></li>
@@ -286,6 +286,11 @@
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
       <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD · RELEASE</span><span>v1.4.0 · All 7 styles complete + GitHub Release</span></div>
+        <div class="news-body">The final missing canonical PWS style — <strong>Strong Style</strong> — now has a home promotion. <strong>#11 Nihon Strong Spirit (NSS)</strong> — Nagoya, Japan, Strong Style, founded 2006-06-01, 8 wrestlers (ace: Kenta 'The Striker' Sato, 92 wrestling) + 4 announcers + 3 tag teams + 2 stables + 2 storylines + 3 events + 1 training school. Also added: 12 tour dates for Road to Battle of Rivals (all 4 RAIBARAZU tours now have eventDates), events for all 4 v1.2.0 expansion promotions, training schools for all 11 promotions, and 347 worker pictures. All 7 PWS canonical styles now covered: Sports Entertainment (Chicago Show, PRW), Lucha Libre (Lucha Bellas), Pure Wrestling (RAIBARAZU), Kings Road (Osaka Joshi, Valkyrie, AKW), Traditional (Lucha MEX, Samba Luta), Hardcore (EWA), Strong Style (NSS). <strong>GitHub Release v1.4.0</strong> created with downloadable assets: <code>ModzVerse(BETA)_v1.2.0.db</code> (12 MB save file) + <code>ModzVerse_Workers.xlsx</code> (347 workers × 13 columns). See <a href="https://github.com/ModzProd/ModzVerseSystem/releases/tag/v1.4.0" target="_blank" rel="noopener">GitHub Release v1.4.0</a>.</div>
+      </div>
+
+      <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD · AUDIT</span><span>v1.3.0 · Worker data normalization</span></div>
         <div class="news-body">A deep audit of worker bio / trait / moveset / chemistry fields (using the actual PWS source code in <code>Workers.js</code>, <code>StatConverter.js</code>, and <code>EditWorkers.js</code>) found 4 categories of bugs that would have caused silent gameplay bugs. <strong>(1) Categorical field normalization</strong> — height ('175 cm' → 'Average'), weight ('70 kg' → 'Lightweight'), race ('Asian' → 'East Asian', 'Caucasian' → 'White', 'Latino'/'Latin' → 'Hispanic'), build ('Heavy' → 'Bulky', 'Lean' → 'Toned'), drive ('Calculating' → 'Best', 'Reckless' → 'Thrill', etc.), and worker.style ('Pure Wrestling' → 'Technical', 'Kings Road' → 'Strong Style', 'Sports Entertainment' → 'Entertainer') — 1,395 UPDATEs across 335 workers. The worker.style fix was the most impactful: PWS uses <code>StatConverter.STYLE_PROFILES[worker.style]</code> to distribute <code>wrestlingSkill</code> across the 4 sub-stats (brawling, technical, aerial, puroresu); with invalid values, every wrestler silently used <code>DEFAULT_PROFILE</code>, erasing the gameplay distinction between styles. <strong>(2) Contract field fixes</strong> — 135 contracts had push='None' (literal string instead of NULL), 295 contracts had invalid role values ('None', 'Wrestler', 'Personality' instead of Face/Heel/Tweener/NULL), 16 contracts had broken contractName values like 'Stewart'TheVoice'Vance', and 1 promotion (RAIBARAZU) had womensDivision='None' instead of 'No'. <strong>(3) Bio / trait / moveset fixes</strong> — 102 workers had duplicate/template bios (25 EWA workers shared 'A Hardcore wrestler for European Wrestling Alliance.' verbatim), 2,380 NULL trait cells across 17 fields were set to 0 (the schema default), 65 mutually-exclusive trait pairs both set to 1 were resolved (e.g. changesEmployers + prefersOneEmployer, maximumEffort + minimumEffort, greatSeller + badSeller), and all 295 wrestlers had empty movesets populated with style-appropriate JSON signature moves (4-5 moves per wrestler from a 12-template library). Verified: 0 duplicate bios, 0 NULL traits, 0 conflicting trait pairs, 0 wrestlers with empty moveset, 0 malformed JSON. The <code>chemistry</code> and <code>relationships</code> tables remain empty — correct for a fresh save, as PWS populates them dynamically during gameplay. See <a href="beta-status.html">BETA Status</a> for the updated roadmap.</div>
       </div>
@@ -367,11 +372,11 @@
      SHARED FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.3.0 · WORKER DATA COMPLETE · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v1.4.0 · ALL 7 STYLES COMPLETE · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
-  <p>Fully offline · 19 pages · shared styles.css + script.js · 335 workers · 61 tag teams · 34 stables · 40 announcers · 29 storylines · 7 training schools</p>
+  <p>Fully offline · 19 pages · shared styles.css + script.js · 347 workers · 64 tag teams · 36 stables · 44 announcers · 31 storylines · 12 training schools</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v1.3.0 · Last updated: <span id="lastUpdated"></span></p>
+  <p>Maintained by the ModzVerse project · Build v1.4.0 · Last updated: <span id="lastUpdated"></span></p>
 </footer>
 
 <script src="script.js"></script>

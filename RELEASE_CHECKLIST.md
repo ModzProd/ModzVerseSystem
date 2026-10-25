@@ -1,6 +1,6 @@
-# ModzVerse v1.3.0 Release Checklist
+# ModzVerse v1.4.0 Release Checklist
 
-> **Purpose**: In-game verification of the v1.3.0 save file
+> **Purpose**: In-game verification of the v1.4.0 save file
 > (`ModzVerse(BETA)_v1.2.0.db`) before public release.
 > Work through each section in order. Tick the box when a check passes;
 > file an issue (template at the bottom) for any failure.
@@ -30,15 +30,15 @@ Before launching the game, verify the file itself is sound.
       sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT databaseVersion FROM gameworld;"
       # Expected output: 121
       ```
-- [ ] **0.5** Total workers = 335 (295 wrestlers + 40 announcers)
+- [ ] **0.5** Total workers = 347 (303 wrestlers + 44 announcers)
       ```bash
       sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT COUNT(*) FROM workers;"
-      # Expected output: 335
+      # Expected output: 347
       ```
-- [ ] **0.6** Total contracts = 335 (one per worker)
+- [ ] **0.6** Total contracts = 347 (one per worker)
       ```bash
       sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT COUNT(*) FROM contracts WHERE finalised=1 AND expired=0;"
-      # Expected output: 335
+      # Expected output: 347
       ```
 
 ---
@@ -164,7 +164,7 @@ expectations.
 | 8 | Samba Luta | 25 | 4 | 29 | ☐ |
 | 9 | African Kings Wrestling | 25 | 4 | 29 | ☐ |
 | 10 | Pacific Rim Wrestling | 25 | 4 | 29 | ☐ |
-| | **TOTAL** | **295** | **40** | **335** | ☐ |
+| | **TOTAL** | **303** | **44** | **347**** | ☐ |
 
 ### 3.1 Aces spot-check
 
@@ -234,13 +234,13 @@ verify the worker browse feature works.
 
 - [ ] **5.1** Open `rosters.html` (or click "Rosters" in the nav)
 - [ ] **5.2** Scroll to the "Browse All Workers" section
-- [ ] **5.3** Header reads "Browse All Workers (295 wrestlers · ★ v1.2.0)"
+- [ ] **5.3** Header reads "Browse All Workers (347 wrestlers · ★ v1.2.0)"
 - [ ] **5.4** Filter row shows 11 buttons:
-      - All (295)
+      - All (347)
       - RAIBARAZU (40), Chicago Show (35), Lucha Bellas (30), Lucha MEX (35),
         Osaka Joshi (30), Valkyrie Project (25)
       - ★ EWA (25), ★ Samba Luta (25), ★ AKW (25), ★ PRW (25)
-- [ ] **5.5** Click "All (295)" — grid populates with 295 worker cards
+- [ ] **5.5** Click "All (347)" — grid populates with 347 worker cards
 - [ ] **5.6** Click "RAIBARAZU (40)" — grid filters to 40 workers
 - [ ] **5.7** Click "★ EWA (25)" — grid filters to 25 workers
 - [ ] **5.8** Click any worker card — detail overlay opens with stats
@@ -316,11 +316,11 @@ checks.
 For each HTML page, verify it loads without errors and shows the
 v1.2.0 version string.
 
-- [ ] **7.1** `portal.html` — Portal Dashboard loads, KPIs show 335 workers / 335 contracts / 10 promotions
+- [ ] **7.1** `portal.html` — Portal Dashboard loads, KPIs show 347 workers / 347 contracts / 11 promotions
 - [ ] **7.2** `news.html` — Top entry is "v1.2.0 · Continental Vacuum filled"
 - [ ] **7.3** `beta-status.html` — Roadmap shows v1.2.0 line under "Complete (Canonical)"
 - [ ] **7.4** `promotions.html` — 10 promotion profile articles (scroll to bottom: EWA, SL, AKW, PRW sections exist)
-- [ ] **7.5** `rosters.html` — Hero stats show "10 Promotions Populated / 335 Workers / 335 Contracts / 40 Announcers / 61 Tag Teams / 34 Stables"
+- [ ] **7.5** `rosters.html` — Hero stats show "11 Promotions Populated / 347 Workers / 347 Contracts / 44 Announcers / 64 Tag Teams / 36 Stables"
 - [ ] **7.6** `storylines.html` — Hero shows "29 storylines · 58 storylineworkers", Total Entries = 139
 - [ ] **7.7** `github.html` — Hero stat reads "v1.2.0 (continental vacuum filled)"
 - [ ] **7.8** Footer of every page reads "v1.2.0 · CONTINENTAL VACUUM FILLED · Canon date: January 1, 2025"
