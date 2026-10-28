@@ -1,7 +1,7 @@
 # ModzVerse v1.4.0 Release Checklist
 
-> **Purpose**: In-game verification of the v1.4.0 save file
-> (`ModzVerse(BETA)_v1.2.0.db`) before public release.
+> **Purpose**: In-game verification of the v1.5.0 save file
+> (`ModzVerse(BETA)_v1.5.0.db`) before public release.
 > Work through each section in order. Tick the box when a check passes;
 > file an issue (template at the bottom) for any failure.
 >
@@ -15,29 +15,29 @@
 
 Before launching the game, verify the file itself is sound.
 
-- [ ] **0.1** `ModzVerse(BETA)_v1.2.0.db` is in your PWS saves folder
+- [ ] **0.1** `ModzVerse(BETA)_v1.5.0.db` is in your PWS saves folder
       - Windows: `%APPDATA%/Pro Wrestling Sim/saves/`
       - macOS: `~/Library/Application Support/Pro Wrestling Sim/saves/`
       - Linux: `~/.config/Pro Wrestling Sim/saves/`
 - [ ] **0.2** File size is ~11.5 MB (12,093,440 bytes)
 - [ ] **0.3** SQLite integrity check passes
       ```bash
-      sqlite3 ModzVerse(BETA)_v1.2.0.db "PRAGMA integrity_check;"
+      sqlite3 ModzVerse(BETA)_v1.5.0.db "PRAGMA integrity_check;"
       # Expected output: ok
       ```
 - [ ] **0.4** Database version is 121
       ```bash
-      sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT databaseVersion FROM gameworld;"
+      sqlite3 ModzVerse(BETA)_v1.5.0.db "SELECT databaseVersion FROM gameworld;"
       # Expected output: 121
       ```
 - [ ] **0.5** Total workers = 347 (303 wrestlers + 44 announcers)
       ```bash
-      sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT COUNT(*) FROM workers;"
+      sqlite3 ModzVerse(BETA)_v1.5.0.db "SELECT COUNT(*) FROM workers;"
       # Expected output: 347
       ```
 - [ ] **0.6** Total contracts = 347 (one per worker)
       ```bash
-      sqlite3 ModzVerse(BETA)_v1.2.0.db "SELECT COUNT(*) FROM contracts WHERE finalised=1 AND expired=0;"
+      sqlite3 ModzVerse(BETA)_v1.5.0.db "SELECT COUNT(*) FROM contracts WHERE finalised=1 AND expired=0;"
       # Expected output: 347
       ```
 
@@ -253,7 +253,7 @@ Click 3-4 worker cards at random and verify the displayed stats
 match what's in the save DB. Example SQL to compare against:
 
 ```bash
-sqlite3 ModzVerse(BETA)_v1.2.0.db \
+sqlite3 ModzVerse(BETA)_v1.5.0.db \
   "SELECT name, wrestlingSkill, entertainment, starPower, intimidation FROM workers WHERE workerID IN (1001, 2001, 7001, 7301);"
 ```
 
@@ -355,13 +355,13 @@ If you find an issue, copy this template into a new GitHub issue:
 **Expected**: ...
 **Actual**: ...
 
-**Save file**: ModzVerse(BETA)_v1.2.0.db (commit: <git SHA>)
+**Save file**: ModzVerse(BETA)_v1.5.0.db (commit: <git SHA>)
 **In-game version**: Pro Wrestling Sim v0.X.X
 **Screenshot**: (attach if visual)
 
 **SQL verification** (run against the save DB):
 \`\`\`bash
-sqlite3 ModzVerse(BETA)_v1.2.0.db "<query>"
+sqlite3 ModzVerse(BETA)_v1.5.0.db "<query>"
 \`\`\`
 (Output: ...)
 ```
@@ -389,7 +389,7 @@ get the authoritative answer:
 
 ```bash
 # Total workers per promotion
-sqlite3 ModzVerse(BETA)_v1.2.0.db "
+sqlite3 ModzVerse(BETA)_v1.5.0.db "
 SELECT p.promotionID, p.fullName, COUNT(DISTINCT c.workerID) as workers
 FROM contracts c
 JOIN promotions p ON c.promotionID = p.promotionID
@@ -399,7 +399,7 @@ ORDER BY c.promotionID;
 "
 
 # Announcer slots per promotion
-sqlite3 ModzVerse(BETA)_v1.2.0.db "
+sqlite3 ModzVerse(BETA)_v1.5.0.db "
 SELECT p.promotionID, p.fullName,
   (SELECT contractName FROM contracts WHERE contractID=p.announcer1) AS a1,
   (SELECT contractName FROM contracts WHERE contractID=p.announcer2) AS a2,
@@ -409,7 +409,7 @@ FROM promotions p ORDER BY p.promotionID;
 "
 
 # Stable leaders
-sqlite3 ModzVerse(BETA)_v1.2.0.db "
+sqlite3 ModzVerse(BETA)_v1.5.0.db "
 SELECT s.stableID, s.stableName, s.promotionID,
        w.name AS leader_name
 FROM stables s
@@ -420,7 +420,7 @@ ORDER BY s.stableID;
 "
 
 # Storyline participants
-sqlite3 ModzVerse(BETA)_v1.2.0.db "
+sqlite3 ModzVerse(BETA)_v1.5.0.db "
 SELECT s.storylineID, s.storylineName, s.promotionID,
        GROUP_CONCAT(w.name, ' + ') AS participants
 FROM storylines s
@@ -432,7 +432,7 @@ ORDER BY s.storylineID;
 "
 
 # Simulate PWS Announcers.cleanAnnouncers() — should return 0 rows
-sqlite3 ModzVerse(BETA)_v1.2.0.db "
+sqlite3 ModzVerse(BETA)_v1.5.0.db "
 SELECT p.promotionID, p.fullName,
        CASE WHEN p.announcer1 IS NULL OR p.announcer1='' OR p.announcer1 NOT IN (
          SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0

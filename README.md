@@ -123,24 +123,25 @@ Documentation for all **18 venue packs** totaling **36,000 venue records**:
 
 ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-player booking/management simulation game where the player runs a pro wrestling promotion. The world features:
 
-- **11 promotions** across 6 continents (Japan, Mexico, USA, UK, Brazil, Nigeria, Australia)
+- **15 promotions** across 5 continents (USA, Mexico, Japan, UK, Brazil, Nigeria, Australia, South Korea, Colombia, South Africa, New Zealand)
 - **347 workers** (303 wrestlers + 44 announcers) with unique bios, style-appropriate movesets, and normalized traits
 - **347 contracts** (all finalised, all PWS-compatible — using contractIDs not workerIDs for announcer slots)
 - **64 tag teams** across all 11 promotions
 - **36 stables** with 144 members, all with designated leaders (isLeader=1 integer)
 - **31 storylines** with 62 storylineworkers rows (2 participants per storyline)
-- **12 training schools** (1 per promotion + 1 extra for RAIBARAZU)
-- **29 events** (all 11 promotions have ≥1) + 50 eventDates
+- **16 training schools** (1 per promotion + 1 extra for RAIBARAZU)
+- **12,000 venues** across 6 continents with 7 style preferences (Traditional 6,594 · Sports Entertainment 3,568 · Lucha Libre 546 · Pure Wrestling 396 · Hardcore 332 · Strong Style 307 · Kings Road 257)
+- **20 networks** (15 TV + 4 streaming + 1 PPV) with 15 networkDeals
+- **45 events** (all 15 promotions have ≥2) + 50 eventDates
 - **347 worker pictures** populated in the workerpictures table
 - **8 match stories + 15 angle templates + 29 template beats** for booking content
-- **13 signature events** including the January Week 5 supershow bottleneck
 - **1 championship** (the AEGIS LEAGUE, currently vacant)
 - **2 brands** (RAIBARAZU's Doragon and Fenikkusu)
 - **17 canonical gimmicks** with mechanical modifiers
 - **190 countries and 3,218 regions** with full wrestling popularity data
 - **18 venue database packs** totaling 36,000 venues
 
-The world is currently in **v1.4.0 BETA** — the structural foundation (promotions, events, titles, brands, gimmicks, geography, venues) AND the human layer (workers, contracts, announcers, tag teams, stables, storylines, training schools, bios, traits, movesets, worker pictures) are complete. All 7 canonical PWS wrestling styles are now covered (Sports Entertainment, Lucha Libre, Pure Wrestling, Kings Road, Traditional, Hardcore, Strong Style). All worker fields have been audited against the actual PWS source code and normalized to PWS-expected categorical values.
+The world is currently in **v1.5.0 BETA** — the structural foundation (promotions, events, titles, brands, gimmicks, geography, 12,000 venues, 20 networks) AND the human layer (347 workers, contracts, announcers, tag teams, stables, storylines, training schools, bios, traits, movesets, worker pictures) are complete. All 7 canonical PWS wrestling styles are covered. All 15 promotions have TV/streaming network deals, promotion aces, events, and training schools.
 
 ---
 
@@ -161,6 +162,7 @@ The world is currently in **v1.4.0 BETA** — the structural foundation (promoti
 | v1.2.0 | 2025-01-01 | Continental Vacuum filled — 4 new promotions (EWA, Samba Luta, AKW, PRW) + 116 workers + 116 contracts |
 | v1.3.0 | 2025-01-01 | Worker data normalization — height/weight/race/build/drive/style categorical labels + unique bios + NULL traits filled + trait conflicts resolved + 295 movesets populated |
 | v1.4.0 | 2025-01-01 | All 7 styles complete — Promotion #11 NSS (Strong Style) + tour dates for Road to Battle of Rivals + events for all 4 new promos + training schools for all 11 promos + 347 worker pictures |
+| v1.5.0 | 2025-01-01 | The Living World — 4 new promotions (KPW/LC/SAWA/Kiwi Pro) + 9 networks + 12 events + 4 training schools + 12,000 venues imported + networkDeals + promotionAce for all 15 promos |
 
 ---
 
