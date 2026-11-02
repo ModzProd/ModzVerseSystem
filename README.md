@@ -165,7 +165,7 @@ The world is currently in **v1.7.0 BETA** — all 190 countries have at least on
 | v1.4.0 | 2025-01-01 | All 7 styles complete — Promotion #11 NSS (Strong Style) + tour dates for Road to Battle of Rivals + events for all 4 new promos + training schools for all 11 promos + 347 worker pictures |
 | v1.5.0 | 2025-01-01 | The Living World — 4 new promotions (KPW/LC/SAWA/Kiwi Pro) + 9 networks + 12 events + 4 training schools + 12,000 venues imported + networkDeals + promotionAce for all 15 promos |
 | v1.6.0 | 2025-01-01 | 4 new fully-rostered promotions (Germany/Canada/Argentina/India) + 116 wrestlers + 12 events |
-| v1.7.0 | 2025-01-01 | World Complete — 175 future-dated shell promos for ALL 190 countries + 1,334 matchgimmicks imported |
+| v1.7.0 | 2025-01-01 | World Complete — 175 future-dated shell promos for ALL 190 countries + 1,334 matchgimmicks imported + ModzVersePWSGraphixPack scaffolded + `ModzVerse_All_Workers_AI_Prompts.xlsx` moved into Excel/ folder (579 workers × 15 cols with pre-tuned AI prompts) |
 
 ---
 

@@ -167,7 +167,7 @@
     <div class="dlc-hero">
       <span class="dlc-hero-eyebrow">★ NEW · v0.9.5 — DLC &amp; Excel Resources</span>
       <h1>DLC &amp; EXCEL RESOURCES</h1>
-      <div class="dlc-hero-sub">75 match gimmick databases · 12 TV network databases · 4 Excel spreadsheets · 5,000+ promotions · 5,805 titles</div>
+      <div class="dlc-hero-sub">75 match gimmick databases · 12 TV network databases · 5 Excel spreadsheets · 5,000+ promotions · 5,805 titles</div>
 
       <div class="dlc-hero-stats">
         <div class="dlc-hero-stat">
@@ -203,7 +203,7 @@
       </div>
     </div>
 
-    <p>The ModzVerse project has released a major content expansion: <strong>87 filtered database packs</strong> and <strong>4 Excel spreadsheets</strong> are now available in the GitHub repository under the <code>DLC/</code> and <code>Excel/</code> folders. This expansion adds 1,334 match gimmicks (across 75 themed databases), 101 TV networks (across 12 filtered databases), and 4 reference spreadsheets documenting the world's 5,000 promotions, 5,805 titles, and 12,000 venues — including AI prompts for generating promotion logos and venue images. The BETA status has been updated: <strong>match gimmicks and TV networks are no longer empty</strong>.</p>
+    <p>The ModzVerse project has released a major content expansion: <strong>87 filtered database packs</strong> and <strong>5 Excel spreadsheets</strong> are now available in the GitHub repository under the <code>DLC/</code> and <code>Excel/</code> folders. This expansion adds 1,334 match gimmicks (across 75 themed databases), 101 TV networks (across 12 filtered databases), and 5 reference spreadsheets documenting the world's 5,000 promotions, 5,805 titles, 12,000 venues, and 579 workers — including AI prompts for generating promotion logos, venue images, and worker portraits. The BETA status has been updated: <strong>match gimmicks and TV networks are no longer empty</strong>.</p>
 
     <h2>Repository Structure</h2>
     <p>The new content is organized in the repository as follows:</p>
@@ -242,7 +242,7 @@
       <div class="file-tree-row">
         <div class="file-tree-icon">📁</div>
         <div class="file-tree-name"><code>Excel/</code> <span style="color:var(--text-mute);">— reference spreadsheets</span></div>
-        <div class="file-tree-size">4 files</div>
+        <div class="file-tree-size">5 files</div>
       </div>
       <div class="file-tree-row" style="padding-left:24px;">
         <div class="file-tree-icon">📊</div>
@@ -263,6 +263,11 @@
         <div class="file-tree-icon">📊</div>
         <div class="file-tree-name"><code>ModzVerse_All_Venues_AI_Prompts.xlsx</code></div>
         <div class="file-tree-size">3.1 MB</div>
+      </div>
+      <div class="file-tree-row" style="padding-left:24px;">
+        <div class="file-tree-icon">📊</div>
+        <div class="file-tree-name"><code>ModzVerse_All_Workers_AI_Prompts.xlsx</code></div>
+        <div class="file-tree-size">63 KB</div>
       </div>
       <div class="file-tree-row">
         <div class="file-tree-icon">📁</div>
@@ -413,9 +418,9 @@
       The TV Networks DLC reveals a second "Brazil surprise" to complement the venue pack finding: Brazil has <strong>5 size-3 (Large) national TV networks</strong> — Canal Nacional, Sol Channel, Rio Channel, Luta TV Brasil, and Rede Luta Livre. This is the most size-3 networks of any single country in the ModzVerse. Combined with Brazil's 895 venues and 215 million population, this makes Brazil the single most strategically valuable untapped wrestling market in the world. A player starting a Brazilian promotion has broadcast infrastructure ready and waiting — no other untapped market comes close.
     </div>
 
-    <h2 id="excel-resources">Excel Reference Spreadsheets (4 files)</h2>
+    <h2 id="excel-resources">Excel Reference Spreadsheets (5 files)</h2>
 
-    <p>The <code>Excel/</code> folder contains <strong>4 reference spreadsheets</strong> documenting the ModzVerse world's content in human-readable form. These are not game databases — they are reference documents for contributors, players, and content creators who want to browse the world's data without opening SQLite databases. Two of the spreadsheets also include <strong>AI image generation prompts</strong> (original and improved versions) for every promotion logo and venue image, ready to paste into any AI image generator.</p>
+    <p>The <code>Excel/</code> folder contains <strong>5 reference spreadsheets</strong> documenting the ModzVerse world's content in human-readable form. These are not game databases — they are reference documents for contributors, players, and content creators who want to browse the world's data without opening SQLite databases. Three of the spreadsheets also include <strong>AI image generation prompts</strong> for every promotion logo, venue image, and worker portrait, ready to paste into any AI image generator.</p>
 
     <div class="excel-card">
       <div class="excel-card-head">
@@ -457,6 +462,16 @@
       <div class="excel-card-cols" style="margin-top:6px;"><strong>12,000 venues</strong> with <strong>24,000 AI prompts total</strong> (original + improved for each)</div>
     </div>
 
+    <div class="excel-card">
+      <div class="excel-card-head">
+        <div class="excel-card-title">📊 ModzVerse_All_Workers_AI_Prompts.xlsx</div>
+        <span class="excel-card-size">63.2 KB · 579 rows</span>
+      </div>
+      <div class="excel-card-desc">Every worker in the v1.7.0 ModzVerse world (303 wrestlers + 44 announcers across the 19 current promotions) with full metadata plus a <strong>pre-tuned AI portrait-generation prompt</strong> per worker, mirroring the format PWS itself uses in <code>EditWorkers.makePrompt()</code>. The <strong>Picture Filename</strong> column gives the exact filename the DB expects (so you can save the generated PNG with the right name and PWS will resolve it without DB edits). Replaces the old <code>ModzVerse_Workers.xlsx</code> that was attached to v1.4.0 and v1.5.0 GitHub releases — now lives in the repo's <code>Excel/</code> folder permanently, with AI prompts added and the worker count expanded from 347 to 579.</div>
+      <div class="excel-card-cols"><strong>15 columns:</strong> Worker ID · Picture Filename · Name · Promotion · Style · Gender · Race · Build · Age · Type · Masked · Gimmick · AI Image Prompt · Negative Prompt · Recommended Size</div>
+      <div class="excel-card-cols" style="margin-top:6px;"><strong>579 workers</strong> with <strong>579 AI prompts</strong> (deterministic per worker — same workerID always produces the same prompt)</div>
+    </div>
+
     <h2>How to Use the DLC &amp; Excel Resources</h2>
 
     <h3>Loading a DLC Database</h3>
@@ -469,13 +484,13 @@
     </ol>
 
     <h3>Using the Excel AI Prompts</h3>
-    <p>The <code>ModzVerse_All_Promotions_AI_Prompts.xlsx</code> and <code>ModzVerse_All_Venues_AI_Prompts.xlsx</code> spreadsheets contain ready-to-use AI image generation prompts:</p>
+    <p>The <code>ModzVerse_All_Promotions_AI_Prompts.xlsx</code>, <code>ModzVerse_All_Venues_AI_Prompts.xlsx</code>, and <code>ModzVerse_All_Workers_AI_Prompts.xlsx</code> spreadsheets contain ready-to-use AI image generation prompts:</p>
     <ol>
       <li>Open the spreadsheet in Excel, Google Sheets, or LibreOffice Calc</li>
-      <li>Find the promotion or venue you want to generate an image for (filter by continent, country, or style)</li>
-      <li>Copy the contents of the "AI Logo Prompt (Improved)" or "AI Image Prompt (Improved)" column</li>
+      <li>Find the promotion, venue, or worker you want to generate an image for (filter by continent, country, style, or promotion)</li>
+      <li>Copy the contents of the "AI Image Prompt (Improved)" column for promotions/venues, or the "AI Image Prompt" column for workers</li>
       <li>Paste into any AI image generator (Midjourney, DALL-E 3, Stable Diffusion, etc.) and generate</li>
-      <li>The "Improved" column gives more reliable, more detailed results than the "Original" column</li>
+      <li>For workers: save the generated PNG using the exact filename from the "Picture Filename" column into your PWS <code>images/&lt;saveFolder&gt;/People/</code> directory — PWS will resolve it automatically with no DB edits</li>
     </ol>
 
     <div class="callout warning">

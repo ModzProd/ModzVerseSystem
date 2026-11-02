@@ -41,7 +41,7 @@ The remaining **3 / 579** workers use ASCII-folded filenames (accents dropped) �
 | `Ricardo 'El Relator' Ramírez` | `RicardoElRelatorRamirez.png` (í → i) |
 | `Jorge 'El Comentarista' Jiménez` | `JorgeElComentaristaJimenez.png` (é → e) |
 
-**When in doubt, look up the actual `picture` field value** — the DB is the source of truth, not the naming rule. A reference dump is at `download/ModzVerse-Wiki/Excel/ModzVerse_Workers.xlsx` (workerID, name, picture columns).
+**When in doubt, look up the actual `picture` field value** — the DB is the source of truth, not the naming rule. A reference dump is in `Excel/ModzVerse_All_Workers_AI_Prompts.xlsx` (in this repo) — columns: Worker ID, Picture Filename, Name, Promotion, Style, Gender, Race, Build, Age, Type, Masked, Gimmick, AI Image Prompt.
 
 ## Recommended dimensions
 
@@ -78,7 +78,7 @@ ModzVerse has many luchadores (Lucha Bellas, Lucha MEX, Lucha Colombia, Lucha Ar
 
 ### AI generation prompts
 
-Pre-tuned AI prompts for each of the 579 workers are in `download/ModzVerse-Wiki/Excel/ModzVerse_Workers.xlsx`. Each prompt includes:
+Pre-tuned AI prompts for each of the 579 workers are in `Excel/ModzVerse_All_Workers_AI_Prompts.xlsx` (in this repo, alongside the existing `ModzVerse_All_Promotions_AI_Prompts.xlsx` and `ModzVerse_All_Venues_AI_Prompts.xlsx`). Each row includes:
 
 - Worker name, gender, race, build
 - Wrestling style (Sports Entertainment, Lucha Libre, Pure Wrestling, etc.)
@@ -102,7 +102,7 @@ The DB is fully pre-wired — drop the matching PNG file into this folder and it
 
 ## Full worker reference
 
-See `download/ModzVerse-Wiki/rosters.html` for the canonical roster pages per promotion (worker name, picture, bio, style, gimmick, moveset). The `download/ModzVerse-Wiki/Excel/ModzVerse_Workers.xlsx` spreadsheet has all 579 workers in a single sortable table with the picture filename column included.
+See `rosters.html` (sibling to this folder) for the canonical roster pages per promotion (worker name, picture, bio, style, gimmick, moveset). The `Excel/ModzVerse_All_Workers_AI_Prompts.xlsx` spreadsheet has all 579 workers in a single sortable table with the picture filename column AND the AI prompt for each.
 
 For a quick script to dump every `(workerID, name, picture)` triple:
 

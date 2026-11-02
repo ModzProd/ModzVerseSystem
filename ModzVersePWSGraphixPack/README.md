@@ -51,7 +51,7 @@ Verified against `ModzVerse(BETA)_v1.7.0.db` (v1.7.0 · WORLD COMPLETE · 190/19
 3. The 52 stable logos (4-8 per main-roster promo)
 4. The 24 promo-owned + indie network logos (skip the 175 future-dated `<CC> Sports Network` slots)
 5. The 57 signature event posters for promos #1-19 (skip the 175 future-dated country events)
-6. Worker portraits — 579 slots, AI-generation prompts pre-tuned in `download/ModzVerse-Wiki/Excel/ModzVerse_Workers.xlsx`
+6. Worker portraits — 579 slots, AI-generation prompts pre-tuned in `Excel/ModzVerse_All_Workers_AI_Prompts.xlsx` (in this repo)
 
 ---
 
@@ -136,7 +136,7 @@ The ModzVerse world has a strong in-universe aesthetic. When contributing new ar
 3. **Worker portraits**: 3/4 bust framing, neutral background, vertical orientation. The PWS worker card crops to roughly 3:4 aspect ratio.
 4. **Title belts**: studio product shot on transparent background, belt displayed flat at 30°-45° angle, horizontal orientation.
 
-For AI-generation prompts already tuned for each worker, see `download/ModzVerse_Workers.xlsx` in the parent release.
+For AI-generation prompts already tuned for each worker, see `Excel/ModzVerse_All_Workers_AI_Prompts.xlsx` (in this repo).
 
 ---
 
