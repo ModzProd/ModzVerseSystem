@@ -286,6 +286,11 @@
     <h3>Build Notes (out-of-universe)</h3>
     <div class="news-feed">
       <div class="news-item success">
+        <div class="news-head"><span class="news-tag">BUILD · POLISH</span><span>v2.9.0 · Polish + QoL — 20 filter presets + 19 owner goals + 19 drug policies + 200 picturePool + referee brand assignments</span></div>
+        <div class="news-body">Quality of life improvements and polish across the ModzVerse DB. <strong>20 new filter presets</strong> added (total 35, was 15): Cross-Promo Champions, Tournament Participants, HoF Inductees, Active Main Eventers, Tag Team Specialists, Stable Leaders, Future-Dated Rosters by quarter, High Charisma, Top Intimidation, Injured Workers, Suspended Workers, Veteran Referees, Top Managers, Authority Figures, Masked Wrestlers by Style, Cross-Promo Rivalry Workers, Chemistry Partners, Storyline Active Workers. <strong>19 owner goals</strong> added (1 per current-roster promo, was 0): WinTitle, IncreaseAttendance, SignStar, MerchandiseTarget, DevelopTalent — each with a deadline of 2026-01-01. <strong>19 drug testing policies</strong> set (varied per promo): some promos test steroids, some test soft drugs, all test hard drugs, with varied responses (warn/fine/suspend/fire). <strong>200 new picture pool portraits</strong> added (total 360, was 160) covering more gender×race×build×age combinations for PWS auto-assign. <strong>6 referee brand assignments</strong>: referees wired to the 6 brand announcer3 slots (CS:Prime, CS:Velocity, OJ:Queens, OJ:Blossoms, VP:Asgard, VP:Midgard). SQL file added to <code>DLC/Rosters/</code> as <code>ModzVerse_PolishQoL.sql</code>. <code>PRAGMA integrity_check: ok</code>. GitHub Release v2.9.0 with downloadable <code>ModzVerse(BETA)_v2.9.0.db</code>. See <a href="https://github.com/ModzProd/ModzVerseSystem/releases/tag/v2.9.0" target="_blank" rel="noopener">GitHub Release v2.9.0</a>.</div>
+      </div>
+
+      <div class="news-item success">
         <div class="news-head"><span class="news-tag">BUILD · HISTORY</span><span>v2.8.0 · Historical Depth — popularity history + 30 more historical events (total 54)</span></div>
         <div class="news-body">The ModzVerse now has a rich historical record. <strong>popularity history tables</strong> populated for the first time: <strong>popHistoryDate</strong> (60 entries, 5 years × 12 months: 2020-01 through 2024-12), <strong>promotionPopMonthlyGains</strong> (152 entries sampling 19 promos × 4 months × 2 regions), <strong>promotionRegionalPopHistory</strong> (456 entries: 19 promos × 6 regions × 4 quarterly snapshots), <strong>workerPopHistoryAvg</strong> (500 entries for top 500 wrestlers), <strong>workerRegionalPopHistory</strong> (1200 entries: top 100 wrestlers × 6 regions × 2 snapshots). PWS uses these tables to display popularity trends over time — now the data shows career arcs and promotion growth trajectories. <strong>30 new historical events</strong> added (total 54, was 24) covering: Annual Championship Showcases, Cross-Promo Dream Match Nights, Tournament Finals Nights, Rivalry Blowoff Shows, Debut Showcases, Title vs Title Unifications, Stable Warfare Climaxes, Memorial Shows, Anniversary Celebrations, and Year-End Awards Spectaculars. Each event has 4 segments (120 new, total 218) with 2 workers per segment (240 new segment workers). SQL file added to <code>DLC/Rosters/</code> as <code>ModzVerse_HistoricalDepth.sql</code>. <code>PRAGMA integrity_check: ok</code>. GitHub Release v2.8.0 with downloadable <code>ModzVerse(BETA)_v2.8.0.db</code>. See <a href="https://github.com/ModzProd/ModzVerseSystem/releases/tag/v2.8.0" target="_blank" rel="noopener">GitHub Release v2.8.0</a>.</div>
       </div>
@@ -442,11 +447,11 @@
      SHARED FOOTER
      ============================================================ -->
 <footer class="wiki-footer">
-  <p><strong>ModzVerse Intranet</strong> · A World at War! · v2.8.0 · HISTORICAL DEPTH · Canon date: January 1, 2025</p>
+  <p><strong>ModzVerse Intranet</strong> · A World at War! · v2.9.0 · POLISH + QOL · Canon date: January 1, 2025</p>
   <p>Source code: <a href="https://github.com/ModzProd/ModzVerseSystem" target="_blank" rel="noopener">github.com/ModzProd/ModzVerseSystem</a> · Live wiki: <a href="https://modzprod.github.io/ModzVerseSystem/" target="_blank" rel="noopener">modzprod.github.io/ModzVerseSystem</a></p>
   <p>Fully offline · 19 pages · shared styles.css + script.js · 579 workers · 88 tag teams · 52 stables · 60 announcers · 47 storylines · 195 training schools</p>
   <p>This intranet is a fan reference for the ModzVerse custom world database for Pro Wrestling Sim. All in-universe content is fictional. Database facts are canonical.</p>
-  <p>Maintained by the ModzVerse project · Build v2.8.0 · Last updated: <span id="lastUpdated"></span></p>
+  <p>Maintained by the ModzVerse project · Build v2.9.0 · Last updated: <span id="lastUpdated"></span></p>
 </footer>
 
 <script src="script.js"></script>
