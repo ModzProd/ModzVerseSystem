@@ -30,7 +30,7 @@ PWS displays title images in worker-card and event-card contexts, both of which 
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count | Titles |
 |---|---|---|

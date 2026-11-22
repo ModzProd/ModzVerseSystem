@@ -32,7 +32,7 @@ PWS displays stable logos in the stable infobox (~200×200 px) and stable-member
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count |
 |---|---|

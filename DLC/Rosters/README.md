@@ -14,7 +14,7 @@ This folder contains generated worker roster SQL files for the ModzVerse world d
 Each `.sql` file contains `INSERT INTO workers` and `INSERT INTO contracts` statements that can be executed against any ModzVerse save database:
 
 ```bash
-sqlite3 ModzVerse(BETA).db < RAIBARAZU_roster.sql
+sqlite3 ModzVerse().db < RAIBARAZU_roster.sql
 ```
 
 Or open in DB Browser for SQLite → Execute SQL tab → paste the contents.

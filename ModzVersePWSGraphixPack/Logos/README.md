@@ -34,7 +34,7 @@ PWS does NOT enforce pixel dimensions. Community convention:
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count | Promotions |
 |---|---|---|
@@ -50,12 +50,12 @@ For the 190 promotions with a real filename, the DB is pre-wired — drop the ma
 - Promos #1, #7-194 use `<SHORT>.png` (e.g., `ChicagoShow.png`, `EWA.png`, `KPW.png`, `GWF.png`, `BWL.png`)
 - Promo #2 uses `LuchaBellasCleanBG.png` (the "CleanBG" suffix indicates no background — just the logo glyph)
 - Promos #3-6 need filenames chosen (suggested: `LuchaMEX.png`, `RAIBARAZU.png`, `OsakaJoshi.png`, `ValkyrieProject.png`) AND DB updates via:
-  ```sql
-  UPDATE promotions SET logo='LuchaMEX.png'      WHERE promotionID=3;
-  UPDATE promotions SET logo='RAIBARAZU.png'     WHERE promotionID=4;
-  UPDATE promotions SET logo='OsakaJoshi.png'    WHERE promotionID=5;
-  UPDATE promotions SET logo='ValkyrieProject.png' WHERE promotionID=6;
-  ```
+ ```sql
+ UPDATE promotions SET logo='LuchaMEX.png' WHERE promotionID=3;
+ UPDATE promotions SET logo='RAIBARAZU.png' WHERE promotionID=4;
+ UPDATE promotions SET logo='OsakaJoshi.png' WHERE promotionID=5;
+ UPDATE promotions SET logo='ValkyrieProject.png' WHERE promotionID=6;
+ ```
 
 ### Full promotion ID → short name → logo filename reference
 

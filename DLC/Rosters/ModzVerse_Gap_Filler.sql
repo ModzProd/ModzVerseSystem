@@ -1,7 +1,7 @@
 -- ============================================================
--- ModzVerse — BETA Gap Filler: Events + Training Schools (v1.4.0)
+-- ModzVerse —  Gap Filler: Events + Training Schools (v1.4.0)
 -- ============================================================
--- Closes 2 remaining BETA gaps:
+-- Closes 2 remaining  gaps:
 --   1. Lucha MEX (promo 3) — no signature events
 --   2. Osaka Joshi (promo 5) — no signature events
 --   3. Training schools for 4 new promotions (EWA/SL/AKW/PRW)

@@ -61,7 +61,7 @@ Documentation for all **18 venue packs** totaling **36,000 venue records**:
 **Key finding: "The Australia Surprise"** — Australia is the leading market for 4 of the 7 wrestling styles (Hardcore, Kings Road, Pure Wrestling, Strong Style) despite having zero home promotions in the launch roster.
 
 ### System & Status
-- **BETA Status & Roadmap** — what's done, what's still missing, 6-phase roadmap to v1.0
+- **Release Status & Roadmap** — what's done, what's still missing, 6-phase roadmap to v1.0
 - Known issues, schema version notes (v121 main / v103 venue packs)
 
 ---

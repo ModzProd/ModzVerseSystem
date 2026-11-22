@@ -10,14 +10,14 @@ This pack ships every image the v1.7.0 save file references — promotion logos,
 
 ```
 ModzVersePWSGraphixPack/
-├── Logos/        ← promotion logos (backgroundImage + overlayImage + simple logo)
-├── Titles/       ← championship title belt images
-├── People/       ← worker portraits (wrestlers + announcers + referees)
-├── Stables/      ← stable / faction logos
-├── Network/      ← TV network / streaming platform logos
-├── Events/       ← annual event / tour / weekly show posters
-├── Venues/       ← venue photos (optional — venue packs ship their own)
-└── NoImage/      ← optional modder-supplied noimage.png overrides per category
+├── Logos/ ← promotion logos (backgroundImage + overlayImage + simple logo)
+├── Titles/ ← championship title belt images
+├── People/ ← worker portraits (wrestlers + announcers + referees)
+├── Stables/ ← stable / faction logos
+├── Network/ ← TV network / streaming platform logos
+├── Events/ ← annual event / tour / weekly show posters
+├── Venues/ ← venue photos (optional — venue packs ship their own)
+└── NoImage/ ← optional modder-supplied noimage.png overrides per category
 ```
 
 Each subfolder has its own `README.md` documenting the exact naming convention, file format, and the list of items in the v1.7.0 save that need art for that category.
@@ -26,7 +26,7 @@ Each subfolder has its own `README.md` documenting the exact naming convention, 
 
 ## 🎯 What's currently placeholder vs. real
 
-Verified against `ModzVerse(BETA)_v1.7.0.db` (v1.7.0 · WORLD COMPLETE · 190/190 countries). The DB stores image **filenames**; whether the actual PNG file exists in this pack is a separate question. Both states are tracked below.
+Verified against `ModzVerse_v1.7.0.db` (v1.7.0 · WORLD COMPLETE · 190/190 countries). The DB stores image **filenames**; whether the actual PNG file exists in this pack is a separate question. Both states are tracked below.
 
 | Category | DB slots | DB field set to real filename | DB field on bundled placeholder | PNG files in this pack |
 |---|---|---|---|---|
@@ -60,24 +60,24 @@ Verified against `ModzVerse(BETA)_v1.7.0.db` (v1.7.0 · WORLD COMPLETE · 190/19
 PWS resolves images from `userData/images/<saveImageFolder>/<type>/<filename>.png`, where:
 
 - `userData` is your PWS user data directory (Steam install default: `%USERPROFILE%\Documents\Pro Wrestling Sim\` on Windows, `~/Library/Application Support/Pro Wrestling Sim/` on macOS)
-- `<saveImageFolder>` is the **Image Folder** field set when you load the ModzVerse save (recommended: `ModzVerse(BETA)_v1.7.0`)
+- `<saveImageFolder>` is the **Image Folder** field set when you load the ModzVerse save (recommended: `ModzVerse_v1.7.0`)
 - `<type>` is one of `logos`, `titles`, `people`, `stables`, `network`, `events`, `venues` — PWS checks both lowercase and TitleCase (`logos` and `Logos`), so this pack's TitleCase folders work as-is
 
 ### Quick install
 
-1. Load the ModzVerse save in PWS. In the **New Game / Load Game** dialog, set **Image Folder** to `ModzVerse(BETA)_v1.7.0`.
-2. Copy every subfolder from this pack into `userData/images/ModzVerse(BETA)_v1.7.0/`:
-   ```
-   userData/images/ModzVerse(BETA)_v1.7.0/
-   ├── Logos/
-   ├── Titles/
-   ├── People/
-   ├── Stables/
-   ├── Network/
-   ├── Events/
-   ├── Venues/   ← optional
-   └── noimage.png   ← optional, see NoImage/README.md
-   ```
+1. Load the ModzVerse save in PWS. In the **New Game / Load Game** dialog, set **Image Folder** to `ModzVerse_v1.7.0`.
+2. Copy every subfolder from this pack into `userData/images/ModzVerse_v1.7.0/`:
+ ```
+ userData/images/ModzVerse_v1.7.0/
+ ├── Logos/
+ ├── Titles/
+ ├── People/
+ ├── Stables/
+ ├── Network/
+ ├── Events/
+ ├── Venues/ ← optional
+ └── noimage.png ← optional, see NoImage/README.md
+ ```
 3. Reload the save. Art resolves on next page render — no DB edits needed.
 
 ### Verifying it worked
@@ -126,12 +126,12 @@ See each subfolder's README for the full list of items to render.
 The ModzVerse world has a strong in-universe aesthetic. When contributing new art:
 
 1. **Promotion color identities** (already used throughout the intranet):
-   - Chicago Show — red
-   - Lucha Bellas — pink
-   - Lucha MEX — green + gold
-   - RAIBARAZU — crimson + gold
-   - Osaka Joshi — pink + teal
-   - Valkyrie Project — silver + blue + gold
+ - Chicago Show — red
+ - Lucha Bellas — pink
+ - Lucha MEX — green + gold
+ - RAIBARAZU — crimson + gold
+ - Osaka Joshi — pink + teal
+ - Valkyrie Project — silver + blue + gold
 2. **Logo layering**: promotion logos composite as `backgroundImage` × `overlayImage`. Background is a full-bleed photo or texture; overlay is a transparent PNG with the logo glyph centered. The simple `logo` field is used as a fallback when no layered art exists.
 3. **Worker portraits**: 3/4 bust framing, neutral background, vertical orientation. The PWS worker card crops to roughly 3:4 aspect ratio.
 4. **Title belts**: studio product shot on transparent background, belt displayed flat at 30°-45° angle, horizontal orientation.

@@ -43,7 +43,7 @@ A 2:3 vertical poster at 800×1200 px covers all three. Horizontal 16:9 banners 
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count |
 |---|---|
@@ -168,16 +168,16 @@ Event posters should be:
 Once PNGs are created, wire them up via SQL. Example for the 12 RAIBARAZU + Valkyrie Project signature events:
 
 ```sql
-UPDATE events SET logo='ModzVerse_RIVALS_BattleofRivals.png'               WHERE eventID=2;
-UPDATE events SET logo='ModzVerse_RIVALS_RoadtoBattleofRivals.png'         WHERE eventID=3;
-UPDATE events SET logo='ModzVerse_RIVALS_AutumnBloodMoon.png'              WHERE eventID=4;
-UPDATE events SET logo='ModzVerse_RIVALS_RoadtoAutumnBloodMoon.png'        WHERE eventID=5;
-UPDATE events SET logo='ModzVerse_RIVALS_FallofHonor.png'                  WHERE eventID=6;
-UPDATE events SET logo='ModzVerse_RIVALS_RoadtoFallofHonor.png'            WHERE eventID=7;
-UPDATE events SET logo='ModzVerse_RIVALS_FrozenCombat.png'                 WHERE eventID=8;
-UPDATE events SET logo='ModzVerse_RIVALS_RoadtoFrozenCombat.png'           WHERE eventID=9;
-UPDATE events SET logo='ModzVerse_ValkyrieProject_Valhalla.png'            WHERE eventID=10;
-UPDATE events SET logo='ModzVerse_ValkyrieProject_TwilightofTheGODS.png'   WHERE eventID=11;
+UPDATE events SET logo='ModzVerse_RIVALS_BattleofRivals.png' WHERE eventID=2;
+UPDATE events SET logo='ModzVerse_RIVALS_RoadtoBattleofRivals.png' WHERE eventID=3;
+UPDATE events SET logo='ModzVerse_RIVALS_AutumnBloodMoon.png' WHERE eventID=4;
+UPDATE events SET logo='ModzVerse_RIVALS_RoadtoAutumnBloodMoon.png' WHERE eventID=5;
+UPDATE events SET logo='ModzVerse_RIVALS_FallofHonor.png' WHERE eventID=6;
+UPDATE events SET logo='ModzVerse_RIVALS_RoadtoFallofHonor.png' WHERE eventID=7;
+UPDATE events SET logo='ModzVerse_RIVALS_FrozenCombat.png' WHERE eventID=8;
+UPDATE events SET logo='ModzVerse_RIVALS_RoadtoFrozenCombat.png' WHERE eventID=9;
+UPDATE events SET logo='ModzVerse_ValkyrieProject_Valhalla.png' WHERE eventID=10;
+UPDATE events SET logo='ModzVerse_ValkyrieProject_TwilightofTheGODS.png' WHERE eventID=11;
 UPDATE events SET logo='ModzVerse_ValkyrieProject_TheAEGISLEAGUEFinals.png' WHERE eventID=12;
 -- (event #1 Luchastica is already wired)
 ```

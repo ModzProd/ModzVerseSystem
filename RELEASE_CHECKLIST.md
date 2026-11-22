@@ -1,7 +1,7 @@
 # ModzVerse v1.4.0 Release Checklist
 
 > **Purpose**: In-game verification of the v1.7.0 save file
-> (`ModzVerse(BETA)_v3.0.0.db`) before public release.
+> (`ModzVerse_v3.0.0.db`) before public release.
 > Work through each section in order. Tick the box when a check passes;
 > file an issue (template at the bottom) for any failure.
 >
@@ -15,31 +15,31 @@
 
 Before launching the game, verify the file itself is sound.
 
-- [ ] **0.1** `ModzVerse(BETA)_v3.0.0.db` is in your PWS saves folder
-      - Windows: `%APPDATA%/Pro Wrestling Sim/saves/`
-      - macOS: `~/Library/Application Support/Pro Wrestling Sim/saves/`
-      - Linux: `~/.config/Pro Wrestling Sim/saves/`
+- [ ] **0.1** `ModzVerse_v3.0.0.db` is in your PWS saves folder
+ - Windows: `%APPDATA%/Pro Wrestling Sim/saves/`
+ - macOS: `~/Library/Application Support/Pro Wrestling Sim/saves/`
+ - Linux: `~/.config/Pro Wrestling Sim/saves/`
 - [ ] **0.2** File size is ~11.5 MB (12,093,440 bytes)
 - [ ] **0.3** SQLite integrity check passes
-      ```bash
-      sqlite3 ModzVerse(BETA)_v3.0.0.db "PRAGMA integrity_check;"
-      # Expected output: ok
-      ```
+ ```bash
+ sqlite3 ModzVerse_v3.0.0.db "PRAGMA integrity_check;"
+ # Expected output: ok
+ ```
 - [ ] **0.4** Database version is 121
-      ```bash
-      sqlite3 ModzVerse(BETA)_v3.0.0.db "SELECT databaseVersion FROM gameworld;"
-      # Expected output: 121
-      ```
+ ```bash
+ sqlite3 ModzVerse_v3.0.0.db "SELECT databaseVersion FROM gameworld;"
+ # Expected output: 121
+ ```
 - [ ] **0.5** Total workers = 347 (303 wrestlers + 44 announcers)
-      ```bash
-      sqlite3 ModzVerse(BETA)_v3.0.0.db "SELECT COUNT(*) FROM workers;"
-      # Expected output: 347
-      ```
+ ```bash
+ sqlite3 ModzVerse_v3.0.0.db "SELECT COUNT(*) FROM workers;"
+ # Expected output: 347
+ ```
 - [ ] **0.6** Total contracts = 347 (one per worker)
-      ```bash
-      sqlite3 ModzVerse(BETA)_v3.0.0.db "SELECT COUNT(*) FROM contracts WHERE finalised=1 AND expired=0;"
-      # Expected output: 347
-      ```
+ ```bash
+ sqlite3 ModzVerse_v3.0.0.db "SELECT COUNT(*) FROM contracts WHERE finalised=1 AND expired=0;"
+ # Expected output: 347
+ ```
 
 ---
 
@@ -236,10 +236,10 @@ verify the worker browse feature works.
 - [ ] **5.2** Scroll to the "Browse All Workers" section
 - [ ] **5.3** Header reads "Browse All Workers (347 wrestlers · ★ v1.2.0)"
 - [ ] **5.4** Filter row shows 11 buttons:
-      - All (347)
-      - RAIBARAZU (40), Chicago Show (35), Lucha Bellas (30), Lucha MEX (35),
-        Osaka Joshi (30), Valkyrie Project (25)
-      - ★ EWA (25), ★ Samba Luta (25), ★ AKW (25), ★ PRW (25)
+ - All (347)
+ - RAIBARAZU (40), Chicago Show (35), Lucha Bellas (30), Lucha MEX (35),
+ Osaka Joshi (30), Valkyrie Project (25)
+ - ★ EWA (25), ★ Samba Luta (25), ★ AKW (25), ★ PRW (25)
 - [ ] **5.5** Click "All (347)" — grid populates with 347 worker cards
 - [ ] **5.6** Click "RAIBARAZU (40)" — grid filters to 40 workers
 - [ ] **5.7** Click "★ EWA (25)" — grid filters to 25 workers
@@ -253,8 +253,8 @@ Click 3-4 worker cards at random and verify the displayed stats
 match what's in the save DB. Example SQL to compare against:
 
 ```bash
-sqlite3 ModzVerse(BETA)_v3.0.0.db \
-  "SELECT name, wrestlingSkill, entertainment, starPower, intimidation FROM workers WHERE workerID IN (1001, 2001, 7001, 7301);"
+sqlite3 ModzVerse_v3.0.0.db \
+ "SELECT name, wrestlingSkill, entertainment, starPower, intimidation FROM workers WHERE workerID IN (1001, 2001, 7001, 7301);"
 ```
 
 | Worker ID | Name | Wrestling | Entertainment | Star Power | Intimidation | Verified? |
@@ -273,38 +273,38 @@ checks.
 
 - [ ] **6.1** Open the World Map / Promotion List view — all 10 promotions appear
 - [ ] **6.2** Promotion popularity bars match expected:
-      - Chicago Show: N.America 40
-      - Lucha Bellas: N.America 35
-      - Lucha MEX: N.America 40
-      - RAIBARAZU: Asia 60
-      - Osaka Joshi: Asia 30
-      - Valkyrie Project: Asia 12
-      - EWA: Europe 50
-      - Samba Luta: S.America 50
-      - AKW: Africa 50
-      - PRW: Oceania 50
+ - Chicago Show: N.America 40
+ - Lucha Bellas: N.America 35
+ - Lucha MEX: N.America 40
+ - RAIBARAZU: Asia 60
+ - Osaka Joshi: Asia 30
+ - Valkyrie Project: Asia 12
+ - EWA: Europe 50
+ - Samba Luta: S.America 50
+ - AKW: Africa 50
+ - PRW: Oceania 50
 - [ ] **6.3** Promotion money values match expected:
-      - Chicago Show: $50,000
-      - Lucha Bellas: $0
-      - Lucha MEX: $0
-      - RAIBARAZU: $0
-      - Osaka Joshi: $2,983
-      - Valkyrie Project: $0
-      - EWA: $75,000
-      - Samba Luta: $100,000
-      - AKW: $60,000
-      - PRW: $120,000
+ - Chicago Show: $50,000
+ - Lucha Bellas: $0
+ - Lucha MEX: $0
+ - RAIBARAZU: $0
+ - Osaka Joshi: $2,983
+ - Valkyrie Project: $0
+ - EWA: $75,000
+ - Samba Luta: $100,000
+ - AKW: $60,000
+ - PRW: $120,000
 - [ ] **6.4** Founding dates match expected:
-      - Chicago Show: 1950-01-01
-      - Lucha Bellas: 1980-01-01
-      - Lucha MEX: 1980-01-01
-      - RAIBARAZU: 1950-06-06
-      - Osaka Joshi: 2003-01-01
-      - Valkyrie Project: 1980-01-01
-      - EWA: 2002-04-15
-      - Samba Luta: 2008-09-07
-      - AKW: 2010-11-20
-      - PRW: 2005-03-01
+ - Chicago Show: 1950-01-01
+ - Lucha Bellas: 1980-01-01
+ - Lucha MEX: 1980-01-01
+ - RAIBARAZU: 1950-06-06
+ - Osaka Joshi: 2003-01-01
+ - Valkyrie Project: 1980-01-01
+ - EWA: 2002-04-15
+ - Samba Luta: 2008-09-07
+ - AKW: 2010-11-20
+ - PRW: 2005-03-01
 - [ ] **6.5** AEGIS LEAGUE championship is vacant (no current champion)
 - [ ] **6.6** The 13 signature events are scheduled correctly
 - [ ] **6.7** Advance the calendar 1 day (next day button) — no errors
@@ -318,7 +318,7 @@ v1.2.0 version string.
 
 - [ ] **7.1** `portal.html` — Portal Dashboard loads, KPIs show 347 workers / 347 contracts / 11 promotions
 - [ ] **7.2** `news.html` — Top entry is "v1.2.0 · Continental Vacuum filled"
-- [ ] **7.3** `beta-status.html` — Roadmap shows v1.2.0 line under "Complete (Canonical)"
+- [ ] **7.3** `release-status.html` — Roadmap shows v1.2.0 line under "Complete (Canonical)"
 - [ ] **7.4** `promotions.html` — 10 promotion profile articles (scroll to bottom: EWA, SL, AKW, PRW sections exist)
 - [ ] **7.5** `rosters.html` — Hero stats show "11 Promotions Populated / 347 Workers / 347 Contracts / 44 Announcers / 64 Tag Teams / 36 Stables"
 - [ ] **7.6** `storylines.html` — Hero shows "29 storylines · 58 storylineworkers", Total Entries = 139
@@ -355,13 +355,13 @@ If you find an issue, copy this template into a new GitHub issue:
 **Expected**: ...
 **Actual**: ...
 
-**Save file**: ModzVerse(BETA)_v3.0.0.db (commit: <git SHA>)
+**Save file**: ModzVerse_v3.0.0.db (commit: <git SHA>)
 **In-game version**: Pro Wrestling Sim v0.X.X
 **Screenshot**: (attach if visual)
 
 **SQL verification** (run against the save DB):
 \`\`\`bash
-sqlite3 ModzVerse(BETA)_v3.0.0.db "<query>"
+sqlite3 ModzVerse_v3.0.0.db "<query>"
 \`\`\`
 (Output: ...)
 ```
@@ -389,7 +389,7 @@ get the authoritative answer:
 
 ```bash
 # Total workers per promotion
-sqlite3 ModzVerse(BETA)_v3.0.0.db "
+sqlite3 ModzVerse_v3.0.0.db "
 SELECT p.promotionID, p.fullName, COUNT(DISTINCT c.workerID) as workers
 FROM contracts c
 JOIN promotions p ON c.promotionID = p.promotionID
@@ -399,19 +399,19 @@ ORDER BY c.promotionID;
 "
 
 # Announcer slots per promotion
-sqlite3 ModzVerse(BETA)_v3.0.0.db "
+sqlite3 ModzVerse_v3.0.0.db "
 SELECT p.promotionID, p.fullName,
-  (SELECT contractName FROM contracts WHERE contractID=p.announcer1) AS a1,
-  (SELECT contractName FROM contracts WHERE contractID=p.announcer2) AS a2,
-  (SELECT contractName FROM contracts WHERE contractID=p.announcer3) AS a3,
-  (SELECT contractName FROM contracts WHERE contractID=p.announcer4) AS a4
+ (SELECT contractName FROM contracts WHERE contractID=p.announcer1) AS a1,
+ (SELECT contractName FROM contracts WHERE contractID=p.announcer2) AS a2,
+ (SELECT contractName FROM contracts WHERE contractID=p.announcer3) AS a3,
+ (SELECT contractName FROM contracts WHERE contractID=p.announcer4) AS a4
 FROM promotions p ORDER BY p.promotionID;
 "
 
 # Stable leaders
-sqlite3 ModzVerse(BETA)_v3.0.0.db "
+sqlite3 ModzVerse_v3.0.0.db "
 SELECT s.stableID, s.stableName, s.promotionID,
-       w.name AS leader_name
+ w.name AS leader_name
 FROM stables s
 JOIN stableworkers sw ON s.stableID = sw.stableID AND sw.isLeader = 1
 JOIN contracts c ON sw.contractID = c.contractID
@@ -420,9 +420,9 @@ ORDER BY s.stableID;
 "
 
 # Storyline participants
-sqlite3 ModzVerse(BETA)_v3.0.0.db "
+sqlite3 ModzVerse_v3.0.0.db "
 SELECT s.storylineID, s.storylineName, s.promotionID,
-       GROUP_CONCAT(w.name, ' + ') AS participants
+ GROUP_CONCAT(w.name, ' + ') AS participants
 FROM storylines s
 JOIN storylineworkers sw ON s.storylineID = sw.storylineID
 JOIN contracts c ON sw.contractID = c.contractID
@@ -432,20 +432,20 @@ ORDER BY s.storylineID;
 "
 
 # Simulate PWS Announcers.cleanAnnouncers() — should return 0 rows
-sqlite3 ModzVerse(BETA)_v3.0.0.db "
+sqlite3 ModzVerse_v3.0.0.db "
 SELECT p.promotionID, p.fullName,
-       CASE WHEN p.announcer1 IS NULL OR p.announcer1='' OR p.announcer1 NOT IN (
-         SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
-       ) THEN 'NULL' ELSE 'OK' END AS a1_status,
-       CASE WHEN p.announcer2 IS NULL OR p.announcer2='' OR p.announcer2 NOT IN (
-         SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
-       ) THEN 'NULL' ELSE 'OK' END AS a2_status,
-       CASE WHEN p.announcer3 IS NULL OR p.announcer3='' OR p.announcer3 NOT IN (
-         SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
-       ) THEN 'NULL' ELSE 'OK' END AS a3_status,
-       CASE WHEN p.announcer4 IS NULL OR p.announcer4='' OR p.announcer4 NOT IN (
-         SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
-       ) THEN 'NULL' ELSE 'OK' END AS a4_status
+ CASE WHEN p.announcer1 IS NULL OR p.announcer1='' OR p.announcer1 NOT IN (
+ SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
+ ) THEN 'NULL' ELSE 'OK' END AS a1_status,
+ CASE WHEN p.announcer2 IS NULL OR p.announcer2='' OR p.announcer2 NOT IN (
+ SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
+ ) THEN 'NULL' ELSE 'OK' END AS a2_status,
+ CASE WHEN p.announcer3 IS NULL OR p.announcer3='' OR p.announcer3 NOT IN (
+ SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
+ ) THEN 'NULL' ELSE 'OK' END AS a3_status,
+ CASE WHEN p.announcer4 IS NULL OR p.announcer4='' OR p.announcer4 NOT IN (
+ SELECT contractID FROM contracts WHERE promotionID=p.promotionID AND expired=0
+ ) THEN 'NULL' ELSE 'OK' END AS a4_status
 FROM promotions p
 ORDER BY p.promotionID;
 "

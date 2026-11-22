@@ -90,7 +90,7 @@ PWS's built-in AI image generator (via `EditWorkers.cycleThroughAll()` in `EditW
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count |
 |---|---|
@@ -107,5 +107,5 @@ See `rosters.html` (sibling to this folder) for the canonical roster pages per p
 For a quick script to dump every `(workerID, name, picture)` triple:
 
 ```bash
-python3 -c "import sqlite3; [print(f'{wid:5d}  {pic:40s}  {name}') for wid, name, pic in sqlite3.connect('ModzVerse(BETA)_v1.7.0.db').execute('SELECT workerID, name, picture FROM workers ORDER BY workerID')]"
+python3 -c "import sqlite3; [print(f'{wid:5d} {pic:40s} {name}') for wid, name, pic in sqlite3.connect('ModzVerse_v1.7.0.db').execute('SELECT workerID, name, picture FROM workers ORDER BY workerID')]"
 ```

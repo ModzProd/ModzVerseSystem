@@ -34,7 +34,7 @@ PWS displays network logos in the TV deal cards (~150×75 px) and network detail
 
 ## Current state in v1.7.0
 
-Verified against `ModzVerse(BETA)_v1.7.0.db`:
+Verified against `ModzVerse_v1.7.0.db`:
 
 | Status | Count |
 |---|---|
@@ -109,30 +109,30 @@ Each follows the template `<CC> Sports Network` where CC is the 3-letter country
 Once you've created the 24 priority PNGs (categories 1-3 above), run this SQL to wire them up:
 
 ```sql
-UPDATE networks SET logo='ChicagoSportsNetwork.png'      WHERE networkID=1;
-UPDATE networks SET logo='BellasTV.png'                  WHERE networkID=2;
-UPDATE networks SET logo='MEXWrestlingChannel.png'       WHERE networkID=3;
-UPDATE networks SET logo='RAIBARAZUNetwork.png'          WHERE networkID=4;
-UPDATE networks SET logo='JoshiStream.png'               WHERE networkID=5;
-UPDATE networks SET logo='ValhallaBroadcasting.png'      WHERE networkID=6;
-UPDATE networks SET logo='EWAHardcoreTV.png'             WHERE networkID=7;
-UPDATE networks SET logo='SambaLutaTV.png'               WHERE networkID=8;
-UPDATE networks SET logo='AKKRoyalTV.png'                WHERE networkID=9;
-UPDATE networks SET logo='PRWSportsNetwork.png'          WHERE networkID=10;
-UPDATE networks SET logo='NSSStrongTV.png'               WHERE networkID=11;
-UPDATE networks SET logo='KPWSeoulBroadcasting.png'      WHERE networkID=12;
-UPDATE networks SET logo='ColombiaLuchaTV.png'           WHERE networkID=13;
-UPDATE networks SET logo='SAWASportsChannel.png'         WHERE networkID=14;
-UPDATE networks SET logo='KiwiProStreaming.png'          WHERE networkID=15;
-UPDATE networks SET logo='GWFTV.png'                     WHERE networkID=21;
-UPDATE networks SET logo='CNWTV.png'                     WHERE networkID=22;
-UPDATE networks SET logo='LATV.png'                      WHERE networkID=23;
-UPDATE networks SET logo='BWLTV.png'                     WHERE networkID=24;
-UPDATE networks SET logo='GlobalWrestlingNetwork.png'    WHERE networkID=16;
-UPDATE networks SET logo='WrestleStreamPlus.png'         WHERE networkID=17;
-UPDATE networks SET logo='AsianWrestlingTV.png'          WHERE networkID=18;
-UPDATE networks SET logo='LatinWrestlingNetwork.png'     WHERE networkID=19;
-UPDATE networks SET logo='HardcoreUndergroundTV.png'     WHERE networkID=20;
+UPDATE networks SET logo='ChicagoSportsNetwork.png' WHERE networkID=1;
+UPDATE networks SET logo='BellasTV.png' WHERE networkID=2;
+UPDATE networks SET logo='MEXWrestlingChannel.png' WHERE networkID=3;
+UPDATE networks SET logo='RAIBARAZUNetwork.png' WHERE networkID=4;
+UPDATE networks SET logo='JoshiStream.png' WHERE networkID=5;
+UPDATE networks SET logo='ValhallaBroadcasting.png' WHERE networkID=6;
+UPDATE networks SET logo='EWAHardcoreTV.png' WHERE networkID=7;
+UPDATE networks SET logo='SambaLutaTV.png' WHERE networkID=8;
+UPDATE networks SET logo='AKKRoyalTV.png' WHERE networkID=9;
+UPDATE networks SET logo='PRWSportsNetwork.png' WHERE networkID=10;
+UPDATE networks SET logo='NSSStrongTV.png' WHERE networkID=11;
+UPDATE networks SET logo='KPWSeoulBroadcasting.png' WHERE networkID=12;
+UPDATE networks SET logo='ColombiaLuchaTV.png' WHERE networkID=13;
+UPDATE networks SET logo='SAWASportsChannel.png' WHERE networkID=14;
+UPDATE networks SET logo='KiwiProStreaming.png' WHERE networkID=15;
+UPDATE networks SET logo='GWFTV.png' WHERE networkID=21;
+UPDATE networks SET logo='CNWTV.png' WHERE networkID=22;
+UPDATE networks SET logo='LATV.png' WHERE networkID=23;
+UPDATE networks SET logo='BWLTV.png' WHERE networkID=24;
+UPDATE networks SET logo='GlobalWrestlingNetwork.png' WHERE networkID=16;
+UPDATE networks SET logo='WrestleStreamPlus.png' WHERE networkID=17;
+UPDATE networks SET logo='AsianWrestlingTV.png' WHERE networkID=18;
+UPDATE networks SET logo='LatinWrestlingNetwork.png' WHERE networkID=19;
+UPDATE networks SET logo='HardcoreUndergroundTV.png' WHERE networkID=20;
 ```
 
 ## Style guide

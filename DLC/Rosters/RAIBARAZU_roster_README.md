@@ -122,9 +122,9 @@ All workers use IDs in the reserved range **1001–1030**. This avoids conflicts
 
 1. Open the `RAIBARAZU_roster.sql` file in a text editor
 2. Execute it against your ModzVerse save database using any SQLite client:
-   ```
-   sqlite3 ModzVerse(BETA).db < RAIBARAZU_roster.sql
-   ```
+ ```
+ sqlite3 ModzVerse().db < RAIBARAZU_roster.sql
+ ```
 3. Or open the DB in DB Browser for SQLite and paste the SQL into the "Execute SQL" tab
 4. The 30 workers and 30 contracts will be inserted, ready for the game to load
 
