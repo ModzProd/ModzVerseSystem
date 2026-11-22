@@ -142,7 +142,7 @@ ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-play
 - **190 countries and 3,218 regions** with full wrestling popularity data
 - **18 venue database packs** totaling 36,000 venues
 
-The world is currently in **v2.1.0 BETA** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
+The world is currently in **v2.2.0 BETA** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
 
 ---
 
@@ -170,6 +170,7 @@ The world is currently in **v2.1.0 BETA** — all 190 countries have at least on
 | v1.9.0 | 2025-01-03 | Roster Depth — 114 referees/managers/authority + 52 relationships + 38 chemistry pairs + 30 random events + 30 alteregos + 20 futurePics + 29 storylines + 42 storylinehistories + 160 workers for top 20 future-dated promos + 20 tag teams + 20 stables |
 | v2.0.0 | 2025-01-04 | Complete World — 35 HoF inductees + 24 historical events (98 segments + 196 segment workers) + 25 promotion hiring rules + 15 filter presets + 160 workers for promos #40-59 + 20 tag teams + 20 stables + 20 storylines |
 | v2.1.0 | 2025-01-05 | World Rosters Phase 1 — 320 workers for promos #60-99 (Slovenia through Egypt) + 40 tag teams + 40 stables + 40 storylines — 99/194 promos now have rosters (~51% global coverage) |
+| v2.2.0 | 2025-01-06 | **World Rosters Complete** — 760 workers for promos #100-194 (El Salvador through Zimbabwe) + 95 tag teams + 95 stables + 95 storylines — **ALL 194 promos now have rosters (100% global coverage)** |
 
 ---
 
