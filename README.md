@@ -142,7 +142,7 @@ ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-play
 - **190 countries and 3,218 regions** with full wrestling popularity data
 - **18 venue database packs** totaling 36,000 venues
 
-The world is currently in **v2.3.0 BETA** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
+The world is currently in **v2.4.0 BETA** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
 
 ---
 
@@ -172,6 +172,7 @@ The world is currently in **v2.3.0 BETA** — all 190 countries have at least on
 | v2.1.0 | 2025-01-05 | World Rosters Phase 1 — 320 workers for promos #60-99 (Slovenia through Egypt) + 40 tag teams + 40 stables + 40 storylines — 99/194 promos now have rosters (~51% global coverage) |
 | v2.2.0 | 2025-01-06 | **World Rosters Complete** — 760 workers for promos #100-194 (El Salvador through Zimbabwe) + 95 tag teams + 95 stables + 95 storylines — **ALL 194 promos now have rosters (100% global coverage)** |
 | v2.3.0 | 2025-01-07 | Move Sets Expansion — all 1378 wrestlers updated from 4-5 moves to 8-12 moves each (8-10 regular + 1 finisher + 1 taunt), with 7 style-appropriate move libraries (175+ unique moves) |
+| v2.4.0 | 2025-01-08 | Worker Bios — 1400 new descriptions written for workers with empty bios, all 2093 workers now have descriptions (0 empty remaining), templates customized by type/style/push/region |
 
 ---
 
