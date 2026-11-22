@@ -142,7 +142,7 @@ ModzVerse is a custom world database for **Pro Wrestling Sim** — a single-play
 - **190 countries and 3,218 regions** with full wrestling popularity data
 - **18 venue database packs** totaling 36,000 venues
 
-The world is currently in **v2.9.0 BETA** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
+The world is currently in **v3.0.0** — **FINAL RELEASE** — all 190 countries have at least one promotion entry (19 current with full rosters + 175 future-dated). 579 workers, 12,000 venues, 199 networks, 1,334 matchgimmicks, 232 events, 195 training schools. All 7 canonical PWS wrestling styles are covered.
 
 ---
 
@@ -178,6 +178,7 @@ The world is currently in **v2.9.0 BETA** — all 190 countries have at least on
 | v2.7.0 | 2025-01-11 | Cross-Promotional Content — 5 unified titles (total 46) + 4 cross-promo tournaments (total 10) + 15 cross-promo storylines (total 336) |
 | v2.8.0 | 2025-01-12 | Historical Depth — popularity history (popHistoryDate + 4 popularity tables, 2368 total rows) + 30 more historical events (total 54, 218 segments) |
 | v2.9.0 | 2025-01-13 | Polish + QoL — 20 new filter presets (total 35) + 19 owner goals + 19 drug testing policies + 200 picturePool portraits (total 360) + 6 referee brand assignments |
+| **v3.0.0** | 2025-01-14 | **FINAL RELEASE** — 10-version roadmap complete. 2093 workers, 46 titles, 10 tournaments, 336 storylines, 322 tag teams, 245 stables, 54 historical events, 35 HoF inductees, 25,581 total rows across 47 populated tables. Every PWS system table now populated. PRAGMA integrity_check: ok. |
 
 ---
 
